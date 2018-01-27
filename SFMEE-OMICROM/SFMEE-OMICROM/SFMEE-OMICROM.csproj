@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E45E5CF-BB71-43C6-8CCE-0623C8D8FC73}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SFMEE_OMICROM</RootNamespace>
+    <AssemblyName>SFMEE-OMICROM</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormularioActualizarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioActualizarCliente.Designer.cs">
+      <DependentUpon>FormularioActualizarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioActualizarMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioActualizarMantenimiento.Designer.cs">
+      <DependentUpon>FormularioActualizarMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioActualizarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioActualizarProducto.Designer.cs">
+      <DependentUpon>FormularioActualizarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioActualizarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioActualizarUsuario.Designer.cs">
+      <DependentUpon>FormularioActualizarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioAnularFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioAnularFactura.Designer.cs">
+      <DependentUpon>FormularioAnularFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultaMantenimientoTecnico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultaMantenimientoTecnico.Designer.cs">
+      <DependentUpon>FormularioConsultaMantenimientoTecnico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarCliente.Designer.cs">
+      <DependentUpon>FormularioConsultarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarClienteCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarClienteCajero.Designer.cs">
+      <DependentUpon>FormularioConsultarClienteCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarClienteTecnico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarClienteTecnico.Designer.cs">
+      <DependentUpon>FormularioConsultarClienteTecnico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarFacturaCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarFacturaCajero.Designer.cs">
+      <DependentUpon>FormularioConsultarFacturaCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarFacturaGerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarFacturaGerente.Designer.cs">
+      <DependentUpon>FormularioConsultarFacturaGerente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarMantenimiento.Designer.cs">
+      <DependentUpon>FormularioConsultarMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarMantenimientoCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarMantenimientoCajero.Designer.cs">
+      <DependentUpon>FormularioConsultarMantenimientoCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarProducto.Designer.cs">
+      <DependentUpon>FormularioConsultarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarProductoCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarProductoCajero.Designer.cs">
+      <DependentUpon>FormularioConsultarProductoCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioConsultarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarUsuario.Designer.cs">
+      <DependentUpon>FormularioConsultarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioEliminarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioEliminarCliente.Designer.cs">
+      <DependentUpon>FormularioEliminarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioEliminarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioEliminarProducto.Designer.cs">
+      <DependentUpon>FormularioEliminarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioEliminarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioEliminarUsuario.Designer.cs">
+      <DependentUpon>FormularioEliminarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioLogin.Designer.cs">
+      <DependentUpon>FormularioLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioNuevaFacturaVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioNuevaFacturaVenta.Designer.cs">
+      <DependentUpon>FormularioNuevaFacturaVenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioRegistrarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioRegistrarCliente.Designer.cs">
+      <DependentUpon>FormularioRegistrarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioRegistrarMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioRegistrarMantenimiento.Designer.cs">
+      <DependentUpon>FormularioRegistrarMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioRegistrarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioRegistrarProducto.Designer.cs">
+      <DependentUpon>FormularioRegistrarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioregistrarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioregistrarUsuario.Designer.cs">
+      <DependentUpon>FormularioregistrarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InterfazPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InterfazPrincipal.Designer.cs">
+      <DependentUpon>InterfazPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InterfazPrincipalCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InterfazPrincipalCajero.Designer.cs">
+      <DependentUpon>InterfazPrincipalCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InterfazPrincipalGerente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InterfazPrincipalGerente.Designer.cs">
+      <DependentUpon>InterfazPrincipalGerente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InterfazPrincipalTecnico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InterfazPrincipalTecnico.Designer.cs">
+      <DependentUpon>InterfazPrincipalTecnico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormularioActualizarCliente.resx">
+      <DependentUpon>FormularioActualizarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioActualizarMantenimiento.resx">
+      <DependentUpon>FormularioActualizarMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioActualizarProducto.resx">
+      <DependentUpon>FormularioActualizarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioActualizarUsuario.resx">
+      <DependentUpon>FormularioActualizarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioAnularFactura.resx">
+      <DependentUpon>FormularioAnularFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultaMantenimientoTecnico.resx">
+      <DependentUpon>FormularioConsultaMantenimientoTecnico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarCliente.resx">
+      <DependentUpon>FormularioConsultarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarClienteCajero.resx">
+      <DependentUpon>FormularioConsultarClienteCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarClienteTecnico.resx">
+      <DependentUpon>FormularioConsultarClienteTecnico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarFacturaCajero.resx">
+      <DependentUpon>FormularioConsultarFacturaCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarFacturaGerente.resx">
+      <DependentUpon>FormularioConsultarFacturaGerente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarMantenimiento.resx">
+      <DependentUpon>FormularioConsultarMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarMantenimientoCajero.resx">
+      <DependentUpon>FormularioConsultarMantenimientoCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarProducto.resx">
+      <DependentUpon>FormularioConsultarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarProductoCajero.resx">
+      <DependentUpon>FormularioConsultarProductoCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarUsuario.resx">
+      <DependentUpon>FormularioConsultarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioEliminarCliente.resx">
+      <DependentUpon>FormularioEliminarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioEliminarProducto.resx">
+      <DependentUpon>FormularioEliminarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioEliminarUsuario.resx">
+      <DependentUpon>FormularioEliminarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioLogin.resx">
+      <DependentUpon>FormularioLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioNuevaFacturaVenta.resx">
+      <DependentUpon>FormularioNuevaFacturaVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioRegistrarCliente.resx">
+      <DependentUpon>FormularioRegistrarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioRegistrarMantenimiento.resx">
+      <DependentUpon>FormularioRegistrarMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioRegistrarProducto.resx">
+      <DependentUpon>FormularioRegistrarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioregistrarUsuario.resx">
+      <DependentUpon>FormularioregistrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InterfazPrincipal.resx">
+      <DependentUpon>InterfazPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InterfazPrincipalCajero.resx">
+      <DependentUpon>InterfazPrincipalCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InterfazPrincipalGerente.resx">
+      <DependentUpon>InterfazPrincipalGerente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InterfazPrincipalTecnico.resx">
+      <DependentUpon>InterfazPrincipalTecnico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
