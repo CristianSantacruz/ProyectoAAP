@@ -2966,7 +2966,7 @@ Shadow=0
 <c:Symbols>
 <o:ReferenceSymbol Id="o6">
 <a:ModificationDate>1517032205</a:ModificationDate>
-<a:Rect>((-27874,-5088), (1951,-3616))</a:Rect>
+<a:Rect>((-27874,-5088), (1951,-3566))</a:Rect>
 <a:ListOfPoints>((1951,-4863),(-27874,-4863))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -3024,7 +3024,7 @@ CARD 0 Arial,8,N</a:FontList>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o16">
 <a:ModificationDate>1517032211</a:ModificationDate>
-<a:Rect>((5199,1575), (27987,11221))</a:Rect>
+<a:Rect>((5199,1575), (27987,11271))</a:Rect>
 <a:ListOfPoints>((5199,9975),(20225,9975),(20225,1575))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
@@ -3220,11 +3220,13 @@ DAT 1517032164</a:History>
 <a:Code>IDCLIENTE</a:Code>
 <a:CreationDate>1517032164</a:CreationDate>
 <a:Creator>Cristian</a:Creator>
-<a:ModificationDate>1517032164</a:ModificationDate>
+<a:ModificationDate>1517611839</a:ModificationDate>
 <a:Modifier>Cristian</a:Modifier>
 <a:History>ORG {4DC74FC1-848A-4733-9B19-C9733A9EE476}
-DAT 1517032164</a:History>
+DAT 1517032164
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o29">
@@ -3362,11 +3364,13 @@ DAT 1517032164</a:History>
 <a:Code>IDPRODUCTO</a:Code>
 <a:CreationDate>1517032164</a:CreationDate>
 <a:Creator>Cristian</a:Creator>
-<a:ModificationDate>1517032164</a:ModificationDate>
+<a:ModificationDate>1517611813</a:ModificationDate>
 <a:Modifier>Cristian</a:Modifier>
 <a:History>ORG {8E0042A4-25F0-4AA7-A9A5-B1BF59AD9318}
-DAT 1517032164</a:History>
+DAT 1517032164
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o38">
@@ -3545,11 +3549,13 @@ DAT 1517032164</a:History>
 <a:Code>IDMANTENIMIENTO</a:Code>
 <a:CreationDate>1517032164</a:CreationDate>
 <a:Creator>Cristian</a:Creator>
-<a:ModificationDate>1517032164</a:ModificationDate>
+<a:ModificationDate>1517611855</a:ModificationDate>
 <a:Modifier>Cristian</a:Modifier>
 <a:History>ORG {733E6377-1B6E-408A-9345-158350F304B8}
-DAT 1517032164</a:History>
+DAT 1517032164
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o50">
@@ -3687,11 +3693,13 @@ DAT 1517032164</a:History>
 <a:Code>IDUSUARIO</a:Code>
 <a:CreationDate>1517032164</a:CreationDate>
 <a:Creator>Cristian</a:Creator>
-<a:ModificationDate>1517032164</a:ModificationDate>
+<a:ModificationDate>1517611793</a:ModificationDate>
 <a:Modifier>Cristian</a:Modifier>
 <a:History>ORG {7AA79F3C-37B9-45F5-B4AC-4D848037E399}
-DAT 1517032164</a:History>
+DAT 1517032164
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o59">
@@ -3815,11 +3823,13 @@ DAT 1517032164</a:History>
 <a:Code>IDFACTURA</a:Code>
 <a:CreationDate>1517032164</a:CreationDate>
 <a:Creator>Cristian</a:Creator>
-<a:ModificationDate>1517032164</a:ModificationDate>
+<a:ModificationDate>1517611847</a:ModificationDate>
 <a:Modifier>Cristian</a:Modifier>
 <a:History>ORG {609F36A3-7BF9-41A5-99C7-09ED2A994DF5}
-DAT 1517032164</a:History>
+DAT 1517032164
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o67">
@@ -4059,11 +4069,13 @@ DAT 1517032164</a:History>
 <a:Code>IDDETALLEFACTURA</a:Code>
 <a:CreationDate>1517032164</a:CreationDate>
 <a:Creator>Cristian</a:Creator>
-<a:ModificationDate>1517032164</a:ModificationDate>
+<a:ModificationDate>1517611824</a:ModificationDate>
 <a:Modifier>Cristian</a:Modifier>
 <a:History>ORG {439AEE6D-76DD-496D-8DDF-365234D6011E}
-DAT 1517032164</a:History>
+DAT 1517032164
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o84">
@@ -4287,11 +4299,13 @@ DAT 1517032164</a:History>
 <a:Code>IDPARAMETRO</a:Code>
 <a:CreationDate>1517032164</a:CreationDate>
 <a:Creator>Cristian</a:Creator>
-<a:ModificationDate>1517032164</a:ModificationDate>
+<a:ModificationDate>1517611774</a:ModificationDate>
 <a:Modifier>Cristian</a:Modifier>
 <a:History>ORG {16661817-C067-4C65-9E5F-283F798560F7}
-DAT 1517032164</a:History>
+DAT 1517032164
+ATT IDNT</a:History>
 <a:DataType>int</a:DataType>
+<a:Identity>1</a:Identity>
 <a:Mandatory>1</a:Mandatory>
 </o:Column>
 <o:Column Id="o100">

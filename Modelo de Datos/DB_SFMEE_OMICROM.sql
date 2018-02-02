@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     27/1/2018 0:52:20                            */
+/* Created on:     2/2/2018 17:51:24                            */
 /*==============================================================*/
 
 
@@ -121,7 +121,7 @@ go
 /* Table: CLIENTE                                               */
 /*==============================================================*/
 create table CLIENTE (
-   IDCLIENTE            int                  not null,
+   IDCLIENTE            int                  identity,
    CICLIENTE            varchar(13)          not null,
    NOMBRECLIENTE        varchar(50)          not null,
    DIRECCIONCLIENTE     varchar(200)         not null,
@@ -135,7 +135,7 @@ go
 /* Table: DETALLE_FACTURA                                       */
 /*==============================================================*/
 create table DETALLE_FACTURA (
-   IDDETALLEFACTURA     int                  not null,
+   IDDETALLEFACTURA     int                  identity,
    IDMANTENIMIENTO      int                  not null,
    IDPRODUCTO           int                  not null,
    CODIGO               int                  not null,
@@ -168,7 +168,7 @@ go
 /* Table: FACTURA                                               */
 /*==============================================================*/
 create table FACTURA (
-   IDFACTURA            int                  not null,
+   IDFACTURA            int                  identity,
    IDDETALLEFACTURA     int                  not null,
    IDCLIENTE            int                  not null,
    FECHAFACTURA         varchar(10)          not null,
@@ -202,7 +202,7 @@ go
 /* Table: MANTENIMIENTO                                         */
 /*==============================================================*/
 create table MANTENIMIENTO (
-   IDMANTENIMIENTO      int                  not null,
+   IDMANTENIMIENTO      int                  identity,
    FECHAMANTENIMIENTO   varchar(10)          not null,
    HORAMANTENIMIENTO    varchar(8)           not null,
    ESTADOMANTENIMIENTO  varchar(15)          not null,
@@ -216,7 +216,7 @@ go
 /* Table: PARAMETRO                                             */
 /*==============================================================*/
 create table PARAMETRO (
-   IDPARAMETRO          int                  not null,
+   IDPARAMETRO          int                  identity,
    NOMBREPARAMETRO      varchar(15)          not null,
    VALOR                int                  not null,
    constraint PK_PARAMETRO primary key nonclustered (IDPARAMETRO)
@@ -227,7 +227,7 @@ go
 /* Table: PRODUCTO                                              */
 /*==============================================================*/
 create table PRODUCTO (
-   IDPRODUCTO           int                  not null,
+   IDPRODUCTO           int                  identity,
    NOMBREPRODUCTO       varchar(25)          not null,
    DESCRIPCIONPRODUCTO  varchar(50)          not null,
    CATEGORIAPRODUCTO    varchar(25)          not null,
@@ -244,7 +244,7 @@ go
 /* Table: USUARIO                                               */
 /*==============================================================*/
 create table USUARIO (
-   IDUSUARIO            int                  not null,
+   IDUSUARIO            int                  identity,
    NOMBREUSUARIO        varchar(50)          not null,
    LOGINUSUARIO         varchar(20)          not null,
    PASSWORDUSUARIO      varchar(10)          not null,
