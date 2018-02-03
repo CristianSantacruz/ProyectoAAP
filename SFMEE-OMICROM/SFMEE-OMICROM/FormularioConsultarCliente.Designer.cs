@@ -133,6 +133,7 @@
             this.txtCI.Name = "txtCI";
             this.txtCI.Size = new System.Drawing.Size(295, 20);
             this.txtCI.TabIndex = 11;
+            this.txtCI.TextChanged += new System.EventHandler(this.txtCI_TextChanged);
             // 
             // btnBuscar
             // 
@@ -144,6 +145,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 10;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnRegresar
             // 
@@ -257,9 +259,15 @@
             // 
             // tablaCliente
             // 
+            this.tablaCliente.AllowUserToAddRows = false;
+            this.tablaCliente.AllowUserToDeleteRows = false;
+            this.tablaCliente.AllowUserToOrderColumns = true;
             this.tablaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaCliente.Location = new System.Drawing.Point(0, 362);
+            this.tablaCliente.MultiSelect = false;
             this.tablaCliente.Name = "tablaCliente";
+            this.tablaCliente.ReadOnly = true;
+            this.tablaCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaCliente.Size = new System.Drawing.Size(584, 299);
             this.tablaCliente.TabIndex = 5;
             // 
@@ -278,6 +286,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioConsultarCliente";
             this.Text = "SFMEE-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioConsultarCliente_Load);
             this.panelConsultarCliente.ResumeLayout(false);
             this.panelConsultarCliente.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

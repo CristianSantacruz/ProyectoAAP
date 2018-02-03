@@ -74,3 +74,7 @@ C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFME
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE-OMICROM.csproj.CoreCompileInputs.cache
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE-OMICROM.exe
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE-OMICROM.pdb
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\bin\Debug\Negocio.dll
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\bin\Debug\Datos.dll
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\bin\Debug\Negocio.pdb
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\bin\Debug\Datos.pdb

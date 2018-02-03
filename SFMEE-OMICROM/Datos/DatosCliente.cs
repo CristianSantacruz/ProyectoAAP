@@ -155,7 +155,7 @@ namespace Datos
                 SqlCon.Open();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "buscarClientesCedula";
+                SqlCmd.CommandText = "buscarClienteCedula";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 //Crear parámetro @CICLIENTE

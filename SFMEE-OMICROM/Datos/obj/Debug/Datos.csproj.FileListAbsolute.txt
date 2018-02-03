@@ -1,0 +1,6 @@
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\Datos\bin\Debug\Datos.dll
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\Datos\bin\Debug\Datos.pdb
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\Datos\obj\Debug\Datos.csprojResolveAssemblyReference.cache
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\Datos\obj\Debug\Datos.dll
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\Datos\obj\Debug\Datos.pdb

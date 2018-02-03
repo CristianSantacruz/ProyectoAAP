@@ -1,5 +1,5 @@
 -- STORE PROCEDURE PARA INSERTAR DATOS TABLA CLIENTE
-create proc insertatDatosCliente (
+create proc insertarDatosCliente (
 	@CICLIENTE            varchar(13),
 	@NOMBRECLIENTE        varchar(50),
 	@DIRECCIONCLIENTE     varchar(200),
@@ -9,7 +9,7 @@ create proc insertatDatosCliente (
 as insert into CLIENTE (CICLIENTE,NOMBRECLIENTE,DIRECCIONCLIENTE,TELEFONOFIJOCLIENTE,TELEFONOMOVILCLIENTE)
 	values (@CICLIENTE,@NOMBRECLIENTE,@DIRECCIONCLIENTE,@TELEFONOFIJOCLIENTE,@TELEFONOMOVILCLIENTE)
 
-exec insertatDatosCliente '1723659403','Cristian David Santacruz Guarquila','Quito Sur','022621753','0939202674'
+exec insertarDatosCliente '1723659403','Cristian David Santacruz Guarquila','Quito Sur','022621753','0939202674'
 select *from CLIENTE
 
 --STORE PROCEDURA PARA BUSCAR CLIENTE POR CÉDULA
@@ -48,3 +48,10 @@ as delete CLIENTE
 
 exec eliminarCliente '1723659403'
 select *from CLIENTE
+
+--STORE PROCEDURE PARA MOSTRAR TABLA CLIENTE
+alter proc mostrarClientes
+as select top 50 *from CLIENTE
+	order by NOMBRECLIENTE asc
+
+exec mostrarClientes

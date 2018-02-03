@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace SFMEE_OMICROM
 {
@@ -18,6 +19,17 @@ namespace SFMEE_OMICROM
             this.CenterToScreen();
             timer1.Enabled = true;
             bloquearCampos();
+            
+        }
+
+        private void MensajeOK (string mensaje)
+        {
+            MessageBox.Show(mensaje,"Registrar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Registrar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void FormularioRegistrarCliente_Load(object sender, EventArgs e)
@@ -98,7 +110,16 @@ namespace SFMEE_OMICROM
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            desbloquearCampos();
+            DataTable tablaCliente = NegocioCliente.consultarClienteTabla(this.txtCI.Text);
+            if (tablaCliente.Rows.Count == 0)
+            {
+                desbloquearCampos();
+            }
+            else
+            {
+                MessageBox.Show("Cliente ya registrado", "Registrar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,6 +132,30 @@ namespace SFMEE_OMICROM
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if(this.txtNombreCliente.Text==string.Empty || this.txtDireccionCliente.Text==string.Empty || this.txtTelefonoCliente.Text == string.Empty || this.txtCelular.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos");
+                }
+                else
+                {
+                    respuesta = NegocioCliente.insertarCliente(this.txtCI.Text.Trim(), this.txtNombreCliente.Text.ToUpper(), this.txtDireccionCliente.Text.ToUpper(), this.txtTelefonoCliente.Text.Trim(), this.txtCelular.Text.Trim());
+                    this.MensajeOK("Registro ingresado exitosamente");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+
+            this.limpiarCampos();
+            this.bloquearCampos();
         }
     }
 }
