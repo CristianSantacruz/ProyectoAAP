@@ -83,6 +83,7 @@ namespace SFMEE_OMICROM
         private void mostrarClientes()
         {
             this.tablaCliente.DataSource = NegocioCliente.mostrarClientes();
+            this.tablaCliente.Columns[0].Visible = false;
         }
 
         private void consultarClienteTabla()
@@ -112,12 +113,51 @@ namespace SFMEE_OMICROM
 
         private void txtCI_TextChanged(object sender, EventArgs e)
         {
+            if (this.txtCI.Text == string.Empty)
+            {
+                this.btnBuscar.Visible = false;
+            }
+            else
+            {
+                this.btnBuscar.Visible = true;
+            }
             this.consultarClienteTabla();
         }
 
         private void FormularioConsultarCliente_Load(object sender, EventArgs e)
         {
+            this.btnBuscar.Visible = false;
             this.mostrarClientes();
+        }
+
+        public void soloNumeros(KeyPressEventArgs evento)
+        {
+            try
+            {
+                if (char.IsNumber(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else if (char.IsControl(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else
+                {
+                    evento.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void txtCI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.soloNumeros(e);
         }
     }
 }

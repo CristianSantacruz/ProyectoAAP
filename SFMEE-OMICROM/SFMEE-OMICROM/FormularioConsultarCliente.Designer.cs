@@ -130,10 +130,12 @@
             // txtCI
             // 
             this.txtCI.Location = new System.Drawing.Point(203, 77);
+            this.txtCI.MaxLength = 13;
             this.txtCI.Name = "txtCI";
             this.txtCI.Size = new System.Drawing.Size(295, 20);
             this.txtCI.TabIndex = 11;
             this.txtCI.TextChanged += new System.EventHandler(this.txtCI_TextChanged);
+            this.txtCI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCI_KeyPress);
             // 
             // btnBuscar
             // 

@@ -81,9 +81,11 @@
             // txtCelular
             // 
             this.txtCelular.Location = new System.Drawing.Point(203, 254);
+            this.txtCelular.MaxLength = 10;
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(295, 20);
             this.txtCelular.TabIndex = 14;
+            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
             // 
             // lblHora
             // 
@@ -112,16 +114,20 @@
             // txtTelefonoCliente
             // 
             this.txtTelefonoCliente.Location = new System.Drawing.Point(203, 208);
+            this.txtTelefonoCliente.MaxLength = 9;
             this.txtTelefonoCliente.Name = "txtTelefonoCliente";
             this.txtTelefonoCliente.Size = new System.Drawing.Size(295, 20);
             this.txtTelefonoCliente.TabIndex = 13;
+            this.txtTelefonoCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoCliente_KeyPress);
             // 
             // txtDireccionCliente
             // 
             this.txtDireccionCliente.Location = new System.Drawing.Point(203, 160);
+            this.txtDireccionCliente.MaxLength = 200;
             this.txtDireccionCliente.Name = "txtDireccionCliente";
             this.txtDireccionCliente.Size = new System.Drawing.Size(295, 20);
             this.txtDireccionCliente.TabIndex = 12;
+            this.txtDireccionCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDireccionCliente_KeyPress);
             // 
             // txtNombreCliente
             // 
@@ -133,9 +139,12 @@
             // txtCI
             // 
             this.txtCI.Location = new System.Drawing.Point(203, 68);
+            this.txtCI.MaxLength = 13;
             this.txtCI.Name = "txtCI";
             this.txtCI.Size = new System.Drawing.Size(295, 20);
             this.txtCI.TabIndex = 10;
+            this.txtCI.TextChanged += new System.EventHandler(this.txtCI_TextChanged);
+            this.txtCI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCI_KeyPress);
             // 
             // btnRegresar
             // 
@@ -170,6 +179,7 @@
             this.btnGuardar.Size = new System.Drawing.Size(40, 40);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // menuStrip1
             // 
@@ -214,6 +224,7 @@
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -267,9 +278,15 @@
             // 
             // tablaCliente
             // 
+            this.tablaCliente.AllowUserToAddRows = false;
+            this.tablaCliente.AllowUserToDeleteRows = false;
+            this.tablaCliente.AllowUserToOrderColumns = true;
             this.tablaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaCliente.Location = new System.Drawing.Point(0, 362);
+            this.tablaCliente.MultiSelect = false;
             this.tablaCliente.Name = "tablaCliente";
+            this.tablaCliente.ReadOnly = true;
+            this.tablaCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaCliente.Size = new System.Drawing.Size(584, 299);
             this.tablaCliente.TabIndex = 6;
             // 

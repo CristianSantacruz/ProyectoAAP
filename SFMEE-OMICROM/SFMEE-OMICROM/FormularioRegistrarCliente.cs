@@ -34,7 +34,7 @@ namespace SFMEE_OMICROM
 
         private void FormularioRegistrarCliente_Load(object sender, EventArgs e)
         {
-
+            this.btnBuscar.Visible = false;
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
@@ -88,6 +88,7 @@ namespace SFMEE_OMICROM
             txtTelefonoCliente.ReadOnly = true;
             txtCelular.ReadOnly = true;
             btnGuardar.Visible = false;
+            guardarToolStripMenuItem.Visible = false;
         }
 
         public void limpiarCampos()
@@ -106,20 +107,27 @@ namespace SFMEE_OMICROM
             txtTelefonoCliente.ReadOnly = false;
             txtCelular.ReadOnly = false;
             btnGuardar.Visible = true;
+            guardarToolStripMenuItem.Visible = true;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            DataTable tablaCliente = NegocioCliente.consultarClienteTabla(this.txtCI.Text);
-            if (tablaCliente.Rows.Count == 0)
+            if(NegocioCliente.VerificarNumeroCedula(this.txtCI.Text).Equals(true) || NegocioCliente.verificarNumeroRucNatural(this.txtCI.Text).Equals(true) || NegocioCliente.VerificarNumeroRucPublico(this.txtCI.Text).Equals(true) || NegocioCliente.VerificarNumeroRucJuridico(this.txtCI.Text).Equals(true))
             {
-                desbloquearCampos();
+                DataTable tablaCliente = NegocioCliente.consultarClienteTabla(this.txtCI.Text);
+                if (tablaCliente.Rows.Count == 0)
+                {
+                    desbloquearCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Cliente ya registrado", "Registrar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
-                MessageBox.Show("Cliente ya registrado", "Registrar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Número de cédula o RUC inconsistente", "Verificar Cedula/RUC", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
         }
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -139,23 +147,178 @@ namespace SFMEE_OMICROM
             try
             {
                 string respuesta = "";
-                if(this.txtNombreCliente.Text==string.Empty || this.txtDireccionCliente.Text==string.Empty || this.txtTelefonoCliente.Text == string.Empty || this.txtCelular.Text == string.Empty)
+                if(this.txtCI.Text==string.Empty || this.txtNombreCliente.Text==string.Empty || this.txtDireccionCliente.Text==string.Empty || this.txtTelefonoCliente.Text == string.Empty || this.txtCelular.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algunos datos");
                 }
                 else
                 {
-                    respuesta = NegocioCliente.insertarCliente(this.txtCI.Text.Trim(), this.txtNombreCliente.Text.ToUpper(), this.txtDireccionCliente.Text.ToUpper(), this.txtTelefonoCliente.Text.Trim(), this.txtCelular.Text.Trim());
-                    this.MensajeOK("Registro ingresado exitosamente");
+                    if(NegocioCliente.verificarNumeroFijo(this.txtTelefonoCliente.Text).Equals(true))
+                    {
+                        if (NegocioCliente.verificarNumeroCelular(this.txtCelular.Text).Equals(true))
+                        {
+                            respuesta = NegocioCliente.insertarCliente(this.txtCI.Text.Trim(), this.txtNombreCliente.Text.ToUpper(), this.txtDireccionCliente.Text.ToUpper(), this.txtTelefonoCliente.Text.Trim(), this.txtCelular.Text.Trim());
+                            this.MensajeOK("Registro ingresado exitosamente");
+                            this.limpiarCampos();
+                            this.bloquearCampos();
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Número de Teléfono Móvil inconsistente","Registro de Cliente", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            this.txtCelular.Clear();
+                        }
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Número de Teléfono Fijo inconsistente", "Registro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.txtTelefonoCliente.Clear();
+                    }
+                    
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (this.txtCI.Text == string.Empty || this.txtNombreCliente.Text == string.Empty || this.txtDireccionCliente.Text == string.Empty || this.txtTelefonoCliente.Text == string.Empty || this.txtCelular.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos");
+                }
+                else
+                {
+                    if (NegocioCliente.verificarNumeroFijo(this.txtTelefonoCliente.Text).Equals(true))
+                    {
+                        if (NegocioCliente.verificarNumeroCelular(this.txtCelular.Text).Equals(true))
+                        {
+                            respuesta = NegocioCliente.insertarCliente(this.txtCI.Text.Trim(), this.txtNombreCliente.Text.ToUpper(), this.txtDireccionCliente.Text.ToUpper(), this.txtTelefonoCliente.Text.Trim(), this.txtCelular.Text.Trim());
+                            this.MensajeOK("Registro ingresado exitosamente");
+                            this.limpiarCampos();
+                            this.bloquearCampos();
+                        }
+
+                        else
+                        {
+                            MessageBox.Show("Número de Teléfono Móvil inconsistente", "Registro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.txtCelular.Clear();
+                        }
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Número de Teléfono Fijo inconsistente", "Registro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.txtTelefonoCliente.Clear();
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
 
             this.limpiarCampos();
             this.bloquearCampos();
+        }
+
+        private void txtCI_TextChanged(object sender, EventArgs e)
+        {
+            if (this.txtCI.Text == string.Empty)
+            {
+                this.btnBuscar.Visible = false;
+            }
+            else
+            {
+                this.btnBuscar.Visible = true;
+            }
+        }
+
+        public void soloLetras(KeyPressEventArgs evento)
+        {
+            try
+            {
+                if(char.IsLetter(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else if (char.IsControl(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else if (char.IsSeparator(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else 
+                {
+                    evento.Handled = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void soloNumeros(KeyPressEventArgs evento)
+        {
+            try
+            {
+                if (char.IsNumber(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else if (char.IsControl(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else
+                {
+                    evento.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void txtCI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.soloNumeros(e);
+        }
+
+        private void txtNombreCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.soloLetras(e);
+        }
+
+        private void txtTelefonoCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.soloNumeros(e);
+        }
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.soloNumeros(e);
+        }
+
+        private void txtDireccionCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.soloLetras(e);
         }
     }
 }

@@ -51,13 +51,7 @@ namespace Datos
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "insertarDatosCliente";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                ////Crear parámetro @IDCLIENTE
-                //SqlParameter parametroIdCliente = new SqlParameter();
-                //parametroIdCliente.ParameterName = "@IDCLIENTE";
-                //parametroIdCliente.SqlDbType = SqlDbType.Int;
-                //parametroIdCliente.Direction = ParameterDirection.Output;
-                //SqlCmd.Parameters.Add(parametroIdCliente);
+                
 
                 //Crear parámetro @CICLIENTE
                 SqlParameter parametroCiCliente = new SqlParameter();
@@ -291,7 +285,7 @@ namespace Datos
                 SqlCon.Open();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "eliminarDatosCliente";
+                SqlCmd.CommandText = "eliminarCliente";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 //Crear parámetro @CICLIENTE

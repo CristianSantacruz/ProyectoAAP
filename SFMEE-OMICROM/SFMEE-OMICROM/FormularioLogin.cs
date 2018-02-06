@@ -60,6 +60,13 @@ namespace SFMEE_OMICROM
             Application.Exit();
         }
 
+        public void btnSalir_MouseHover(Object sender, EventArgs e)
+        {
+
+            btnSalir.BackgroundImageLayout = ImageLayout.Stretch;
+
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");

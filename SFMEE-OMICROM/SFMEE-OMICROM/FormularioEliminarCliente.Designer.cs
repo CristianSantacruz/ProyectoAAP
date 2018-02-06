@@ -45,7 +45,6 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,11 +52,11 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tablaCliente = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelEliminarCliente.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEliminarCliente
@@ -146,13 +145,17 @@
             this.btnEliminar.Size = new System.Drawing.Size(40, 40);
             this.btnEliminar.TabIndex = 19;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txtCI
             // 
             this.txtCI.Location = new System.Drawing.Point(203, 77);
+            this.txtCI.MaxLength = 13;
             this.txtCI.Name = "txtCI";
             this.txtCI.Size = new System.Drawing.Size(295, 20);
             this.txtCI.TabIndex = 18;
+            this.txtCI.TextChanged += new System.EventHandler(this.txtCI_TextChanged);
+            this.txtCI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCI_KeyPress);
             // 
             // lblTelefono
             // 
@@ -201,7 +204,6 @@
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nuevoToolStripMenuItem,
             this.consultarToolStripMenuItem,
-            this.guardarToolStripMenuItem,
             this.salirToolStripMenuItem,
             this.salirToolStripMenuItem1});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
@@ -221,13 +223,6 @@
             this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
-            // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.guardarToolStripMenuItem.Text = "Guardar";
-            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -279,13 +274,19 @@
             this.acercaDeSGFMOMICROMToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.acercaDeSGFMOMICROMToolStripMenuItem.Text = "Acerca de SGFM-OMICROM";
             // 
-            // dataGridView1
+            // tablaCliente
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 362);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(584, 299);
-            this.dataGridView1.TabIndex = 7;
+            this.tablaCliente.AllowUserToAddRows = false;
+            this.tablaCliente.AllowUserToDeleteRows = false;
+            this.tablaCliente.AllowUserToOrderColumns = true;
+            this.tablaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaCliente.Location = new System.Drawing.Point(0, 362);
+            this.tablaCliente.MultiSelect = false;
+            this.tablaCliente.Name = "tablaCliente";
+            this.tablaCliente.ReadOnly = true;
+            this.tablaCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaCliente.Size = new System.Drawing.Size(584, 299);
+            this.tablaCliente.TabIndex = 7;
             // 
             // timer1
             // 
@@ -296,17 +297,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 661);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tablaCliente);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelEliminarCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioEliminarCliente";
             this.Text = "SFMEE-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioEliminarCliente_Load);
             this.panelEliminarCliente.ResumeLayout(false);
             this.panelEliminarCliente.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,7 +328,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
@@ -335,7 +336,7 @@
         private System.Windows.Forms.ToolStripMenuItem soporteTécnicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeSGFMOMICROMToolStripMenuItem;
         private System.Windows.Forms.Label lblCelular;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tablaCliente;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
     }

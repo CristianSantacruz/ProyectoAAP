@@ -153,7 +153,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(500, 280);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblHora);
             this.Controls.Add(this.checkTecnico);
@@ -161,6 +160,7 @@
             this.Controls.Add(this.checkGerente);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.btnSalir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioLogin";
             this.Text = "FormularioLogin";
