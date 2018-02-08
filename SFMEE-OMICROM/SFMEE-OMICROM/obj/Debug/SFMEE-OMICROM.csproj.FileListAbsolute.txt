@@ -78,3 +78,7 @@ C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\bin\Debug\Nego
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\bin\Debug\Datos.dll
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\bin\Debug\Negocio.pdb
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\bin\Debug\Datos.pdb
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioActualizarParametro.resources
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioConsultarParametro.resources
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioEliminarParametro.resources
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioRegistrarParametro.resources

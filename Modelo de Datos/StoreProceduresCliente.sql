@@ -17,9 +17,9 @@ create proc buscarClienteCedula
 	@CICLIENTE            varchar(13)
 
 as select CICLIENTE, NOMBRECLIENTE, DIRECCIONCLIENTE, TELEFONOFIJOCLIENTE, TELEFONOMOVILCLIENTE from CLIENTE
-	where CICLIENTE=@CICLIENTE
+	where CICLIENTE like @CICLIENTE + '%'
 
-exec buscarClienteCedula '1723659403'
+exec buscarClienteCedula '17'
 
 --STORE PROCEDURE PARA ACTUALIZAR DATOS DEL CLIENTE
 create proc actualizarDatosCliente (

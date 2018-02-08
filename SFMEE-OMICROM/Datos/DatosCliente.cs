@@ -24,12 +24,12 @@ namespace Datos
 
         public DatosCliente (int idCliente, string ciCliente, string nombreCliente, string direccionCliente, string telefonoFijoCliente, string telefonoMovilCliente)
         {
-            this.IdCliente = idCliente;
-            this.CiCliente = ciCliente;
-            this.NombreCliente = nombreCliente;
-            this.DireccionCliente = direccionCliente;
-            this.TelefonoFijoCliente = telefonoFijoCliente;
-            this.TelefonoMovilCliente = telefonoMovilCliente;
+            this._idCliente = idCliente;
+            this._ciCliente = ciCliente;
+            this._nombreCliente = nombreCliente;
+            this._direccionCliente = direccionCliente;
+            this._telefonoFijoCliente = telefonoFijoCliente;
+            this._telefonoMovilCliente = telefonoMovilCliente;
         }
 
         public int IdCliente { get => _idCliente; set => _idCliente = value; }
@@ -58,7 +58,7 @@ namespace Datos
                 parametroCiCliente.ParameterName = "@CICLIENTE";
                 parametroCiCliente.SqlDbType = SqlDbType.VarChar;
                 parametroCiCliente.Size = 13;
-                parametroCiCliente.Value = Cliente.CiCliente;
+                parametroCiCliente.Value = Cliente._ciCliente;
                 SqlCmd.Parameters.Add(parametroCiCliente);
 
                 //Crear parámetro @NOMBRECLIENTE
@@ -66,7 +66,7 @@ namespace Datos
                 parametroNombreCliente.ParameterName = "@NOMBRECLIENTE";
                 parametroNombreCliente.SqlDbType = SqlDbType.VarChar;
                 parametroNombreCliente.Size = 50;
-                parametroNombreCliente.Value = Cliente.NombreCliente;
+                parametroNombreCliente.Value = Cliente._nombreCliente;
                 SqlCmd.Parameters.Add(parametroNombreCliente);
 
                 //Crear parámetro @DIRECCIONCLIENTE
@@ -74,7 +74,7 @@ namespace Datos
                 parametroDireccionCliente.ParameterName = "@DIRECCIONCLIENTE";
                 parametroDireccionCliente.SqlDbType = SqlDbType.VarChar;
                 parametroDireccionCliente.Size = 200;
-                parametroDireccionCliente.Value = Cliente.DireccionCliente;
+                parametroDireccionCliente.Value = Cliente._direccionCliente;
                 SqlCmd.Parameters.Add(parametroDireccionCliente);
 
                 //Crear parámetro @TELEFONIFIJOCLIENTE
@@ -82,7 +82,7 @@ namespace Datos
                 parametroTelefonoFijoCliente.ParameterName = "@TELEFONOFIJOCLIENTE";
                 parametroTelefonoFijoCliente.SqlDbType = SqlDbType.VarChar;
                 parametroTelefonoFijoCliente.Size = 9;
-                parametroTelefonoFijoCliente.Value = Cliente.TelefonoFijoCliente;
+                parametroTelefonoFijoCliente.Value = Cliente._telefonoFijoCliente;
                 SqlCmd.Parameters.Add(parametroTelefonoFijoCliente);
 
                 //Crear parámetro @TELEFONOMOVILCLIENTE
@@ -90,7 +90,7 @@ namespace Datos
                 parametroTelefonoMovilCliente.ParameterName = "@TELEFONOMOVILCLIENTE";
                 parametroTelefonoMovilCliente.SqlDbType = SqlDbType.VarChar;
                 parametroTelefonoMovilCliente.Size = 10;
-                parametroTelefonoMovilCliente.Value = Cliente.TelefonoMovilCliente;
+                parametroTelefonoMovilCliente.Value = Cliente._telefonoMovilCliente;
                 SqlCmd.Parameters.Add(parametroTelefonoMovilCliente);
 
                 respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "Registro ingresado exitosamente" : "No se ingresó el registro";
@@ -157,7 +157,7 @@ namespace Datos
                 parametroCiCliente.ParameterName = "@CICLIENTE";
                 parametroCiCliente.SqlDbType = SqlDbType.VarChar;
                 parametroCiCliente.Size = 13;
-                parametroCiCliente.Value = Cliente.CiCliente;
+                parametroCiCliente.Value = Cliente._ciCliente;
                 SqlCmd.Parameters.Add(parametroCiCliente);
 
                 SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
@@ -195,7 +195,7 @@ namespace Datos
                 parametroCiCliente.ParameterName = "@CICLIENTE";
                 parametroCiCliente.SqlDbType = SqlDbType.VarChar;
                 parametroCiCliente.Size = 13;
-                parametroCiCliente.Value = Cliente.CiCliente;
+                parametroCiCliente.Value = Cliente._ciCliente;
                 SqlCmd.Parameters.Add(parametroCiCliente);
 
                 respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "" : "No se encontró el registro";
@@ -232,7 +232,7 @@ namespace Datos
                 parametroCiCliente.ParameterName = "@CICLIENTE";
                 parametroCiCliente.SqlDbType = SqlDbType.VarChar;
                 parametroCiCliente.Size = 13;
-                parametroCiCliente.Value = Cliente.CiCliente;
+                parametroCiCliente.Value = Cliente._ciCliente;
                 SqlCmd.Parameters.Add(parametroCiCliente);
 
                 //Crear parámetro @DIRECCIONCLIENTE
@@ -240,7 +240,7 @@ namespace Datos
                 parametroDireccionCliente.ParameterName = "@DIRECCIONCLIENTE";
                 parametroDireccionCliente.SqlDbType = SqlDbType.VarChar;
                 parametroDireccionCliente.Size = 200;
-                parametroDireccionCliente.Value = Cliente.DireccionCliente;
+                parametroDireccionCliente.Value = Cliente._direccionCliente;
                 SqlCmd.Parameters.Add(parametroDireccionCliente);
 
                 //Crear parámetro @TELEFONIFIJOCLIENTE
@@ -248,7 +248,7 @@ namespace Datos
                 parametroTelefonoFijoCliente.ParameterName = "@TELEFONOFIJOCLIENTE";
                 parametroTelefonoFijoCliente.SqlDbType = SqlDbType.VarChar;
                 parametroTelefonoFijoCliente.Size = 9;
-                parametroTelefonoFijoCliente.Value = Cliente.TelefonoFijoCliente;
+                parametroTelefonoFijoCliente.Value = Cliente._telefonoFijoCliente;
                 SqlCmd.Parameters.Add(parametroTelefonoFijoCliente);
 
                 //Crear parámetro @TELEFONOMOVILCLIENTE
@@ -256,7 +256,7 @@ namespace Datos
                 parametroTelefonoMovilCliente.ParameterName = "@TELEFONOMOVILCLIENTE";
                 parametroTelefonoMovilCliente.SqlDbType = SqlDbType.VarChar;
                 parametroTelefonoMovilCliente.Size = 10;
-                parametroTelefonoMovilCliente.Value = Cliente.TelefonoMovilCliente;
+                parametroTelefonoMovilCliente.Value = Cliente._telefonoMovilCliente;
                 SqlCmd.Parameters.Add(parametroTelefonoMovilCliente);
 
                 respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "Registro actualizado exitosamente" : "No se actualizó el registro";
@@ -293,7 +293,7 @@ namespace Datos
                 parametroCiCliente.ParameterName = "@CICLIENTE";
                 parametroCiCliente.SqlDbType = SqlDbType.VarChar;
                 parametroCiCliente.Size = 13;
-                parametroCiCliente.Value = Cliente.CiCliente;
+                parametroCiCliente.Value = Cliente._ciCliente;
                 SqlCmd.Parameters.Add(parametroCiCliente);
 
                 respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "Registro eliminado exitosamente" : "No se eliminó el registro";

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     2/2/2018 17:51:24                            */
+/* Created on:     7/2/2018 19:46:28                            */
 /*==============================================================*/
 
 
@@ -228,6 +228,7 @@ go
 /*==============================================================*/
 create table PRODUCTO (
    IDPRODUCTO           int                  identity,
+   CODIGOPRODUCTO       varchar(5)           not null,
    NOMBREPRODUCTO       varchar(25)          not null,
    DESCRIPCIONPRODUCTO  varchar(50)          not null,
    CATEGORIAPRODUCTO    varchar(25)          not null,

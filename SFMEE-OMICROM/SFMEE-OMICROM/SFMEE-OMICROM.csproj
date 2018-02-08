@@ -57,6 +57,12 @@
     <Compile Include="FormularioActualizarMantenimiento.Designer.cs">
       <DependentUpon>FormularioActualizarMantenimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormularioActualizarParametro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioActualizarParametro.Designer.cs">
+      <DependentUpon>FormularioActualizarParametro.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormularioActualizarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,12 @@
     <Compile Include="FormularioConsultarMantenimientoCajero.Designer.cs">
       <DependentUpon>FormularioConsultarMantenimientoCajero.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormularioConsultarParametro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioConsultarParametro.Designer.cs">
+      <DependentUpon>FormularioConsultarParametro.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormularioConsultarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +158,12 @@
     </Compile>
     <Compile Include="FormularioEliminarCliente.Designer.cs">
       <DependentUpon>FormularioEliminarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioEliminarParametro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioEliminarParametro.Designer.cs">
+      <DependentUpon>FormularioEliminarParametro.cs</DependentUpon>
     </Compile>
     <Compile Include="FormularioEliminarProducto.cs">
       <SubType>Form</SubType>
@@ -182,6 +200,12 @@
     </Compile>
     <Compile Include="FormularioRegistrarMantenimiento.Designer.cs">
       <DependentUpon>FormularioRegistrarMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioRegistrarParametro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioRegistrarParametro.Designer.cs">
+      <DependentUpon>FormularioRegistrarParametro.cs</DependentUpon>
     </Compile>
     <Compile Include="FormularioRegistrarProducto.cs">
       <SubType>Form</SubType>
@@ -227,6 +251,9 @@
     <EmbeddedResource Include="FormularioActualizarMantenimiento.resx">
       <DependentUpon>FormularioActualizarMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormularioActualizarParametro.resx">
+      <DependentUpon>FormularioActualizarParametro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormularioActualizarProducto.resx">
       <DependentUpon>FormularioActualizarProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +287,9 @@
     <EmbeddedResource Include="FormularioConsultarMantenimientoCajero.resx">
       <DependentUpon>FormularioConsultarMantenimientoCajero.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormularioConsultarParametro.resx">
+      <DependentUpon>FormularioConsultarParametro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormularioConsultarProducto.resx">
       <DependentUpon>FormularioConsultarProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioEliminarCliente.resx">
       <DependentUpon>FormularioEliminarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioEliminarParametro.resx">
+      <DependentUpon>FormularioEliminarParametro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioEliminarProducto.resx">
       <DependentUpon>FormularioEliminarProducto.cs</DependentUpon>
@@ -289,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioRegistrarMantenimiento.resx">
       <DependentUpon>FormularioRegistrarMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioRegistrarParametro.resx">
+      <DependentUpon>FormularioRegistrarParametro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioRegistrarProducto.resx">
       <DependentUpon>FormularioRegistrarProducto.cs</DependentUpon>

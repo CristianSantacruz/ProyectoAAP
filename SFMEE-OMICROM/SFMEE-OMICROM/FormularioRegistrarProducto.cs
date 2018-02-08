@@ -111,5 +111,10 @@ namespace SFMEE_OMICROM
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

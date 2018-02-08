@@ -271,24 +271,28 @@
             this.nuevoParámetroToolStripMenuItem.Name = "nuevoParámetroToolStripMenuItem";
             this.nuevoParámetroToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.nuevoParámetroToolStripMenuItem.Text = "Nuevo Parámetro";
+            this.nuevoParámetroToolStripMenuItem.Click += new System.EventHandler(this.nuevoParámetroToolStripMenuItem_Click);
             // 
             // consultarParámetroToolStripMenuItem
             // 
             this.consultarParámetroToolStripMenuItem.Name = "consultarParámetroToolStripMenuItem";
             this.consultarParámetroToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.consultarParámetroToolStripMenuItem.Text = "ConsultarParámetro";
+            this.consultarParámetroToolStripMenuItem.Click += new System.EventHandler(this.consultarParámetroToolStripMenuItem_Click);
             // 
             // actualizarParámetroToolStripMenuItem
             // 
             this.actualizarParámetroToolStripMenuItem.Name = "actualizarParámetroToolStripMenuItem";
             this.actualizarParámetroToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.actualizarParámetroToolStripMenuItem.Text = "Actualizar Parámetro";
+            this.actualizarParámetroToolStripMenuItem.Click += new System.EventHandler(this.actualizarParámetroToolStripMenuItem_Click);
             // 
             // eliminarParámetroToolStripMenuItem
             // 
             this.eliminarParámetroToolStripMenuItem.Name = "eliminarParámetroToolStripMenuItem";
             this.eliminarParámetroToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.eliminarParámetroToolStripMenuItem.Text = "Eliminar Parámetro";
+            this.eliminarParámetroToolStripMenuItem.Click += new System.EventHandler(this.eliminarParámetroToolStripMenuItem_Click);
             // 
             // aYUDAToolStripMenuItem
             // 

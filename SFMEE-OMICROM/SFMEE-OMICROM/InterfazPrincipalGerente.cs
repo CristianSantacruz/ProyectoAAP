@@ -151,5 +151,33 @@ namespace SFMEE_OMICROM
             eliminar.Show();
             this.Hide();
         }
+
+        private void nuevoParámetroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioRegistrarParametro nuevo = new FormularioRegistrarParametro();
+            nuevo.Show();
+            this.Hide();
+        }
+
+        private void consultarParámetroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioConsultarParametro consulta = new FormularioConsultarParametro();
+            consulta.Show();
+            this.Hide();
+        }
+
+        private void actualizarParámetroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioActualizarParametro actualizar = new FormularioActualizarParametro();
+            actualizar.Show();
+            this.Hide();
+        }
+
+        private void eliminarParámetroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioEliminarParametro eliminar = new FormularioEliminarParametro();
+            eliminar.Show();
+            this.Hide();
+        }
     }
 }
