@@ -166,6 +166,7 @@ namespace SFMEE_OMICROM
                         else
                         {
                             MessageBox.Show("Número de Teléfono Móvil inconsistente","Registro de Cliente", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            MessageBox.Show("Vuelva a ingresar el número de Teléfono Móvil", "Registro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             this.txtCelular.Clear();
                         }
                     }
@@ -173,6 +174,7 @@ namespace SFMEE_OMICROM
                     else
                     {
                         MessageBox.Show("Número de Teléfono Fijo inconsistente", "Registro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Vuelva a ingresar el número de Teléfono Fijo", "Registro de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         this.txtTelefonoCliente.Clear();
                     }
                     
@@ -296,6 +298,31 @@ namespace SFMEE_OMICROM
             }
         }
 
+        public void signosPuntuacion(KeyPressEventArgs evento)
+        {
+            try
+            {
+                if (char.IsPunctuation(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else if (char.IsControl(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else
+                {
+                    evento.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void txtCI_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.soloNumeros(e);
@@ -318,7 +345,6 @@ namespace SFMEE_OMICROM
 
         private void txtDireccionCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.soloLetras(e);
         }
     }
 }

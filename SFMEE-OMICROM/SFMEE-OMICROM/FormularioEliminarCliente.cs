@@ -124,7 +124,7 @@ namespace SFMEE_OMICROM
             {
                 string respuesta = "";
                 DialogResult opcion;
-                opcion = MessageBox.Show("¿Seguro que desea elimninar al cliente?", "Eliminar Cliente", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                opcion = MessageBox.Show("¿Seguro que desea eliminar al cliente?", "Eliminar Cliente", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if(opcion == DialogResult.OK)
                 {
                     respuesta = NegocioCliente.eliminarCliente(this.txtCI.Text);
