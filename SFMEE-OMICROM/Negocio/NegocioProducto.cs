@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Negocio
 {
-    class NegocioProducto
+    public class NegocioProducto
     {
         public static string insertarProducto(string codigoProducto, string nombreProducto, string descripcionProducto, string categoriaProducto, int cantidadProducto,
                                                 float precioCompraProducto, float precioVentaProducto, string fechaRegistroPrecioCompra, string fechaRegistroPrecioVenta)
@@ -48,7 +48,7 @@ namespace Negocio
             return producto.buscarProducto(producto);
         }
 
-        public static string actualizarCliente(string codigoProducto, int cantidadProducto, float precioCompraProducto, float precioVentaProducto,
+        public static string actualizarProducto(string codigoProducto, int cantidadProducto, float precioCompraProducto, float precioVentaProducto,
                                                 string fechaRegistroPrecioCompra, string fechaRegistroPrecioVenta)
         {
             DatosProducto producto = new DatosProducto();
@@ -67,7 +67,7 @@ namespace Negocio
             DatosProducto producto = new DatosProducto();
             producto.CodigoProducto = codigoProducto;
 
-            return producto.actualizarProducto(producto);
+            return producto.eliminarProducto(producto);
         }
 
     }

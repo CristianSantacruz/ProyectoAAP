@@ -56,11 +56,11 @@
             this.lblNombreProducto = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tablaProducto = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelConsultarProducto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaProducto)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -218,6 +218,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 23;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnRegresar
             // 
@@ -307,17 +308,26 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(172, 86);
+            this.txtCodigo.MaxLength = 5;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(289, 20);
             this.txtCodigo.TabIndex = 12;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
-            // dataGridView1
+            // tablaProducto
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 462);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(584, 198);
-            this.dataGridView1.TabIndex = 9;
+            this.tablaProducto.AllowUserToAddRows = false;
+            this.tablaProducto.AllowUserToDeleteRows = false;
+            this.tablaProducto.AllowUserToOrderColumns = true;
+            this.tablaProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaProducto.Location = new System.Drawing.Point(0, 462);
+            this.tablaProducto.MultiSelect = false;
+            this.tablaProducto.Name = "tablaProducto";
+            this.tablaProducto.ReadOnly = true;
+            this.tablaProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaProducto.Size = new System.Drawing.Size(584, 198);
+            this.tablaProducto.TabIndex = 9;
             // 
             // timer1
             // 
@@ -328,17 +338,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 661);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tablaProducto);
             this.Controls.Add(this.panelConsultarProducto);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioConsultarProducto";
             this.Text = "SGFM-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioConsultarProducto_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelConsultarProducto.ResumeLayout(false);
             this.panelConsultarProducto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,7 +383,7 @@
         private System.Windows.Forms.Label lblFechaRegistroPrecioVenta;
         private System.Windows.Forms.Label lblFechaRegistroPrecioCompra;
         private System.Windows.Forms.Label lblPrecioVenta;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tablaProducto;
         private System.Windows.Forms.Timer timer1;
     }
 }

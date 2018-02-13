@@ -57,11 +57,11 @@
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tablaProducto = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelActualizarProducto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaProducto)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -107,6 +107,7 @@
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -199,9 +200,11 @@
             // txtPrecioVenta
             // 
             this.txtPrecioVenta.Location = new System.Drawing.Point(175, 343);
+            this.txtPrecioVenta.MaxLength = 10;
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(69, 20);
             this.txtPrecioVenta.TabIndex = 24;
+            this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // lblHora
             // 
@@ -230,6 +233,7 @@
             // txtNombreProducto
             // 
             this.txtNombreProducto.Location = new System.Drawing.Point(175, 117);
+            this.txtNombreProducto.MaxLength = 50;
             this.txtNombreProducto.Name = "txtNombreProducto";
             this.txtNombreProducto.Size = new System.Drawing.Size(293, 20);
             this.txtNombreProducto.TabIndex = 21;
@@ -237,6 +241,7 @@
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(174, 162);
+            this.txtDescripcion.MaxLength = 50;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(294, 20);
             this.txtDescripcion.TabIndex = 20;
@@ -244,20 +249,25 @@
             // txtPrecioCompra
             // 
             this.txtPrecioCompra.Location = new System.Drawing.Point(175, 301);
+            this.txtPrecioCompra.MaxLength = 10;
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(69, 20);
             this.txtPrecioCompra.TabIndex = 19;
+            this.txtPrecioCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioCompra_KeyPress);
             // 
             // txtCantidad
             // 
             this.txtCantidad.Location = new System.Drawing.Point(175, 255);
+            this.txtCantidad.MaxLength = 5;
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(293, 20);
             this.txtCantidad.TabIndex = 18;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // txtCategoria
             // 
             this.txtCategoria.Location = new System.Drawing.Point(175, 211);
+            this.txtCategoria.MaxLength = 50;
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(293, 20);
             this.txtCategoria.TabIndex = 17;
@@ -265,9 +275,12 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(175, 74);
+            this.txtCodigo.MaxLength = 5;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(293, 20);
             this.txtCodigo.TabIndex = 16;
+            this.txtCodigo.TextChanged += new System.EventHandler(this.txtCodigo_TextChanged);
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
             // btnRegresar
             // 
@@ -290,6 +303,7 @@
             this.btnGuardar.Size = new System.Drawing.Size(40, 40);
             this.btnGuardar.TabIndex = 10;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -303,13 +317,19 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // dataGridView1
+            // tablaProducto
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 457);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(584, 204);
-            this.dataGridView1.TabIndex = 10;
+            this.tablaProducto.AllowUserToAddRows = false;
+            this.tablaProducto.AllowUserToDeleteRows = false;
+            this.tablaProducto.AllowUserToOrderColumns = true;
+            this.tablaProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaProducto.Location = new System.Drawing.Point(0, 457);
+            this.tablaProducto.MultiSelect = false;
+            this.tablaProducto.Name = "tablaProducto";
+            this.tablaProducto.ReadOnly = true;
+            this.tablaProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaProducto.Size = new System.Drawing.Size(584, 204);
+            this.tablaProducto.TabIndex = 10;
             // 
             // timer1
             // 
@@ -320,17 +340,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 661);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.tablaProducto);
             this.Controls.Add(this.panelActualizarProducto);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioActualizarProducto";
             this.Text = "SFMEE-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioActualizarProducto_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelActualizarProducto.ResumeLayout(false);
             this.panelActualizarProducto.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaProducto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,7 +386,7 @@
         private System.Windows.Forms.DateTimePicker pickerFechaRegistroVenta;
         private System.Windows.Forms.DateTimePicker pickerFechaRegistroCompra;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tablaProducto;
         private System.Windows.Forms.Timer timer1;
     }
 }

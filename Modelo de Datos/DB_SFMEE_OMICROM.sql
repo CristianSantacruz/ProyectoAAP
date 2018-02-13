@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     7/2/2018 19:46:28                            */
+/* Created on:     13/2/2018 1:03:54                            */
 /*==============================================================*/
 
 
@@ -30,6 +30,13 @@ if exists (select 1
    where r.fkeyid = object_id('FACTURA') and o.name = 'FK_FACTURA_DETALLE_F_DETALLE_')
 alter table FACTURA
    drop constraint FK_FACTURA_DETALLE_F_DETALLE_
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('MANTENIMIENTO') and o.name = 'FK_MANTENIM_CLIENTE_M_CLIENTE')
+alter table MANTENIMIENTO
+   drop constraint FK_MANTENIM_CLIENTE_M_CLIENTE
 go
 
 if exists (select 1
@@ -90,6 +97,15 @@ if exists (select 1
 go
 
 if exists (select 1
+            from  sysindexes
+           where  id    = object_id('MANTENIMIENTO')
+            and   name  = 'CLIENTE_MANTENIMIENTO_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index MANTENIMIENTO.CLIENTE_MANTENIMIENTO_FK
+go
+
+if exists (select 1
             from  sysobjects
            where  id = object_id('MANTENIMIENTO')
             and   type = 'U')
@@ -141,9 +157,9 @@ create table DETALLE_FACTURA (
    CODIGO               int                  not null,
    CANTIDAD             int                  not null,
    DETALLE              varchar(50)          not null,
-   VALORUNITARIO        float(7)             not null,
-   DESCUENTODETALLE     float(7)             not null,
-   VALORTOTAL           float(7)             not null,
+   VALORUNITARIO        float(10)            not null,
+   DESCUENTODETALLE     float(10)            not null,
+   VALORTOTAL           float(10)            not null,
    constraint PK_DETALLE_FACTURA primary key nonclustered (IDDETALLEFACTURA)
 )
 go
@@ -175,8 +191,8 @@ create table FACTURA (
    VENDEDOR             varchar(50)          not null,
    TIPOPAGO             varchar(10)          not null,
    SUBTOTAL             float(10)            not null,
-   DESCUENTO            float(7)             not null,
-   IVA                  float(7)             not null,
+   DESCUENTO            float(10)            not null,
+   IVA                  float(10)            not null,
    TOTAL                float(10)            not null,
    constraint PK_FACTURA primary key nonclustered (IDFACTURA)
 )
@@ -203,12 +219,22 @@ go
 /*==============================================================*/
 create table MANTENIMIENTO (
    IDMANTENIMIENTO      int                  identity,
+   IDCLIENTE            int                  not null,
+   CODIGOMANTENIMIENTO  varchar(5)           not null,
    FECHAMANTENIMIENTO   varchar(10)          not null,
    HORAMANTENIMIENTO    varchar(8)           not null,
    ESTADOMANTENIMIENTO  varchar(15)          not null,
    OBSERVACIONMANTENIMIENTO varchar(200)         not null,
    PRECIOMANTENIMIENTO  float(5)             not null,
    constraint PK_MANTENIMIENTO primary key nonclustered (IDMANTENIMIENTO)
+)
+go
+
+/*==============================================================*/
+/* Index: CLIENTE_MANTENIMIENTO_FK                              */
+/*==============================================================*/
+create index CLIENTE_MANTENIMIENTO_FK on MANTENIMIENTO (
+IDCLIENTE ASC
 )
 go
 
@@ -229,12 +255,12 @@ go
 create table PRODUCTO (
    IDPRODUCTO           int                  identity,
    CODIGOPRODUCTO       varchar(5)           not null,
-   NOMBREPRODUCTO       varchar(25)          not null,
+   NOMBREPRODUCTO       varchar(50)          not null,
    DESCRIPCIONPRODUCTO  varchar(50)          not null,
-   CATEGORIAPRODUCTO    varchar(25)          not null,
+   CATEGORIAPRODUCTO    varchar(50)          not null,
    CANTIDADPRODUCTO     int                  not null,
-   PRECIOCOMPRAPRODUCTO float(5)             not null,
-   PRECIOVENTAPRODUCTO  float(5)             not null,
+   PRECIOCOMPRAPRODUCTO float(10)            not null,
+   PRECIOVENTAPRODUCTO  float(10)            not null,
    FECHAREGISTROPRECIOCOMPRA varchar(10)          not null,
    FECHAREGISTROPRECIOVENTA varchar(10)          not null,
    constraint PK_PRODUCTO primary key nonclustered (IDPRODUCTO)
@@ -272,5 +298,10 @@ go
 alter table FACTURA
    add constraint FK_FACTURA_DETALLE_F_DETALLE_ foreign key (IDDETALLEFACTURA)
       references DETALLE_FACTURA (IDDETALLEFACTURA)
+go
+
+alter table MANTENIMIENTO
+   add constraint FK_MANTENIM_CLIENTE_M_CLIENTE foreign key (IDCLIENTE)
+      references CLIENTE (IDCLIENTE)
 go
 

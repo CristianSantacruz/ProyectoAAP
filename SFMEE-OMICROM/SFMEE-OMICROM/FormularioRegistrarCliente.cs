@@ -298,16 +298,11 @@ namespace SFMEE_OMICROM
             }
         }
 
-        public void signosPuntuacion(KeyPressEventArgs evento)
+        public void direccion(KeyPressEventArgs evento)
         {
             try
             {
-                if (char.IsPunctuation(evento.KeyChar))
-                {
-                    evento.Handled = false;
-                }
-
-                else if (char.IsControl(evento.KeyChar))
+                if (char.IsLetter(evento.KeyChar) || evento.KeyChar == '-' || evento.KeyChar == '.' || evento.KeyChar == ',' || char.IsControl(evento.KeyChar) || char.IsSeparator(evento.KeyChar) || char.IsNumber(evento.KeyChar))
                 {
                     evento.Handled = false;
                 }
@@ -345,6 +340,7 @@ namespace SFMEE_OMICROM
 
         private void txtDireccionCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
+            this.direccion(e);
         }
     }
 }

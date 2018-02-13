@@ -313,6 +313,26 @@ namespace SFMEE_OMICROM
             }
         }
 
+        public void direccion(KeyPressEventArgs evento)
+        {
+            try
+            {
+                if (char.IsLetter(evento.KeyChar) || evento.KeyChar == '-' || evento.KeyChar == '.' || evento.KeyChar == ',' || char.IsControl(evento.KeyChar) || char.IsSeparator(evento.KeyChar) || char.IsNumber(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else
+                {
+                    evento.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void txtCI_KeyPress(object sender, KeyPressEventArgs e)
         {
             soloNumeros(e);
@@ -330,7 +350,7 @@ namespace SFMEE_OMICROM
 
         private void txtDireccionCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.soloLetras(e);
+            this.direccion(e);
         }
     }
 }

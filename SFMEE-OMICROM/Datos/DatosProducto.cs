@@ -334,7 +334,7 @@ namespace Datos
             return respuesta;
         }
 
-        public string eliminarCliente(DatosProducto Producto)
+        public string eliminarProducto(DatosProducto Producto)
         {
             string respuesta = "";
             SqlConnection SqlCon = new SqlConnection();
