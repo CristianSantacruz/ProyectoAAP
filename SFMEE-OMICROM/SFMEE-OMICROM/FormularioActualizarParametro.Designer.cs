@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioActualizarParametro));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +51,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.tablaParametro = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelActualizarParametro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaParametro)).BeginInit();
@@ -98,6 +100,7 @@
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -186,21 +189,26 @@
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 8;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtValorParametro
             // 
             this.txtValorParametro.Location = new System.Drawing.Point(203, 168);
+            this.txtValorParametro.MaxLength = 2;
             this.txtValorParametro.Name = "txtValorParametro";
             this.txtValorParametro.Size = new System.Drawing.Size(195, 20);
             this.txtValorParametro.TabIndex = 11;
+            this.txtValorParametro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorParametro_KeyPress);
             // 
             // txtNombreParametro
             // 
             this.txtNombreParametro.Location = new System.Drawing.Point(203, 97);
-            this.txtNombreParametro.MaxLength = 13;
+            this.txtNombreParametro.MaxLength = 15;
             this.txtNombreParametro.Name = "txtNombreParametro";
             this.txtNombreParametro.Size = new System.Drawing.Size(295, 20);
             this.txtNombreParametro.TabIndex = 10;
+            this.txtNombreParametro.TextChanged += new System.EventHandler(this.txtNombreParametro_TextChanged);
+            this.txtNombreParametro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreParametro_KeyPress);
             // 
             // btnRegresar
             // 
@@ -223,6 +231,7 @@
             this.btnCancelar.Size = new System.Drawing.Size(40, 40);
             this.btnCancelar.TabIndex = 8;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -234,6 +243,7 @@
             this.btnGuardar.Size = new System.Drawing.Size(40, 40);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // tablaParametro
             // 
@@ -249,6 +259,10 @@
             this.tablaParametro.Size = new System.Drawing.Size(583, 299);
             this.tablaParametro.TabIndex = 8;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormularioActualizarParametro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,6 +274,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioActualizarParametro";
             this.Text = "FormularioActualizarParametro";
+            this.Load += new System.EventHandler(this.FormularioActualizarParametro_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelActualizarParametro.ResumeLayout(false);
@@ -293,5 +308,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.DataGridView tablaParametro;
+        private System.Windows.Forms.Timer timer1;
     }
 }

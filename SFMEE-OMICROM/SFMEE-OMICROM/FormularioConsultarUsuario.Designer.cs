@@ -42,7 +42,7 @@
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelActualizarUsuario = new System.Windows.Forms.Panel();
-            this.tablaConsultarUsuarios = new System.Windows.Forms.DataGridView();
+            this.tablaUsuario = new System.Windows.Forms.DataGridView();
             this.lblHora = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelActualizarUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaConsultarUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -143,7 +143,7 @@
             // panelActualizarUsuario
             // 
             this.panelActualizarUsuario.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelActualizarUsuario.BackgroundImage")));
-            this.panelActualizarUsuario.Controls.Add(this.tablaConsultarUsuarios);
+            this.panelActualizarUsuario.Controls.Add(this.tablaUsuario);
             this.panelActualizarUsuario.Controls.Add(this.lblHora);
             this.panelActualizarUsuario.Controls.Add(this.btnBuscar);
             this.panelActualizarUsuario.Controls.Add(this.btnRegresar);
@@ -153,13 +153,19 @@
             this.panelActualizarUsuario.Size = new System.Drawing.Size(585, 335);
             this.panelActualizarUsuario.TabIndex = 7;
             // 
-            // tablaConsultarUsuarios
+            // tablaUsuario
             // 
-            this.tablaConsultarUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaConsultarUsuarios.Location = new System.Drawing.Point(3, 109);
-            this.tablaConsultarUsuarios.Name = "tablaConsultarUsuarios";
-            this.tablaConsultarUsuarios.Size = new System.Drawing.Size(579, 175);
-            this.tablaConsultarUsuarios.TabIndex = 9;
+            this.tablaUsuario.AllowUserToAddRows = false;
+            this.tablaUsuario.AllowUserToDeleteRows = false;
+            this.tablaUsuario.AllowUserToOrderColumns = true;
+            this.tablaUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaUsuario.Location = new System.Drawing.Point(3, 109);
+            this.tablaUsuario.MultiSelect = false;
+            this.tablaUsuario.Name = "tablaUsuario";
+            this.tablaUsuario.ReadOnly = true;
+            this.tablaUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaUsuario.Size = new System.Drawing.Size(579, 175);
+            this.tablaUsuario.TabIndex = 9;
             // 
             // lblHora
             // 
@@ -183,6 +189,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnRegresar
             // 
@@ -205,6 +212,7 @@
             this.btnCancelar.Size = new System.Drawing.Size(40, 40);
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // timer1
             // 
@@ -224,7 +232,7 @@
             this.menuStrip1.PerformLayout();
             this.panelActualizarUsuario.ResumeLayout(false);
             this.panelActualizarUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaConsultarUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,7 +256,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DataGridView tablaConsultarUsuarios;
+        private System.Windows.Forms.DataGridView tablaUsuario;
         private System.Windows.Forms.Timer timer1;
     }
 }

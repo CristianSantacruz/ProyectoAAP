@@ -92,6 +92,7 @@
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -171,6 +172,11 @@
             // comboCargo
             // 
             this.comboCargo.FormattingEnabled = true;
+            this.comboCargo.Items.AddRange(new object[] {
+            "",
+            "GERENTE",
+            "CAJERO",
+            "TÉCNICO"});
             this.comboCargo.Location = new System.Drawing.Point(203, 239);
             this.comboCargo.Name = "comboCargo";
             this.comboCargo.Size = new System.Drawing.Size(150, 21);
@@ -233,10 +239,12 @@
             this.btnGuardar.Size = new System.Drawing.Size(40, 40);
             this.btnGuardar.TabIndex = 4;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(203, 185);
+            this.txtPassword.MaxLength = 10;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(295, 20);
             this.txtPassword.TabIndex = 2;
@@ -245,16 +253,20 @@
             // txtLogin
             // 
             this.txtLogin.Location = new System.Drawing.Point(203, 134);
+            this.txtLogin.MaxLength = 20;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(295, 20);
             this.txtLogin.TabIndex = 1;
+            this.txtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogin_KeyPress);
             // 
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Location = new System.Drawing.Point(203, 80);
+            this.txtNombreUsuario.MaxLength = 50;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(295, 20);
             this.txtNombreUsuario.TabIndex = 0;
+            this.txtNombreUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreUsuario_KeyPress);
             // 
             // timer1
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioRegistrarParametro));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +50,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtValorParametro = new System.Windows.Forms.TextBox();
             this.txtNombreParametro = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelRegistrarParametro.SuspendLayout();
             this.SuspendLayout();
@@ -79,8 +81,9 @@
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // consultarToolStripMenuItem
             // 
@@ -179,11 +182,12 @@
             this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(504, 52);
+            this.btnBuscar.Location = new System.Drawing.Point(513, 82);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 7;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnRegresar
             // 
@@ -206,6 +210,7 @@
             this.btnCancelar.Size = new System.Drawing.Size(40, 40);
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -217,22 +222,29 @@
             this.btnGuardar.Size = new System.Drawing.Size(40, 40);
             this.btnGuardar.TabIndex = 4;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtValorParametro
             // 
             this.txtValorParametro.Location = new System.Drawing.Point(203, 168);
-            this.txtValorParametro.MaxLength = 50;
+            this.txtValorParametro.MaxLength = 2;
             this.txtValorParametro.Name = "txtValorParametro";
             this.txtValorParametro.Size = new System.Drawing.Size(195, 20);
             this.txtValorParametro.TabIndex = 1;
+            this.txtValorParametro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorParametro_KeyPress);
             // 
             // txtNombreParametro
             // 
             this.txtNombreParametro.Location = new System.Drawing.Point(203, 98);
-            this.txtNombreParametro.MaxLength = 13;
+            this.txtNombreParametro.MaxLength = 15;
             this.txtNombreParametro.Name = "txtNombreParametro";
             this.txtNombreParametro.Size = new System.Drawing.Size(295, 20);
             this.txtNombreParametro.TabIndex = 0;
+            this.txtNombreParametro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreParametro_KeyPress);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormularioRegistrarParametro
             // 
@@ -275,5 +287,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtValorParametro;
         private System.Windows.Forms.TextBox txtNombreParametro;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -42,8 +42,10 @@
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelActualizarUsuario = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.tablaConsultarUsuarios = new System.Windows.Forms.DataGridView();
+            this.tablaUsuario = new System.Windows.Forms.DataGridView();
             this.lblHora = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
@@ -51,7 +53,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelActualizarUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaConsultarUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -144,8 +146,10 @@
             // panelActualizarUsuario
             // 
             this.panelActualizarUsuario.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelActualizarUsuario.BackgroundImage")));
+            this.panelActualizarUsuario.Controls.Add(this.label1);
+            this.panelActualizarUsuario.Controls.Add(this.txtNombreUsuario);
             this.panelActualizarUsuario.Controls.Add(this.btnEliminar);
-            this.panelActualizarUsuario.Controls.Add(this.tablaConsultarUsuarios);
+            this.panelActualizarUsuario.Controls.Add(this.tablaUsuario);
             this.panelActualizarUsuario.Controls.Add(this.lblHora);
             this.panelActualizarUsuario.Controls.Add(this.btnBuscar);
             this.panelActualizarUsuario.Controls.Add(this.btnRegresar);
@@ -154,6 +158,27 @@
             this.panelActualizarUsuario.Name = "panelActualizarUsuario";
             this.panelActualizarUsuario.Size = new System.Drawing.Size(585, 335);
             this.panelActualizarUsuario.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Window;
+            this.label1.Font = new System.Drawing.Font("Berlin Sans FB Demi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(60, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(157, 18);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "NOMBRE DE USUARIO";
+            // 
+            // txtNombreUsuario
+            // 
+            this.txtNombreUsuario.Location = new System.Drawing.Point(223, 70);
+            this.txtNombreUsuario.MaxLength = 50;
+            this.txtNombreUsuario.Name = "txtNombreUsuario";
+            this.txtNombreUsuario.Size = new System.Drawing.Size(190, 20);
+            this.txtNombreUsuario.TabIndex = 21;
+            this.txtNombreUsuario.TextChanged += new System.EventHandler(this.txtNombreUsuario_TextChanged);
+            this.txtNombreUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreUsuario_KeyPress);
             // 
             // btnEliminar
             // 
@@ -166,14 +191,21 @@
             this.btnEliminar.Size = new System.Drawing.Size(40, 40);
             this.btnEliminar.TabIndex = 20;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // tablaConsultarUsuarios
+            // tablaUsuario
             // 
-            this.tablaConsultarUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaConsultarUsuarios.Location = new System.Drawing.Point(3, 109);
-            this.tablaConsultarUsuarios.Name = "tablaConsultarUsuarios";
-            this.tablaConsultarUsuarios.Size = new System.Drawing.Size(579, 175);
-            this.tablaConsultarUsuarios.TabIndex = 9;
+            this.tablaUsuario.AllowUserToAddRows = false;
+            this.tablaUsuario.AllowUserToDeleteRows = false;
+            this.tablaUsuario.AllowUserToOrderColumns = true;
+            this.tablaUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaUsuario.Location = new System.Drawing.Point(3, 109);
+            this.tablaUsuario.MultiSelect = false;
+            this.tablaUsuario.Name = "tablaUsuario";
+            this.tablaUsuario.ReadOnly = true;
+            this.tablaUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaUsuario.Size = new System.Drawing.Size(579, 175);
+            this.tablaUsuario.TabIndex = 9;
             // 
             // lblHora
             // 
@@ -192,7 +224,7 @@
             this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(265, 53);
+            this.btnBuscar.Location = new System.Drawing.Point(446, 54);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 7;
@@ -236,11 +268,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioEliminarUsuario";
             this.Text = "FormularioEliminarUsuario";
+            this.Load += new System.EventHandler(this.FormularioEliminarUsuario_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelActualizarUsuario.ResumeLayout(false);
             this.panelActualizarUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tablaConsultarUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,7 +292,7 @@
         private System.Windows.Forms.ToolStripMenuItem soporteTécnicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeSGFMOMICROMToolStripMenuItem;
         private System.Windows.Forms.Panel panelActualizarUsuario;
-        private System.Windows.Forms.DataGridView tablaConsultarUsuarios;
+        private System.Windows.Forms.DataGridView tablaUsuario;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnRegresar;
@@ -267,5 +300,7 @@
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNombreUsuario;
     }
 }

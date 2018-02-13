@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioEliminarParametro));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +50,7 @@
             this.txtNomnbreParametro = new System.Windows.Forms.TextBox();
             this.lblValorParametro = new System.Windows.Forms.Label();
             this.tablaParametro = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelEliminarParametro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaParametro)).BeginInit();
@@ -173,11 +175,12 @@
             this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(504, 61);
+            this.btnBuscar.Location = new System.Drawing.Point(516, 82);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 22;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnRegresar
             // 
@@ -200,6 +203,7 @@
             this.btnCancelar.Size = new System.Drawing.Size(40, 40);
             this.btnCancelar.TabIndex = 20;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnEliminar
             // 
@@ -212,14 +216,17 @@
             this.btnEliminar.Size = new System.Drawing.Size(40, 40);
             this.btnEliminar.TabIndex = 19;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // txtNomnbreParametro
             // 
             this.txtNomnbreParametro.Location = new System.Drawing.Point(203, 98);
-            this.txtNomnbreParametro.MaxLength = 13;
+            this.txtNomnbreParametro.MaxLength = 15;
             this.txtNomnbreParametro.Name = "txtNomnbreParametro";
             this.txtNomnbreParametro.Size = new System.Drawing.Size(295, 20);
             this.txtNomnbreParametro.TabIndex = 18;
+            this.txtNomnbreParametro.TextChanged += new System.EventHandler(this.txtNomnbreParametro_TextChanged);
+            this.txtNomnbreParametro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomnbreParametro_KeyPress);
             // 
             // lblValorParametro
             // 
@@ -245,6 +252,10 @@
             this.tablaParametro.Size = new System.Drawing.Size(584, 299);
             this.tablaParametro.TabIndex = 9;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormularioEliminarParametro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,6 +267,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioEliminarParametro";
             this.Text = "FormularioEliminarParametro";
+            this.Load += new System.EventHandler(this.FormularioEliminarParametro_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelEliminarParametro.ResumeLayout(false);
@@ -288,5 +300,6 @@
         private System.Windows.Forms.TextBox txtNomnbreParametro;
         private System.Windows.Forms.DataGridView tablaParametro;
         private System.Windows.Forms.Label lblValorParametro;
+        private System.Windows.Forms.Timer timer1;
     }
 }

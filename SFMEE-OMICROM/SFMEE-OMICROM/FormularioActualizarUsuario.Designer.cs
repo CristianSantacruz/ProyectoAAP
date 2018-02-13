@@ -53,8 +53,10 @@
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.txtNombreUsuario = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tablaUsuario = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.panelActualizarUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -65,7 +67,7 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(585, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(584, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -174,7 +176,6 @@
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.Size = new System.Drawing.Size(295, 20);
             this.txtCargo.TabIndex = 9;
-            this.txtCargo.UseSystemPasswordChar = true;
             // 
             // lblHora
             // 
@@ -193,7 +194,7 @@
             this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(514, 118);
+            this.btnBuscar.Location = new System.Drawing.Point(514, 64);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 7;
@@ -233,6 +234,7 @@
             this.btnGuardar.Size = new System.Drawing.Size(40, 40);
             this.btnGuardar.TabIndex = 4;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtPassword
             // 
@@ -252,28 +254,48 @@
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Location = new System.Drawing.Point(203, 80);
+            this.txtNombreUsuario.MaxLength = 50;
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(295, 20);
             this.txtNombreUsuario.TabIndex = 0;
+            this.txtNombreUsuario.TextChanged += new System.EventHandler(this.txtNombreUsuario_TextChanged);
+            this.txtNombreUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreUsuario_KeyPress);
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tablaUsuario
+            // 
+            this.tablaUsuario.AllowUserToAddRows = false;
+            this.tablaUsuario.AllowUserToDeleteRows = false;
+            this.tablaUsuario.AllowUserToOrderColumns = true;
+            this.tablaUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaUsuario.Location = new System.Drawing.Point(0, 363);
+            this.tablaUsuario.MultiSelect = false;
+            this.tablaUsuario.Name = "tablaUsuario";
+            this.tablaUsuario.ReadOnly = true;
+            this.tablaUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaUsuario.Size = new System.Drawing.Size(584, 204);
+            this.tablaUsuario.TabIndex = 11;
+            // 
             // FormularioActualizarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 363);
+            this.ClientSize = new System.Drawing.Size(584, 567);
+            this.Controls.Add(this.tablaUsuario);
             this.Controls.Add(this.panelActualizarUsuario);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioActualizarUsuario";
             this.Text = "FormularioActualizarUsuario";
+            this.Load += new System.EventHandler(this.FormularioActualizarUsuario_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelActualizarUsuario.ResumeLayout(false);
             this.panelActualizarUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,5 +326,6 @@
         private System.Windows.Forms.TextBox txtNombreUsuario;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView tablaUsuario;
     }
 }

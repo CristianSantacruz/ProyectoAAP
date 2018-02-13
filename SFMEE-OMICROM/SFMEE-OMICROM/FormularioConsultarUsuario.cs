@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace SFMEE_OMICROM
 {
@@ -62,6 +63,24 @@ namespace SFMEE_OMICROM
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void mostrarUsuarios()
+        {
+            this.tablaUsuario.DataSource = NegocioUsuario.mostrarUsuario();
+            this.tablaUsuario.Columns[0].Visible = false;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.mostrarUsuarios();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            FormularioConsultarUsuario usuario = new FormularioConsultarUsuario();
+            usuario.Show();
+            this.Hide();
         }
     }
 }

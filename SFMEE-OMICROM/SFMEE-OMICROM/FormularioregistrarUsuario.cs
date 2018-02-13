@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace SFMEE_OMICROM
 {
@@ -18,6 +19,16 @@ namespace SFMEE_OMICROM
             this.CenterToScreen();
             timer1.Enabled = true;
             bloquearCampos();
+        }
+
+        private void MensajeOK(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Registrar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Registrar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
@@ -53,7 +64,7 @@ namespace SFMEE_OMICROM
 
         public void bloquearCampos()
         {
-            txtNombreUsuario.ReadOnly = true;
+            txtNombreUsuario.ReadOnly = false;
             txtLogin.ReadOnly=true;
             txtPassword.ReadOnly = true;
             comboCargo.Visible = false;
@@ -71,7 +82,15 @@ namespace SFMEE_OMICROM
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            desbloquearCampos();
+            DataTable tablaUsuario = NegocioUsuario.consultarUsuarioTabla(this.txtNombreUsuario.Text);
+            if (tablaUsuario.Rows.Count == 0)
+            {
+                desbloquearCampos();
+            }
+            else
+            {
+                MessageBox.Show("Usuario ya registrado", "Registrar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
@@ -105,5 +124,104 @@ namespace SFMEE_OMICROM
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (this.txtNombreUsuario.Text == string.Empty || this.txtLogin.Text == string.Empty || this.txtPassword.Text == string.Empty || this.comboCargo.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos");
+                }
+                else
+                {
+                    respuesta = NegocioUsuario.insertarUsuario(this.txtNombreUsuario.Text.ToUpper(), this.txtLogin.Text.ToLower().Trim(), this.txtPassword.Text.Trim(), this.comboCargo.Text);
+                    this.MensajeOK("Registro ingresado exitosamente");
+                    this.limpiarCampos();
+                    this.bloquearCampos();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (this.txtNombreUsuario.Text == string.Empty || this.txtLogin.Text == string.Empty || this.txtPassword.Text == string.Empty || this.comboCargo.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos");
+                }
+                else
+                {
+                    respuesta = NegocioUsuario.insertarUsuario(this.txtNombreUsuario.Text.ToUpper(), this.txtLogin.Text.ToLower().Trim(), this.txtPassword.Text.Trim(), this.comboCargo.Text);
+                    this.MensajeOK("Registro ingresado exitosamente");
+                    this.limpiarCampos();
+                    this.bloquearCampos();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void soloLetras(KeyPressEventArgs evento)
+        {
+            try
+            {
+                if (char.IsLetter(evento.KeyChar) || char.IsControl(evento.KeyChar) || char.IsSeparator(evento.KeyChar))
+                {
+                    evento.Handled = false;
+                }
+
+                else
+                {
+                    evento.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void login(KeyPressEventArgs evento)
+        {
+            try
+            {
+                if (char.IsLetter(evento.KeyChar) || char.IsNumber(evento.KeyChar) || evento.KeyChar == '.')
+                {
+                    evento.Handled = false;
+                }
+
+                else
+                {
+                    evento.Handled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void txtNombreUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.soloLetras(e);
+        }
+
+        private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.login(e);
+        }
+        
     }
 }

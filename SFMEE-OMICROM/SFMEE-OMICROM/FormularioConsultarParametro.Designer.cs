@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioConsultarParametro));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,11 +44,12 @@
             this.panelConsultarParametro = new System.Windows.Forms.Panel();
             this.lblHora = new System.Windows.Forms.Label();
             this.lblValorParametro = new System.Windows.Forms.Label();
-            this.txtNombrrParametro = new System.Windows.Forms.TextBox();
+            this.txtNombreParametro = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.tablaParametro = new System.Windows.Forms.DataGridView();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelConsultarParametro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaParametro)).BeginInit();
@@ -145,7 +147,7 @@
             this.panelConsultarParametro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelConsultarParametro.BackgroundImage")));
             this.panelConsultarParametro.Controls.Add(this.lblHora);
             this.panelConsultarParametro.Controls.Add(this.lblValorParametro);
-            this.panelConsultarParametro.Controls.Add(this.txtNombrrParametro);
+            this.panelConsultarParametro.Controls.Add(this.txtNombreParametro);
             this.panelConsultarParametro.Controls.Add(this.btnBuscar);
             this.panelConsultarParametro.Controls.Add(this.btnRegresar);
             this.panelConsultarParametro.Controls.Add(this.btnCancelar);
@@ -176,13 +178,15 @@
             this.lblValorParametro.TabIndex = 12;
             this.lblValorParametro.Text = "VALOR PARÁMETRO";
             // 
-            // txtNombrrParametro
+            // txtNombreParametro
             // 
-            this.txtNombrrParametro.Location = new System.Drawing.Point(203, 98);
-            this.txtNombrrParametro.MaxLength = 13;
-            this.txtNombrrParametro.Name = "txtNombrrParametro";
-            this.txtNombrrParametro.Size = new System.Drawing.Size(295, 20);
-            this.txtNombrrParametro.TabIndex = 11;
+            this.txtNombreParametro.Location = new System.Drawing.Point(203, 98);
+            this.txtNombreParametro.MaxLength = 15;
+            this.txtNombreParametro.Name = "txtNombreParametro";
+            this.txtNombreParametro.Size = new System.Drawing.Size(295, 20);
+            this.txtNombreParametro.TabIndex = 11;
+            this.txtNombreParametro.TextChanged += new System.EventHandler(this.txtNombreParametro_TextChanged);
+            this.txtNombreParametro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreParametro_KeyPress);
             // 
             // btnBuscar
             // 
@@ -194,6 +198,7 @@
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 10;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // btnRegresar
             // 
@@ -216,6 +221,7 @@
             this.btnCancelar.Size = new System.Drawing.Size(40, 40);
             this.btnCancelar.TabIndex = 8;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // tablaParametro
             // 
@@ -231,6 +237,10 @@
             this.tablaParametro.Size = new System.Drawing.Size(584, 299);
             this.tablaParametro.TabIndex = 7;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormularioConsultarParametro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,6 +252,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioConsultarParametro";
             this.Text = "FormularioConsultarParametro";
+            this.Load += new System.EventHandler(this.FormularioConsultarParametro_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelConsultarParametro.ResumeLayout(false);
@@ -268,10 +279,11 @@
         private System.Windows.Forms.Panel panelConsultarParametro;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Label lblValorParametro;
-        private System.Windows.Forms.TextBox txtNombrrParametro;
+        private System.Windows.Forms.TextBox txtNombreParametro;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView tablaParametro;
+        private System.Windows.Forms.Timer timer1;
     }
 }

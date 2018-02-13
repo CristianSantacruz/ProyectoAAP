@@ -26,19 +26,18 @@ GO
 
 
 --STORE PROCEDURE PARA ACTUALIZAR DATOS DEL USUARIO
-create proc actualizarDatosUsuario (
+alter proc actualizarDatosUsuario (
 	@NOMBREUSUARIO				varchar(50),
-	@PASSWORDUSUARIO			varchar(10),
-	@CARGOUSUARIO				varchar(15)
+	@PASSWORDUSUARIO			varchar(10)
 )
 as
 	begin
 	update USUARIO set
-	PASSWORDUSUARIO=@PASSWORDUSUARIO, CARGOUSUARIO=@CARGOUSUARIO
+	PASSWORDUSUARIO=@PASSWORDUSUARIO
 	where NOMBREUSUARIO=@NOMBREUSUARIO
 	end
 
-exec actualizarDatosUsuario'CRISTIAN SANTACRUZ','12345','Administrador'
+exec actualizarDatosUsuario'CRISTIAN SANTACRUZ','12345'
 select *from USUARIO
 GO
 
