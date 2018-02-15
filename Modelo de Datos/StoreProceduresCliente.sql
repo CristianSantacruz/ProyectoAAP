@@ -13,10 +13,10 @@ exec insertarDatosCliente '1723659403','Cristian David Santacruz Guarquila','Qui
 select *from CLIENTE
 
 --STORE PROCEDURA PARA BUSCAR CLIENTE POR CÉDULA
-create proc buscarClienteCedula
+alter proc buscarClienteCedula
 	@CICLIENTE            varchar(13)
 
-as select CICLIENTE, NOMBRECLIENTE, DIRECCIONCLIENTE, TELEFONOFIJOCLIENTE, TELEFONOMOVILCLIENTE from CLIENTE
+as select IDCLIENTE, CICLIENTE, NOMBRECLIENTE, DIRECCIONCLIENTE, TELEFONOFIJOCLIENTE, TELEFONOMOVILCLIENTE from CLIENTE
 	where CICLIENTE like @CICLIENTE + '%'
 
 exec buscarClienteCedula '17'

@@ -82,3 +82,5 @@ C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFME
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioConsultarParametro.resources
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioEliminarParametro.resources
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioRegistrarParametro.resources
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioInsertarMantenimientoFactura.resources
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioInsertarProductoFactura.resources

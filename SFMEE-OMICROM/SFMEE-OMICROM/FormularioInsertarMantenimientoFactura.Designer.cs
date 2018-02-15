@@ -1,6 +1,6 @@
 ﻿namespace SFMEE_OMICROM
 {
-    partial class FormularioConsultarMantenimientoCajero
+    partial class FormularioInsertarMantenimientoFactura
     {
         /// <summary>
         /// Required designer variable.
@@ -29,15 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioConsultarMantenimientoCajero));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioInsertarMantenimientoFactura));
             this.panelConsultarMantenimiento = new System.Windows.Forms.Panel();
+            this.btnInsertar = new System.Windows.Forms.Button();
             this.grupoMantenimiento = new System.Windows.Forms.GroupBox();
             this.lblFechaMantenimientoMostrar = new System.Windows.Forms.Label();
             this.lblEstadoMantenimientoMostrar = new System.Windows.Forms.Label();
@@ -69,71 +63,16 @@
             this.txtCodigoMantenimiento = new System.Windows.Forms.TextBox();
             this.tablaMantenimiento = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.menuStrip1.SuspendLayout();
             this.panelConsultarMantenimiento.SuspendLayout();
             this.grupoMantenimiento.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaMantenimiento)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem,
-            this.ayudaToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
-            this.menuStrip1.TabIndex = 7;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // archivoToolStripMenuItem
-            // 
-            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.salirToolStripMenuItem,
-            this.salirToolStripMenuItem1});
-            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.archivoToolStripMenuItem.Text = "Archivo";
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
-            this.salirToolStripMenuItem.Text = "Cerrar";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
-            // 
-            // salirToolStripMenuItem1
-            // 
-            this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(106, 22);
-            this.salirToolStripMenuItem1.Text = "Salir";
-            this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.soporteTécnicoToolStripMenuItem,
-            this.acercaDeSGFMOMICROMToolStripMenuItem});
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // soporteTécnicoToolStripMenuItem
-            // 
-            this.soporteTécnicoToolStripMenuItem.Name = "soporteTécnicoToolStripMenuItem";
-            this.soporteTécnicoToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.soporteTécnicoToolStripMenuItem.Text = "Soporte Técnico";
-            // 
-            // acercaDeSGFMOMICROMToolStripMenuItem
-            // 
-            this.acercaDeSGFMOMICROMToolStripMenuItem.Name = "acercaDeSGFMOMICROMToolStripMenuItem";
-            this.acercaDeSGFMOMICROMToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
-            this.acercaDeSGFMOMICROMToolStripMenuItem.Text = "Acerca de SGFM-OMICROM";
-            // 
             // panelConsultarMantenimiento
             // 
             this.panelConsultarMantenimiento.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelConsultarMantenimiento.BackgroundImage")));
+            this.panelConsultarMantenimiento.Controls.Add(this.btnInsertar);
             this.panelConsultarMantenimiento.Controls.Add(this.grupoMantenimiento);
             this.panelConsultarMantenimiento.Controls.Add(this.groupBox1);
             this.panelConsultarMantenimiento.Controls.Add(this.lblHora);
@@ -141,10 +80,22 @@
             this.panelConsultarMantenimiento.Controls.Add(this.btnCancelar);
             this.panelConsultarMantenimiento.Controls.Add(this.btnBuscar);
             this.panelConsultarMantenimiento.Controls.Add(this.txtCodigoMantenimiento);
-            this.panelConsultarMantenimiento.Location = new System.Drawing.Point(0, 27);
+            this.panelConsultarMantenimiento.Location = new System.Drawing.Point(0, 1);
             this.panelConsultarMantenimiento.Name = "panelConsultarMantenimiento";
             this.panelConsultarMantenimiento.Size = new System.Drawing.Size(785, 535);
             this.panelConsultarMantenimiento.TabIndex = 8;
+            // 
+            // btnInsertar
+            // 
+            this.btnInsertar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInsertar.BackgroundImage")));
+            this.btnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInsertar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnInsertar.Location = new System.Drawing.Point(193, 490);
+            this.btnInsertar.Name = "btnInsertar";
+            this.btnInsertar.Size = new System.Drawing.Size(40, 40);
+            this.btnInsertar.TabIndex = 33;
+            this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // grupoMantenimiento
             // 
@@ -162,10 +113,10 @@
             this.grupoMantenimiento.Controls.Add(this.lblFecha);
             this.grupoMantenimiento.Font = new System.Drawing.Font("Berlin Sans FB Demi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grupoMantenimiento.ForeColor = System.Drawing.SystemColors.Window;
-            this.grupoMantenimiento.Location = new System.Drawing.Point(12, 296);
+            this.grupoMantenimiento.Location = new System.Drawing.Point(12, 295);
             this.grupoMantenimiento.Name = "grupoMantenimiento";
             this.grupoMantenimiento.Size = new System.Drawing.Size(760, 177);
-            this.grupoMantenimiento.TabIndex = 33;
+            this.grupoMantenimiento.TabIndex = 32;
             this.grupoMantenimiento.TabStop = false;
             this.grupoMantenimiento.Text = "MANTENIMIENTO";
             // 
@@ -310,7 +261,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 117);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(760, 162);
-            this.groupBox1.TabIndex = 32;
+            this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CLIENTE";
             // 
@@ -474,7 +425,7 @@
             // 
             this.btnRegresar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRegresar.BackgroundImage")));
             this.btnRegresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegresar.Location = new System.Drawing.Point(467, 491);
+            this.btnRegresar.Location = new System.Drawing.Point(524, 490);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(40, 40);
             this.btnRegresar.TabIndex = 25;
@@ -486,7 +437,7 @@
             this.btnCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.BackgroundImage")));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCancelar.Location = new System.Drawing.Point(251, 490);
+            this.btnCancelar.Location = new System.Drawing.Point(355, 490);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(40, 40);
             this.btnCancelar.TabIndex = 24;
@@ -521,32 +472,29 @@
             this.tablaMantenimiento.AllowUserToDeleteRows = false;
             this.tablaMantenimiento.AllowUserToOrderColumns = true;
             this.tablaMantenimiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tablaMantenimiento.Location = new System.Drawing.Point(0, 562);
+            this.tablaMantenimiento.Location = new System.Drawing.Point(0, 537);
             this.tablaMantenimiento.MultiSelect = false;
             this.tablaMantenimiento.Name = "tablaMantenimiento";
             this.tablaMantenimiento.ReadOnly = true;
             this.tablaMantenimiento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tablaMantenimiento.Size = new System.Drawing.Size(784, 99);
+            this.tablaMantenimiento.Size = new System.Drawing.Size(784, 123);
             this.tablaMantenimiento.TabIndex = 9;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // FormularioConsultarMantenimientoCajero
+            // FormularioInsertarMantenimientoFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 661);
             this.Controls.Add(this.tablaMantenimiento);
             this.Controls.Add(this.panelConsultarMantenimiento);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormularioConsultarMantenimientoCajero";
-            this.Text = "SFMEE-OMICROM";
-            this.Load += new System.EventHandler(this.FormularioConsultarMantenimientoCajero_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.Name = "FormularioInsertarMantenimientoFactura";
+            this.Text = "FormularioInsertarMantenimientoFactura";
+            this.Load += new System.EventHandler(this.FormularioInsertarMantenimientoFactura_Load);
             this.panelConsultarMantenimiento.ResumeLayout(false);
             this.panelConsultarMantenimiento.PerformLayout();
             this.grupoMantenimiento.ResumeLayout(false);
@@ -555,26 +503,23 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaMantenimiento)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem soporteTécnicoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem acercaDeSGFMOMICROMToolStripMenuItem;
         private System.Windows.Forms.Panel panelConsultarMantenimiento;
-        private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.Button btnRegresar;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.TextBox txtCodigoMantenimiento;
-        private System.Windows.Forms.DataGridView tablaMantenimiento;
+        private System.Windows.Forms.GroupBox grupoMantenimiento;
+        private System.Windows.Forms.Label lblFechaMantenimientoMostrar;
+        private System.Windows.Forms.Label lblEstadoMantenimientoMostrar;
+        private System.Windows.Forms.Label lblObservacionMantenimientoMostrar;
+        private System.Windows.Forms.Label lblPrecioMantenimientoMostrar;
+        private System.Windows.Forms.Label lblHoraMantenimientoMostrar;
+        private System.Windows.Forms.Label lblHoraSistema;
+        private System.Windows.Forms.Label lblObservacion;
+        private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblCelularMostrar;
         private System.Windows.Forms.Label lblTelefonoFijoMostrar;
@@ -588,17 +533,13 @@
         private System.Windows.Forms.Label lblTelefonoMovil;
         private System.Windows.Forms.Label lblNombreCliente;
         private System.Windows.Forms.Label lblCodigoCliente;
-        private System.Windows.Forms.GroupBox grupoMantenimiento;
-        private System.Windows.Forms.Label lblFechaMantenimientoMostrar;
-        private System.Windows.Forms.Label lblEstadoMantenimientoMostrar;
-        private System.Windows.Forms.Label lblObservacionMantenimientoMostrar;
-        private System.Windows.Forms.Label lblPrecioMantenimientoMostrar;
-        private System.Windows.Forms.Label lblHoraMantenimientoMostrar;
-        private System.Windows.Forms.Label lblHoraSistema;
-        private System.Windows.Forms.Label lblObservacion;
-        private System.Windows.Forms.Label lblPrecio;
-        private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.TextBox txtCodigoMantenimiento;
+        private System.Windows.Forms.DataGridView tablaMantenimiento;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnInsertar;
     }
 }

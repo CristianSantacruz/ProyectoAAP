@@ -71,14 +71,14 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblHora = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.tablaMantenimiento = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelActualizarMantenimiento.SuspendLayout();
             this.grupoMantenimiento.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaMantenimiento)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -115,6 +115,7 @@
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -206,9 +207,11 @@
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(208, 140);
+            this.txtPrecio.MaxLength = 5;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(67, 24);
             this.txtPrecio.TabIndex = 16;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // lblHoraMantenimientoMostrar
             // 
@@ -233,6 +236,10 @@
             // comboEstado
             // 
             this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Items.AddRange(new object[] {
+            "",
+            "PENDIENTE",
+            "REALIZADO"});
             this.comboEstado.Location = new System.Drawing.Point(210, 57);
             this.comboEstado.Name = "comboEstado";
             this.comboEstado.Size = new System.Drawing.Size(200, 26);
@@ -478,9 +485,12 @@
             // txtCodigoMantenimiento
             // 
             this.txtCodigoMantenimiento.Location = new System.Drawing.Point(284, 76);
+            this.txtCodigoMantenimiento.MaxLength = 5;
             this.txtCodigoMantenimiento.Name = "txtCodigoMantenimiento";
             this.txtCodigoMantenimiento.Size = new System.Drawing.Size(93, 20);
             this.txtCodigoMantenimiento.TabIndex = 20;
+            this.txtCodigoMantenimiento.TextChanged += new System.EventHandler(this.txtCodigoMantenimiento_TextChanged);
+            this.txtCodigoMantenimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoMantenimiento_KeyPress);
             // 
             // btnRegresar
             // 
@@ -515,6 +525,7 @@
             this.btnGuardar.Size = new System.Drawing.Size(40, 40);
             this.btnGuardar.TabIndex = 17;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // lblHora
             // 
@@ -540,13 +551,19 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dataGridView2
+            // tablaMantenimiento
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 562);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(784, 99);
-            this.dataGridView2.TabIndex = 7;
+            this.tablaMantenimiento.AllowUserToAddRows = false;
+            this.tablaMantenimiento.AllowUserToDeleteRows = false;
+            this.tablaMantenimiento.AllowUserToOrderColumns = true;
+            this.tablaMantenimiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaMantenimiento.Location = new System.Drawing.Point(0, 562);
+            this.tablaMantenimiento.MultiSelect = false;
+            this.tablaMantenimiento.Name = "tablaMantenimiento";
+            this.tablaMantenimiento.ReadOnly = true;
+            this.tablaMantenimiento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaMantenimiento.Size = new System.Drawing.Size(784, 99);
+            this.tablaMantenimiento.TabIndex = 7;
             // 
             // timer1
             // 
@@ -558,12 +575,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(784, 661);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.tablaMantenimiento);
             this.Controls.Add(this.panelActualizarMantenimiento);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioActualizarMantenimiento";
             this.Text = "SFMEE-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioActualizarMantenimiento_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelActualizarMantenimiento.ResumeLayout(false);
@@ -573,7 +591,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaMantenimiento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,7 +616,7 @@
         private System.Windows.Forms.TextBox txtCodigoMantenimiento;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView tablaMantenimiento;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblCelularMostrar;
         private System.Windows.Forms.Label lblTelefonoFijoMostrar;

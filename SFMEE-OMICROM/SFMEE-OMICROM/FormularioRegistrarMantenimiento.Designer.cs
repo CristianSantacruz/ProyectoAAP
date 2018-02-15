@@ -40,6 +40,8 @@
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelRegistrarMantenimiento = new System.Windows.Forms.Panel();
+            this.tabla_aux = new System.Windows.Forms.DataGridView();
+            this.tablaCliente = new System.Windows.Forms.DataGridView();
             this.grupoMantenimiento = new System.Windows.Forms.GroupBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.lblHoraSistemaMostrar = new System.Windows.Forms.Label();
@@ -74,6 +76,8 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelRegistrarMantenimiento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabla_aux)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCliente)).BeginInit();
             this.grupoMantenimiento.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +92,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // archivoToolStripMenuItem
             // 
@@ -103,27 +108,28 @@
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem.Text = "Cerrar";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
             // 
@@ -151,6 +157,8 @@
             // panelRegistrarMantenimiento
             // 
             this.panelRegistrarMantenimiento.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelRegistrarMantenimiento.BackgroundImage")));
+            this.panelRegistrarMantenimiento.Controls.Add(this.tabla_aux);
+            this.panelRegistrarMantenimiento.Controls.Add(this.tablaCliente);
             this.panelRegistrarMantenimiento.Controls.Add(this.grupoMantenimiento);
             this.panelRegistrarMantenimiento.Controls.Add(this.groupBox1);
             this.panelRegistrarMantenimiento.Controls.Add(this.txtCodigoMantenimiento);
@@ -164,6 +172,34 @@
             this.panelRegistrarMantenimiento.Name = "panelRegistrarMantenimiento";
             this.panelRegistrarMantenimiento.Size = new System.Drawing.Size(785, 535);
             this.panelRegistrarMantenimiento.TabIndex = 5;
+            // 
+            // tabla_aux
+            // 
+            this.tabla_aux.AllowUserToAddRows = false;
+            this.tabla_aux.AllowUserToDeleteRows = false;
+            this.tabla_aux.AllowUserToOrderColumns = true;
+            this.tabla_aux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabla_aux.Location = new System.Drawing.Point(648, 491);
+            this.tabla_aux.MultiSelect = false;
+            this.tabla_aux.Name = "tabla_aux";
+            this.tabla_aux.ReadOnly = true;
+            this.tabla_aux.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tabla_aux.Size = new System.Drawing.Size(124, 33);
+            this.tabla_aux.TabIndex = 26;
+            // 
+            // tablaCliente
+            // 
+            this.tablaCliente.AllowUserToAddRows = false;
+            this.tablaCliente.AllowUserToDeleteRows = false;
+            this.tablaCliente.AllowUserToOrderColumns = true;
+            this.tablaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaCliente.Location = new System.Drawing.Point(12, 491);
+            this.tablaCliente.MultiSelect = false;
+            this.tablaCliente.Name = "tablaCliente";
+            this.tablaCliente.ReadOnly = true;
+            this.tablaCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaCliente.Size = new System.Drawing.Size(124, 33);
+            this.tablaCliente.TabIndex = 22;
             // 
             // grupoMantenimiento
             // 
@@ -191,9 +227,11 @@
             // txtPrecio
             // 
             this.txtPrecio.Location = new System.Drawing.Point(208, 140);
+            this.txtPrecio.MaxLength = 5;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(67, 24);
             this.txtPrecio.TabIndex = 16;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // lblHoraSistemaMostrar
             // 
@@ -201,7 +239,7 @@
             this.lblHoraSistemaMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblHoraSistemaMostrar.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoraSistemaMostrar.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblHoraSistemaMostrar.Location = new System.Drawing.Point(529, 28);
+            this.lblHoraSistemaMostrar.Location = new System.Drawing.Point(518, 28);
             this.lblHoraSistemaMostrar.Name = "lblHoraSistemaMostrar";
             this.lblHoraSistemaMostrar.Size = new System.Drawing.Size(117, 15);
             this.lblHoraSistemaMostrar.TabIndex = 21;
@@ -217,17 +255,22 @@
             // 
             // pickerFechaMantenimiento
             // 
+            this.pickerFechaMantenimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.pickerFechaMantenimiento.Location = new System.Drawing.Point(210, 20);
             this.pickerFechaMantenimiento.Name = "pickerFechaMantenimiento";
-            this.pickerFechaMantenimiento.Size = new System.Drawing.Size(200, 24);
+            this.pickerFechaMantenimiento.Size = new System.Drawing.Size(164, 24);
             this.pickerFechaMantenimiento.TabIndex = 4;
             // 
             // comboEstado
             // 
             this.comboEstado.FormattingEnabled = true;
+            this.comboEstado.Items.AddRange(new object[] {
+            "",
+            "PENDIENTE",
+            "REALIZADO"});
             this.comboEstado.Location = new System.Drawing.Point(210, 57);
             this.comboEstado.Name = "comboEstado";
-            this.comboEstado.Size = new System.Drawing.Size(200, 26);
+            this.comboEstado.Size = new System.Drawing.Size(165, 26);
             this.comboEstado.TabIndex = 2;
             // 
             // lblHoraSistema
@@ -236,7 +279,7 @@
             this.lblHoraSistema.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblHoraSistema.Font = new System.Drawing.Font("Berlin Sans FB Demi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHoraSistema.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblHoraSistema.Location = new System.Drawing.Point(461, 25);
+            this.lblHoraSistema.Location = new System.Drawing.Point(450, 25);
             this.lblHoraSistema.Name = "lblHoraSistema";
             this.lblHoraSistema.Size = new System.Drawing.Size(54, 18);
             this.lblHoraSistema.TabIndex = 18;
@@ -481,9 +524,12 @@
             // txtCI
             // 
             this.txtCI.Location = new System.Drawing.Point(115, 76);
+            this.txtCI.MaxLength = 13;
             this.txtCI.Name = "txtCI";
             this.txtCI.Size = new System.Drawing.Size(192, 20);
             this.txtCI.TabIndex = 11;
+            this.txtCI.TextChanged += new System.EventHandler(this.txtCI_TextChanged);
+            this.txtCI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCI_KeyPress);
             // 
             // btnBuscar
             // 
@@ -530,6 +576,7 @@
             this.btnGuardar.Size = new System.Drawing.Size(40, 40);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // timer1
             // 
@@ -545,10 +592,13 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioRegistrarMantenimiento";
             this.Text = "SFMEE-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioRegistrarMantenimiento_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelRegistrarMantenimiento.ResumeLayout(false);
             this.panelRegistrarMantenimiento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabla_aux)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCliente)).EndInit();
             this.grupoMantenimiento.ResumeLayout(false);
             this.grupoMantenimiento.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -602,5 +652,7 @@
         private System.Windows.Forms.Label lblNombreCliente;
         private System.Windows.Forms.Label lblCodigoCliente;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView tablaCliente;
+        private System.Windows.Forms.DataGridView tabla_aux;
     }
 }

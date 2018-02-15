@@ -43,7 +43,7 @@ namespace Negocio
 
             return cliente.buscarCliente(cliente);
         }
-
+        
         public static string actualizarCliente(string ciCliente, string direccionCliente, string telefonoFijoCliente, string telefonoMovilCliente)
         {
             DatosCliente cliente = new DatosCliente();

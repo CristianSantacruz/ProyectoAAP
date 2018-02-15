@@ -200,5 +200,29 @@ namespace SFMEE_OMICROM
         {
             this.soloLetras(e);
         }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string respuesta = "";
+                if (this.txtNombreUsuario.Text == string.Empty || this.txtLogin.Text == string.Empty || this.txtPassword.Text == string.Empty || this.txtCargo.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos");
+                }
+                else
+                {
+                    respuesta = NegocioUsuario.actualizarUsuario(this.txtNombreUsuario.Text.ToUpper(), this.txtPassword.Text.Trim());
+                    this.MensajeOK("Registro actualizado exitosamente");
+                    this.limpiarCampos();
+                    this.bloquearCampos();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
     }
 }

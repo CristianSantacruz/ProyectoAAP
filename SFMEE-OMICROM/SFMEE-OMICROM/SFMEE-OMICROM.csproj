@@ -177,6 +177,18 @@
     <Compile Include="FormularioEliminarUsuario.Designer.cs">
       <DependentUpon>FormularioEliminarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormularioInsertarMantenimientoFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioInsertarMantenimientoFactura.Designer.cs">
+      <DependentUpon>FormularioInsertarMantenimientoFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioInsertarProductoFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioInsertarProductoFactura.Designer.cs">
+      <DependentUpon>FormularioInsertarProductoFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormularioLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +322,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioEliminarUsuario.resx">
       <DependentUpon>FormularioEliminarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioInsertarMantenimientoFactura.resx">
+      <DependentUpon>FormularioInsertarMantenimientoFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioInsertarProductoFactura.resx">
+      <DependentUpon>FormularioInsertarProductoFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioLogin.resx">
       <DependentUpon>FormularioLogin.cs</DependentUpon>

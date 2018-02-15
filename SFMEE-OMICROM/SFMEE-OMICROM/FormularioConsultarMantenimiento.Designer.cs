@@ -69,13 +69,13 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtCodigoMantenimiento = new System.Windows.Forms.TextBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.tablaMantenimiento = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelConsultarMantenimiento.SuspendLayout();
             this.grupoMantenimiento.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaMantenimiento)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -520,21 +520,31 @@
             this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 22;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtCodigoMantenimiento
             // 
             this.txtCodigoMantenimiento.Location = new System.Drawing.Point(284, 77);
+            this.txtCodigoMantenimiento.MaxLength = 5;
             this.txtCodigoMantenimiento.Name = "txtCodigoMantenimiento";
             this.txtCodigoMantenimiento.Size = new System.Drawing.Size(93, 20);
             this.txtCodigoMantenimiento.TabIndex = 21;
+            this.txtCodigoMantenimiento.TextChanged += new System.EventHandler(this.txtCodigoMantenimiento_TextChanged);
+            this.txtCodigoMantenimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoMantenimiento_KeyPress);
             // 
-            // dataGridView2
+            // tablaMantenimiento
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 562);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(784, 99);
-            this.dataGridView2.TabIndex = 8;
+            this.tablaMantenimiento.AllowUserToAddRows = false;
+            this.tablaMantenimiento.AllowUserToDeleteRows = false;
+            this.tablaMantenimiento.AllowUserToOrderColumns = true;
+            this.tablaMantenimiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaMantenimiento.Location = new System.Drawing.Point(0, 562);
+            this.tablaMantenimiento.MultiSelect = false;
+            this.tablaMantenimiento.Name = "tablaMantenimiento";
+            this.tablaMantenimiento.ReadOnly = true;
+            this.tablaMantenimiento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaMantenimiento.Size = new System.Drawing.Size(784, 99);
+            this.tablaMantenimiento.TabIndex = 8;
             // 
             // timer1
             // 
@@ -545,12 +555,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 661);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.tablaMantenimiento);
             this.Controls.Add(this.panelConsultarMantenimiento);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioConsultarMantenimiento";
             this.Text = "SFMEE-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioConsultarMantenimiento_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelConsultarMantenimiento.ResumeLayout(false);
@@ -559,7 +570,7 @@
             this.grupoMantenimiento.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaMantenimiento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -582,7 +593,7 @@
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblHora;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView tablaMantenimiento;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblCelularMostrar;
         private System.Windows.Forms.Label lblTelefonoFijoMostrar;

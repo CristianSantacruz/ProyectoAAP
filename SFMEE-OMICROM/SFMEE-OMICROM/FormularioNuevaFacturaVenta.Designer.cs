@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioNueva_FacturaVenta));
             this.panelNuevaFactura = new System.Windows.Forms.Panel();
+            this.comboEstadoFactura = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabla_aux = new System.Windows.Forms.DataGridView();
+            this.tablaCliente = new System.Windows.Forms.DataGridView();
             this.lblHora = new System.Windows.Forms.Label();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.radioTarjeta = new System.Windows.Forms.RadioButton();
@@ -47,15 +51,19 @@
             this.lblDescuento = new System.Windows.Forms.Label();
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnIngresarMantenimiento = new System.Windows.Forms.Button();
             this.btnBorrarProducto = new System.Windows.Forms.Button();
             this.btnIngresarProducto = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tablaFactura = new System.Windows.Forms.DataGridView();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.comboCajero = new System.Windows.Forms.ComboBox();
             this.pickerFechaNuevaFactura = new System.Windows.Forms.DateTimePicker();
             this.grupoCliente = new System.Windows.Forms.GroupBox();
+            this.lblClienteMostrar = new System.Windows.Forms.Label();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.txtCi = new System.Windows.Forms.TextBox();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.lblCelularMostrar = new System.Windows.Forms.Label();
             this.lblTelefonoFijoMostrar = new System.Windows.Forms.Label();
@@ -78,12 +86,12 @@
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.txtCi = new System.Windows.Forms.TextBox();
-            this.btnIngresarMantenimiento = new System.Windows.Forms.Button();
             this.panelNuevaFactura.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabla_aux)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCliente)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaFactura)).BeginInit();
             this.grupoCliente.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +99,10 @@
             // panelNuevaFactura
             // 
             this.panelNuevaFactura.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelNuevaFactura.BackgroundImage")));
+            this.panelNuevaFactura.Controls.Add(this.comboEstadoFactura);
+            this.panelNuevaFactura.Controls.Add(this.label1);
+            this.panelNuevaFactura.Controls.Add(this.tabla_aux);
+            this.panelNuevaFactura.Controls.Add(this.tablaCliente);
             this.panelNuevaFactura.Controls.Add(this.lblHora);
             this.panelNuevaFactura.Controls.Add(this.btnImprimir);
             this.panelNuevaFactura.Controls.Add(this.radioTarjeta);
@@ -110,6 +122,58 @@
             this.panelNuevaFactura.Name = "panelNuevaFactura";
             this.panelNuevaFactura.Size = new System.Drawing.Size(1234, 636);
             this.panelNuevaFactura.TabIndex = 0;
+            // 
+            // comboEstadoFactura
+            // 
+            this.comboEstadoFactura.FormattingEnabled = true;
+            this.comboEstadoFactura.Items.AddRange(new object[] {
+            "",
+            "CANCELADO",
+            "ANULADO"});
+            this.comboEstadoFactura.Location = new System.Drawing.Point(209, 528);
+            this.comboEstadoFactura.Name = "comboEstadoFactura";
+            this.comboEstadoFactura.Size = new System.Drawing.Size(176, 21);
+            this.comboEstadoFactura.TabIndex = 42;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Berlin Sans FB Demi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label1.Location = new System.Drawing.Point(42, 527);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 18);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "ESTADO DE FACTURA:";
+            // 
+            // tabla_aux
+            // 
+            this.tabla_aux.AllowUserToAddRows = false;
+            this.tabla_aux.AllowUserToDeleteRows = false;
+            this.tabla_aux.AllowUserToOrderColumns = true;
+            this.tabla_aux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabla_aux.Location = new System.Drawing.Point(1038, 594);
+            this.tabla_aux.MultiSelect = false;
+            this.tabla_aux.Name = "tabla_aux";
+            this.tabla_aux.ReadOnly = true;
+            this.tabla_aux.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tabla_aux.Size = new System.Drawing.Size(124, 33);
+            this.tabla_aux.TabIndex = 41;
+            // 
+            // tablaCliente
+            // 
+            this.tablaCliente.AllowUserToAddRows = false;
+            this.tablaCliente.AllowUserToDeleteRows = false;
+            this.tablaCliente.AllowUserToOrderColumns = true;
+            this.tablaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaCliente.Location = new System.Drawing.Point(31, 592);
+            this.tablaCliente.MultiSelect = false;
+            this.tablaCliente.Name = "tablaCliente";
+            this.tablaCliente.ReadOnly = true;
+            this.tablaCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaCliente.Size = new System.Drawing.Size(124, 33);
+            this.tablaCliente.TabIndex = 40;
             // 
             // lblHora
             // 
@@ -304,11 +368,23 @@
             this.panel1.Controls.Add(this.btnIngresarMantenimiento);
             this.panel1.Controls.Add(this.btnBorrarProducto);
             this.panel1.Controls.Add(this.btnIngresarProducto);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.tablaFactura);
             this.panel1.Location = new System.Drawing.Point(42, 291);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1149, 177);
             this.panel1.TabIndex = 13;
+            // 
+            // btnIngresarMantenimiento
+            // 
+            this.btnIngresarMantenimiento.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnIngresarMantenimiento.BackgroundImage")));
+            this.btnIngresarMantenimiento.FlatAppearance.BorderSize = 0;
+            this.btnIngresarMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresarMantenimiento.Location = new System.Drawing.Point(1106, 71);
+            this.btnIngresarMantenimiento.Name = "btnIngresarMantenimiento";
+            this.btnIngresarMantenimiento.Size = new System.Drawing.Size(40, 40);
+            this.btnIngresarMantenimiento.TabIndex = 3;
+            this.btnIngresarMantenimiento.UseVisualStyleBackColor = true;
+            this.btnIngresarMantenimiento.Click += new System.EventHandler(this.btnIngresarMantenimiento_Click);
             // 
             // btnBorrarProducto
             // 
@@ -320,6 +396,7 @@
             this.btnBorrarProducto.Size = new System.Drawing.Size(40, 40);
             this.btnBorrarProducto.TabIndex = 2;
             this.btnBorrarProducto.UseVisualStyleBackColor = true;
+            this.btnBorrarProducto.Click += new System.EventHandler(this.btnBorrarProducto_Click);
             // 
             // btnIngresarProducto
             // 
@@ -333,13 +410,16 @@
             this.btnIngresarProducto.UseVisualStyleBackColor = true;
             this.btnIngresarProducto.Click += new System.EventHandler(this.btnIngresarProducto_Click);
             // 
-            // dataGridView1
+            // tablaFactura
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1100, 170);
-            this.dataGridView1.TabIndex = 0;
+            this.tablaFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaFactura.Location = new System.Drawing.Point(3, 3);
+            this.tablaFactura.MultiSelect = false;
+            this.tablaFactura.Name = "tablaFactura";
+            this.tablaFactura.ReadOnly = true;
+            this.tablaFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaFactura.Size = new System.Drawing.Size(1100, 170);
+            this.tablaFactura.TabIndex = 0;
             // 
             // btnRegresar
             // 
@@ -386,15 +466,18 @@
             // 
             // pickerFechaNuevaFactura
             // 
+            this.pickerFechaNuevaFactura.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.pickerFechaNuevaFactura.Location = new System.Drawing.Point(101, 109);
             this.pickerFechaNuevaFactura.Name = "pickerFechaNuevaFactura";
-            this.pickerFechaNuevaFactura.Size = new System.Drawing.Size(200, 20);
+            this.pickerFechaNuevaFactura.Size = new System.Drawing.Size(155, 20);
             this.pickerFechaNuevaFactura.TabIndex = 2;
             // 
             // grupoCliente
             // 
             this.grupoCliente.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.grupoCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("grupoCliente.BackgroundImage")));
+            this.grupoCliente.Controls.Add(this.lblClienteMostrar);
+            this.grupoCliente.Controls.Add(this.lblCliente);
             this.grupoCliente.Controls.Add(this.txtCi);
             this.grupoCliente.Controls.Add(this.btnBuscarCliente);
             this.grupoCliente.Controls.Add(this.lblCelularMostrar);
@@ -408,12 +491,46 @@
             this.grupoCliente.Controls.Add(this.lblNombreCliente);
             this.grupoCliente.Font = new System.Drawing.Font("Berlin Sans FB Demi", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grupoCliente.ForeColor = System.Drawing.SystemColors.Window;
-            this.grupoCliente.Location = new System.Drawing.Point(42, 149);
+            this.grupoCliente.Location = new System.Drawing.Point(42, 136);
             this.grupoCliente.Name = "grupoCliente";
-            this.grupoCliente.Size = new System.Drawing.Size(546, 130);
+            this.grupoCliente.Size = new System.Drawing.Size(546, 149);
             this.grupoCliente.TabIndex = 1;
             this.grupoCliente.TabStop = false;
             this.grupoCliente.Text = "CLIENTE";
+            // 
+            // lblClienteMostrar
+            // 
+            this.lblClienteMostrar.AutoSize = true;
+            this.lblClienteMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblClienteMostrar.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClienteMostrar.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblClienteMostrar.Location = new System.Drawing.Point(119, 44);
+            this.lblClienteMostrar.Name = "lblClienteMostrar";
+            this.lblClienteMostrar.Size = new System.Drawing.Size(48, 13);
+            this.lblClienteMostrar.TabIndex = 28;
+            this.lblClienteMostrar.Text = "CLIENTE";
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblCliente.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblCliente.Location = new System.Drawing.Point(63, 44);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(50, 13);
+            this.lblCliente.TabIndex = 27;
+            this.lblCliente.Text = "CLIENTE:";
+            // 
+            // txtCi
+            // 
+            this.txtCi.Location = new System.Drawing.Point(119, 14);
+            this.txtCi.MaxLength = 13;
+            this.txtCi.Name = "txtCi";
+            this.txtCi.Size = new System.Drawing.Size(124, 24);
+            this.txtCi.TabIndex = 26;
+            this.txtCi.TextChanged += new System.EventHandler(this.txtCi_TextChanged);
+            this.txtCi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCi_KeyPress);
             // 
             // btnBuscarCliente
             // 
@@ -433,7 +550,7 @@
             this.lblCelularMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblCelularMostrar.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCelularMostrar.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblCelularMostrar.Location = new System.Drawing.Point(119, 110);
+            this.lblCelularMostrar.Location = new System.Drawing.Point(119, 124);
             this.lblCelularMostrar.Name = "lblCelularMostrar";
             this.lblCelularMostrar.Size = new System.Drawing.Size(95, 13);
             this.lblCelularMostrar.TabIndex = 24;
@@ -445,7 +562,7 @@
             this.lblTelefonoFijoMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTelefonoFijoMostrar.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefonoFijoMostrar.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblTelefonoFijoMostrar.Location = new System.Drawing.Point(119, 89);
+            this.lblTelefonoFijoMostrar.Location = new System.Drawing.Point(119, 103);
             this.lblTelefonoFijoMostrar.Name = "lblTelefonoFijoMostrar";
             this.lblTelefonoFijoMostrar.Size = new System.Drawing.Size(83, 13);
             this.lblTelefonoFijoMostrar.TabIndex = 23;
@@ -457,7 +574,7 @@
             this.lblDireccionMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblDireccionMostrar.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccionMostrar.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblDireccionMostrar.Location = new System.Drawing.Point(119, 69);
+            this.lblDireccionMostrar.Location = new System.Drawing.Point(119, 83);
             this.lblDireccionMostrar.Name = "lblDireccionMostrar";
             this.lblDireccionMostrar.Size = new System.Drawing.Size(61, 13);
             this.lblDireccionMostrar.TabIndex = 22;
@@ -469,7 +586,7 @@
             this.lblNombreMostrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblNombreMostrar.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreMostrar.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblNombreMostrar.Location = new System.Drawing.Point(119, 48);
+            this.lblNombreMostrar.Location = new System.Drawing.Point(119, 62);
             this.lblNombreMostrar.Name = "lblNombreMostrar";
             this.lblNombreMostrar.Size = new System.Drawing.Size(51, 13);
             this.lblNombreMostrar.TabIndex = 20;
@@ -493,7 +610,7 @@
             this.lblDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblDireccion.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccion.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblDireccion.Location = new System.Drawing.Point(50, 69);
+            this.lblDireccion.Location = new System.Drawing.Point(50, 83);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(63, 13);
             this.lblDireccion.TabIndex = 17;
@@ -505,7 +622,7 @@
             this.lblTelefonoFijo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTelefonoFijo.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefonoFijo.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblTelefonoFijo.Location = new System.Drawing.Point(28, 89);
+            this.lblTelefonoFijo.Location = new System.Drawing.Point(28, 103);
             this.lblTelefonoFijo.Name = "lblTelefonoFijo";
             this.lblTelefonoFijo.Size = new System.Drawing.Size(85, 13);
             this.lblTelefonoFijo.TabIndex = 16;
@@ -517,7 +634,7 @@
             this.lblTelefonoMovil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTelefonoMovil.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefonoMovil.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblTelefonoMovil.Location = new System.Drawing.Point(16, 110);
+            this.lblTelefonoMovil.Location = new System.Drawing.Point(16, 124);
             this.lblTelefonoMovil.Name = "lblTelefonoMovil";
             this.lblTelefonoMovil.Size = new System.Drawing.Size(97, 13);
             this.lblTelefonoMovil.TabIndex = 15;
@@ -529,7 +646,7 @@
             this.lblNombreCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblNombreCliente.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNombreCliente.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblNombreCliente.Location = new System.Drawing.Point(60, 48);
+            this.lblNombreCliente.Location = new System.Drawing.Point(60, 62);
             this.lblNombreCliente.Name = "lblNombreCliente";
             this.lblNombreCliente.Size = new System.Drawing.Size(53, 13);
             this.lblNombreCliente.TabIndex = 14;
@@ -626,25 +743,6 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // txtCi
-            // 
-            this.txtCi.Location = new System.Drawing.Point(119, 14);
-            this.txtCi.Name = "txtCi";
-            this.txtCi.Size = new System.Drawing.Size(124, 24);
-            this.txtCi.TabIndex = 26;
-            // 
-            // btnIngresarMantenimiento
-            // 
-            this.btnIngresarMantenimiento.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnIngresarMantenimiento.BackgroundImage")));
-            this.btnIngresarMantenimiento.FlatAppearance.BorderSize = 0;
-            this.btnIngresarMantenimiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresarMantenimiento.Location = new System.Drawing.Point(1106, 71);
-            this.btnIngresarMantenimiento.Name = "btnIngresarMantenimiento";
-            this.btnIngresarMantenimiento.Size = new System.Drawing.Size(40, 40);
-            this.btnIngresarMantenimiento.TabIndex = 3;
-            this.btnIngresarMantenimiento.UseVisualStyleBackColor = true;
-            this.btnIngresarMantenimiento.Click += new System.EventHandler(this.btnIngresarMantenimiento_Click);
-            // 
             // FormularioNueva_FacturaVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -655,12 +753,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioNueva_FacturaVenta";
             this.Text = "SFMEE-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioNueva_FacturaVenta_Load);
             this.panelNuevaFactura.ResumeLayout(false);
             this.panelNuevaFactura.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabla_aux)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaCliente)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaFactura)).EndInit();
             this.grupoCliente.ResumeLayout(false);
             this.grupoCliente.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -703,7 +804,6 @@
         private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
         private System.Windows.Forms.Button btnBorrarProducto;
         private System.Windows.Forms.Button btnIngresarProducto;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblIVA;
@@ -722,5 +822,12 @@
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.TextBox txtCi;
         private System.Windows.Forms.Button btnIngresarMantenimiento;
+        private System.Windows.Forms.Label lblClienteMostrar;
+        private System.Windows.Forms.Label lblCliente;
+        private System.Windows.Forms.DataGridView tablaCliente;
+        private System.Windows.Forms.DataGridView tabla_aux;
+        private System.Windows.Forms.ComboBox comboEstadoFactura;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView tablaFactura;
     }
 }

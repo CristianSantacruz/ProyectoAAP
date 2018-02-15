@@ -11,66 +11,13 @@ using Negocio;
 
 namespace SFMEE_OMICROM
 {
-    public partial class FormularioConsultarMantenimiento : Form
+    public partial class FormularioInsertarMantenimientoFactura : Form
     {
-        public FormularioConsultarMantenimiento()
+        public FormularioInsertarMantenimientoFactura()
         {
             InitializeComponent();
             this.CenterToScreen();
             timer1.Enabled = true;
-        }
-
-        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormularioRegistrarMantenimiento nuevo = new FormularioRegistrarMantenimiento();
-            nuevo.Show();
-            this.Hide();
-        }
-
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            InterfazPrincipalGerente gerente = new InterfazPrincipalGerente();
-            gerente.Show();
-            this.Hide();
-        }
-
-        private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnRegresar_Click(object sender, EventArgs e)
-        {
-            InterfazPrincipalGerente gerente = new InterfazPrincipalGerente();
-            gerente.Show();
-            this.Hide();
-        }
-
-        public void limpiarCampos()
-        {
-            txtCodigoMantenimiento.Clear();
-            lblClienteMostrar.ResetText();
-            lblCIMostrar.ResetText();
-            lblNombreMostrar.ResetText();
-            lblDireccionMostrar.ResetText();
-            lblTelefonoFijoMostrar.ResetText();
-            lblCelularMostrar.ResetText();
-
-            lblFechaMantenimientoMostrar.ResetText();
-            lblHoraMantenimientoMostrar.ResetText();
-            lblEstadoMantenimientoMostrar.ResetText();
-            lblObservacionMantenimientoMostrar.ResetText();
-            lblPrecioMantenimientoMostrar.ResetText();
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            limpiarCampos();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void mostrarMantenimientos()
@@ -88,7 +35,7 @@ namespace SFMEE_OMICROM
             {
                 this.tablaMantenimiento.DataSource = NegocioMantenimiento.consultarMantenimientoTabla(int.Parse(this.txtCodigoMantenimiento.Text));
             }
-            
+
         }
 
         public void soloNumeros(KeyPressEventArgs evento)
@@ -108,6 +55,29 @@ namespace SFMEE_OMICROM
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        public void limpiarCampos()
+        {
+            txtCodigoMantenimiento.Clear();
+            lblClienteMostrar.ResetText();
+            lblCIMostrar.ResetText();
+            lblNombreMostrar.ResetText();
+            lblDireccionMostrar.ResetText();
+            lblTelefonoFijoMostrar.ResetText();
+            lblCelularMostrar.ResetText();
+
+            lblFechaMantenimientoMostrar.ResetText();
+            lblHoraMantenimientoMostrar.ResetText();
+            lblEstadoMantenimientoMostrar.ResetText();
+            lblObservacionMantenimientoMostrar.ResetText();
+            lblPrecioMantenimientoMostrar.ResetText();
+        }
+
+        private void FormularioInsertarMantenimientoFactura_Load(object sender, EventArgs e)
+        {
+            this.btnBuscar.Visible = false;
+            this.mostrarMantenimientos();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -150,15 +120,45 @@ namespace SFMEE_OMICROM
             this.consultarMantenimientoTabla();
         }
 
-        private void FormularioConsultarMantenimiento_Load(object sender, EventArgs e)
-        {
-            this.btnBuscar.Visible = false;
-            this.mostrarMantenimientos();
-        }
-
         private void txtCodigoMantenimiento_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.soloNumeros(e);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.limpiarCampos();
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            if (this.txtCodigoMantenimiento.Text == String.Empty)
+            {
+                MessageBox.Show("Falta ingresar algunos campos", "Ingresar Mantenimiento", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DataRow row = FormularioNueva_FacturaVenta.tablaDetalle.NewRow();
+                row["CÓDIGO"] = this.txtCodigoMantenimiento.Text;
+                row["CANTIDAD"] = 1;
+                row["DETALLE"] = this.lblObservacionMantenimientoMostrar.Text;
+                row["VALOR UNITARIO"] = Convert.ToDecimal(this.lblPrecioMantenimientoMostrar.Text);
+                row["VALOR TOTAL"] = Convert.ToDecimal(this.lblPrecioMantenimientoMostrar.Text) * Convert.ToDecimal(row["CANTIDAD"]);
+                row["DESCUENTO"] = 0;
+                FormularioNueva_FacturaVenta.tablaDetalle.Rows.Add(row);
+
+                this.Hide();
+            }
         }
     }
 }

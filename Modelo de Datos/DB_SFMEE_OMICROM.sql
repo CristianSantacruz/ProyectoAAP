@@ -1,8 +1,15 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     13/2/2018 11:08:14                           */
+/* Created on:     14/2/2018 23:56:56                           */
 /*==============================================================*/
 
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('DETALLE_FACTURA') and o.name = 'FK_DETALLE__DETALLE_F_FACTURA')
+alter table DETALLE_FACTURA
+   drop constraint FK_DETALLE__DETALLE_F_FACTURA
+go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
@@ -23,13 +30,6 @@ if exists (select 1
    where r.fkeyid = object_id('FACTURA') and o.name = 'FK_FACTURA_CLIENTE_F_CLIENTE')
 alter table FACTURA
    drop constraint FK_FACTURA_CLIENTE_F_CLIENTE
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('FACTURA') and o.name = 'FK_FACTURA_DETALLE_F_DETALLE_')
-alter table FACTURA
-   drop constraint FK_FACTURA_DETALLE_F_DETALLE_
 go
 
 if exists (select 1
@@ -65,19 +65,19 @@ if exists (select 1
 go
 
 if exists (select 1
+            from  sysindexes
+           where  id    = object_id('DETALLE_FACTURA')
+            and   name  = 'DETALLE_FACTURA_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index DETALLE_FACTURA.DETALLE_FACTURA_FK
+go
+
+if exists (select 1
             from  sysobjects
            where  id = object_id('DETALLE_FACTURA')
             and   type = 'U')
    drop table DETALLE_FACTURA
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('FACTURA')
-            and   name  = 'DETALLE_FACTURA_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index FACTURA.DETALLE_FACTURA_FK
 go
 
 if exists (select 1
@@ -152,15 +152,24 @@ go
 /*==============================================================*/
 create table DETALLE_FACTURA (
    IDDETALLEFACTURA     int                  identity,
-   IDMANTENIMIENTO      int                  not null,
-   IDPRODUCTO           int                  not null,
-   CODIGO               int                  not null,
+   IDFACTURA            int                  not null,
+   IDMANTENIMIENTO      int                  null,
+   IDPRODUCTO           int                  null,
+   CODIGO               varchar(5)           not null,
    CANTIDAD             int                  not null,
    DETALLE              varchar(50)          not null,
    VALORUNITARIO        float(10)            not null,
    DESCUENTODETALLE     float(10)            not null,
    VALORTOTAL           float(10)            not null,
    constraint PK_DETALLE_FACTURA primary key nonclustered (IDDETALLEFACTURA)
+)
+go
+
+/*==============================================================*/
+/* Index: DETALLE_FACTURA_FK                                    */
+/*==============================================================*/
+create index DETALLE_FACTURA_FK on DETALLE_FACTURA (
+IDFACTURA ASC
 )
 go
 
@@ -185,7 +194,6 @@ go
 /*==============================================================*/
 create table FACTURA (
    IDFACTURA            int                  identity,
-   IDDETALLEFACTURA     int                  not null,
    IDCLIENTE            int                  not null,
    FECHAFACTURA         varchar(10)          not null,
    VENDEDOR             varchar(50)          not null,
@@ -194,6 +202,7 @@ create table FACTURA (
    DESCUENTO            float(10)            not null,
    IVA                  float(10)            not null,
    TOTAL                float(10)            not null,
+   ESTADOFACTURA        varchar(15)          not null,
    constraint PK_FACTURA primary key nonclustered (IDFACTURA)
 )
 go
@@ -207,20 +216,11 @@ IDCLIENTE ASC
 go
 
 /*==============================================================*/
-/* Index: DETALLE_FACTURA_FK                                    */
-/*==============================================================*/
-create index DETALLE_FACTURA_FK on FACTURA (
-IDDETALLEFACTURA ASC
-)
-go
-
-/*==============================================================*/
 /* Table: MANTENIMIENTO                                         */
 /*==============================================================*/
 create table MANTENIMIENTO (
    IDMANTENIMIENTO      int                  identity,
    IDCLIENTE            int                  not null,
-   CODIGOMANTENIMIENTO  varchar(5)           not null,
    FECHAMANTENIMIENTO   varchar(10)          not null,
    HORAMANTENIMIENTO    varchar(8)           not null,
    ESTADOMANTENIMIENTO  varchar(15)          not null,
@@ -242,7 +242,7 @@ go
 /* Table: PARAMETRO                                             */
 /*==============================================================*/
 create table PARAMETRO (
-   IDPARAMETRO          int                  identity,
+   IDPARAMETRO          int                  not null,
    NOMBREPARAMETRO      varchar(15)          not null,
    VALOR                int                  not null,
    constraint PK_PARAMETRO primary key nonclustered (IDPARAMETRO)
@@ -281,6 +281,11 @@ create table USUARIO (
 go
 
 alter table DETALLE_FACTURA
+   add constraint FK_DETALLE__DETALLE_F_FACTURA foreign key (IDFACTURA)
+      references FACTURA (IDFACTURA)
+go
+
+alter table DETALLE_FACTURA
    add constraint FK_DETALLE__MANTENIMI_MANTENIM foreign key (IDMANTENIMIENTO)
       references MANTENIMIENTO (IDMANTENIMIENTO)
 go
@@ -293,11 +298,6 @@ go
 alter table FACTURA
    add constraint FK_FACTURA_CLIENTE_F_CLIENTE foreign key (IDCLIENTE)
       references CLIENTE (IDCLIENTE)
-go
-
-alter table FACTURA
-   add constraint FK_FACTURA_DETALLE_F_DETALLE_ foreign key (IDDETALLEFACTURA)
-      references DETALLE_FACTURA (IDDETALLEFACTURA)
 go
 
 alter table MANTENIMIENTO

@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="NegocioCliente.cs" />
+    <Compile Include="NegocioFactura.cs" />
+    <Compile Include="NegocioMantenimiento.cs" />
     <Compile Include="NegocioParametro.cs" />
     <Compile Include="NegocioProducto.cs" />
     <Compile Include="NegocioUsuario.cs" />
