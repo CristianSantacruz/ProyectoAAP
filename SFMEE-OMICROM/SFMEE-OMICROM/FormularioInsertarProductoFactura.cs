@@ -149,7 +149,7 @@ namespace SFMEE_OMICROM
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            if(this.txtCodigo.Text==String.Empty || this.txtDescuento.Text == String.Empty || this.txtCantidadVender.Text == String.Empty)
+            if (this.txtCodigo.Text==String.Empty || this.txtDescuento.Text == String.Empty || this.txtCantidadVender.Text == String.Empty)
             {
                 MessageBox.Show("Falta ingresar algunos campos", "Ingresar Producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -161,16 +161,24 @@ namespace SFMEE_OMICROM
                 }
                 else
                 {
-                    DataRow row = FormularioNueva_FacturaVenta.tablaDetalle.NewRow();
-                    row["CÓDIGO"] = this.txtCodigo.Text;
-                    row["CANTIDAD"] = Convert.ToInt32(this.txtCantidadVender.Text);
-                    row["DETALLE"] = this.lblDescripcion.Text;
-                    row["VALOR UNITARIO"] = Convert.ToDecimal(this.lblPrecioVenta.Text);
-                    row["VALOR TOTAL"] = Convert.ToDecimal(this.lblPrecioVenta.Text) * Convert.ToDecimal(row["CANTIDAD"]);
-                    row["DESCUENTO"] = (Convert.ToDecimal(row["VALOR TOTAL"]) * (Convert.ToDecimal(this.txtDescuento.Text)/100)) ;
-                    FormularioNueva_FacturaVenta.tablaDetalle.Rows.Add(row);
+                    FormularioNueva_FacturaVenta factura = new FormularioNueva_FacturaVenta();
+                    NegocioProducto.consultarProductoTabla(this.txtCodigo.Text);
+                    if (this.tablaProducto.Rows.Count != 0)
+                    {
+                        DataRow row = FormularioNueva_FacturaVenta.tablaDetalle.NewRow();
+                        row["IDFACTURA"] = Int32.Parse((factura.lblNumeroFacturaVenta.Text));
+                        row["IDPRODUCTO"] = Int32.Parse(Convert.ToString(this.tablaProducto.CurrentRow.Cells["IDPRODUCTO"].Value));
+                        row["IDMANTENIMIENTO"] = 1;
+                        row["CÓDIGO"] = this.txtCodigo.Text;
+                        row["CANTIDAD"] = Convert.ToInt32(this.txtCantidadVender.Text);
+                        row["DETALLE"] = this.lblDescripcion.Text;
+                        row["VALOR UNITARIO"] = Convert.ToSingle(this.lblPrecioVenta.Text);
+                        row["VALOR TOTAL"] = float.Parse(this.lblPrecioVenta.Text) * float.Parse(row["CANTIDAD"].ToString());
+                        row["DESCUENTO"] = float.Parse(row["VALOR TOTAL"].ToString()) * (float.Parse(this.txtDescuento.Text) / 100);
+                        FormularioNueva_FacturaVenta.tablaDetalle.Rows.Add(row);
 
-                    this.Hide();
+                        this.Hide();
+                    }
                 }
             }
         }

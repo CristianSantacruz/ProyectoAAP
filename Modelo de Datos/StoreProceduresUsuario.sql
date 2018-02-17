@@ -1,5 +1,5 @@
 -- STORE PROCEDURE PARA INSERTAR DATOS TABLA USUARIO
-alter proc insertarDatosUsuario (
+create proc insertarDatosUsuario (
 	@NOMBREUSUARIO				varchar(50),
 	@LOGINUSUARIO				varchar(20),
 	@PASSWORDUSUARIO			varchar(10),
@@ -26,7 +26,7 @@ GO
 
 
 --STORE PROCEDURE PARA ACTUALIZAR DATOS DEL USUARIO
-alter proc actualizarDatosUsuario (
+create proc actualizarDatosUsuario (
 	@NOMBREUSUARIO				varchar(50),
 	@PASSWORDUSUARIO			varchar(10)
 )

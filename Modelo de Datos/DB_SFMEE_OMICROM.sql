@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     14/2/2018 23:56:56                           */
+/* Created on:     16/2/2018 2:15:52                            */
 /*==============================================================*/
 
 
@@ -242,7 +242,7 @@ go
 /* Table: PARAMETRO                                             */
 /*==============================================================*/
 create table PARAMETRO (
-   IDPARAMETRO          int                  not null,
+   IDPARAMETRO          int                  identity,
    NOMBREPARAMETRO      varchar(15)          not null,
    VALOR                int                  not null,
    constraint PK_PARAMETRO primary key nonclustered (IDPARAMETRO)

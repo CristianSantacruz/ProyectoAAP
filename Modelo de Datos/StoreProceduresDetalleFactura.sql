@@ -1,5 +1,5 @@
 -- STORE PROCEDURE PARA INSERTAR DATOS TABLA DETALLE_FACTURA
-create proc insertarDatosDetalleFactura (
+alter proc insertarDatosDetalleFactura (
 	@IDFACTURA					int,
 	@IDMANTENIMIENTO			int,
 	@IDPRODUCTO					int,
@@ -13,27 +13,41 @@ create proc insertarDatosDetalleFactura (
 as insert into DETALLE_FACTURA(IDFACTURA, IDMANTENIMIENTO, IDPRODUCTO, CODIGO, CANTIDAD, DETALLE, VALORUNITARIO, DESCUENTODETALLE, VALORTOTAL)
 	values (@IDFACTURA, @IDMANTENIMIENTO, @IDPRODUCTO, @CODIGO, @CANTIDAD, @DETALLE, @VALORUNITARIO, @DESCUENTODETALLE, @VALORTOTAL)
 
-exec insertarDatosFactura 1,'12/02/2018','10:30:35','PENDIENTE','OK',25.45
-select *from FACTURA
+go
+exec insertarDatosDetalleFactura 1,null,1,'M0001',2,'Disco',80,0,80
+select *from DETALLE_FACTURA
 GO
-
---REESTABLECER STOCK AL ANULAR UNA FACTURA
-create trigger reestablecerStock
-on [DETALLE_FACTURA]
-for delete
-as update PRODUCTO set PRODUCTO.CANTIDADPRODUCTO=PRODUCTO.CANTIDADPRODUCTO + DF.CANTIDAD
-from PRODUCTO INNER JOIN deleted as DF
-ON PRODUCTO.IDPRODUCTO=DF.IDPRODUCTO
 
 --DISMINUIR STOCK
 create proc disminuirStock(
-	@IDDETALLEFACTURA	int,
-	@CANTIDAD			int
+	@IDPRODUCTO		int,
+	@CANTIDAD		int
 )
-as update PRODUCTO set PRODUCTO.CANTIDADPRODUCTO = PRODUCTO.CANTIDADPRODUCTO - DETALLE_FACTURA.CANTIDAD
-from PRODUCTO INNER JOIN DETALLE_FACTURA
-ON PRODUCTO.IDPRODUCTO=DETALLE_FACTURA.IDPRODUCTO
-where IDDETALLEFACTURA = @IDDETALLEFACTURA
+as update PRODUCTO set CANTIDADPRODUCTO=CANTIDADPRODUCTO-@CANTIDAD
+where IDPRODUCTO=@IDPRODUCTO
+go
+
+exec disminuirStock 1,2
+go
+
+select * from PRODUCTO
+
+
+
+
+--****************************************************************************
+--REESTABLECER STOCK AL ANULAR UNA FACTURA
+alter trigger reestablecerStock
+on [DETALLE_FACTURA]
+for delete
+as 
+
+Update di set di.CANTIDADPRODUCTO=di.CANTIDADPRODUCTO+dv.CANTIDAD
+from PRODUCTO as di inner join
+deleted as dv on di.IDPRODUCTO=dv.IDPRODUCTO
+go
+
+
 
 
 --MOSTRAR DETALLE FACTURA
@@ -43,10 +57,9 @@ create proc mostarDetalleFactura
 as select IDDETALLEFACTURA, CODIGO, CANTIDAD, DETALLE, VALORUNITARIO, DESCUENTODETALLE, VALORTOTAL
 		from DETALLE_FACTURA
 		WHERE IDFACTURA = @IDFACTURA
-
-exec buscarFactura 1
+go
+exec mostarDetalleFactura 10
 GO
-
 
 --STORE PROCEDURE PARA ANULAR UNA FACTURA
 create proc anularFactura (
@@ -63,4 +76,5 @@ as
 exec anularFactura 1,'PENDIENTE'
 select *from FACTURA
 GO
+
 

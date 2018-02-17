@@ -8,12 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Negocio;
+using System.Data.SqlClient;
 
 namespace SFMEE_OMICROM
 {
 
     public partial  class FormularioNueva_FacturaVenta : Form
     {
+        private SqlConnection conexion = new SqlConnection();
+
+        public void abrirConexion()
+        {
+            conexion.ConnectionString = "Data Source =LPT-CRISTIAN; Initial Catalog=SFMEE_OMICROM; Integrated Security=true";
+            conexion.Open();
+        }
+
         public static DataTable tablaDetalle;
 
         public FormularioNueva_FacturaVenta()
@@ -22,6 +31,32 @@ namespace SFMEE_OMICROM
             this.CenterToScreen();
             timer1.Enabled = true;
             bloquearBotones();
+            this.contarRegistros();
+            this.lblIVAValor.Text = "0";
+        }
+
+        public void insertarDetalles()
+        {
+            string respuesta = "";
+            this.abrirConexion();
+            
+
+            foreach (DataRow row in tablaDetalle.Rows)
+            {
+                SqlCommand SqlCmd = new SqlCommand("insertarDatosDetalleFactura", conexion);
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.Parameters.Add(new SqlParameter("@IDFACTURA", Convert.ToInt32(row["IDFACTURA"].ToString())));
+                SqlCmd.Parameters.Add(new SqlParameter("@IDMANTENIMIENTO", Convert.ToInt32(row["IDMANTENIMIENTO"].ToString())));
+                SqlCmd.Parameters.Add(new SqlParameter("@IDPRODUCTO", Convert.ToInt32(row["IDPRODUCTO"].ToString())));
+                SqlCmd.Parameters.Add(new SqlParameter("@CODIGO", (row["CÓDIGO"].ToString())));
+                SqlCmd.Parameters.Add(new SqlParameter("@CANTIDAD", Convert.ToInt32(row["CANTIDAD"].ToString())));
+                SqlCmd.Parameters.Add(new SqlParameter("@DETALLE", (row["DETALLE"].ToString())));
+                SqlCmd.Parameters.Add(new SqlParameter("@VALORUNITARIO", Convert.ToSingle(row["VALOR UNITARIO"].ToString())));
+                SqlCmd.Parameters.Add(new SqlParameter("@DESCUENTODETALLE", Convert.ToSingle(row["DESCUENTO"].ToString())));
+                SqlCmd.Parameters.Add(new SqlParameter("@VALORTOTAL", Convert.ToSingle(row["VALOR TOTAL"].ToString())));
+                SqlCmd.ExecuteNonQuery();
+            }
+            conexion.Close();
         }
 
         private void MensajeOK(string mensaje)
@@ -58,16 +93,21 @@ namespace SFMEE_OMICROM
             limpiarCampos();
             bloquearBotones();
         }
-
+        
         private void crearTabla()
         {
             tablaDetalle = new DataTable("Detalle");
+            tablaDetalle.Columns.Add("IDFACTURA", System.Type.GetType("System.Int32"));
+            tablaDetalle.Columns.Add("IDMANTENIMIENTO", System.Type.GetType("System.Int32"));
+            tablaDetalle.Columns.Add("IDPRODUCTO", System.Type.GetType("System.Int32"));
+
             tablaDetalle.Columns.Add("CÓDIGO", System.Type.GetType("System.String"));
             tablaDetalle.Columns.Add("CANTIDAD", System.Type.GetType("System.Int32"));
             tablaDetalle.Columns.Add("DETALLE", System.Type.GetType("System.String"));
-            tablaDetalle.Columns.Add("VALOR UNITARIO", System.Type.GetType("System.Decimal"));
-            tablaDetalle.Columns.Add("DESCUENTO", System.Type.GetType("System.Decimal"));
-            tablaDetalle.Columns.Add("VALOR TOTAL", System.Type.GetType("System.Decimal"));
+            tablaDetalle.Columns.Add("VALOR UNITARIO", System.Type.GetType("System.Single"));
+            tablaDetalle.Columns.Add("DESCUENTO", System.Type.GetType("System.Single"));
+            tablaDetalle.Columns.Add("VALOR TOTAL", System.Type.GetType("System.Single"));
+            
 
             this.tablaFactura.DataSource = tablaDetalle;
         }
@@ -194,8 +234,7 @@ namespace SFMEE_OMICROM
                 this.lblDireccionMostrar.Text = Convert.ToString(this.tablaCliente.CurrentRow.Cells["DIRECCIONCLIENTE"].Value);
                 this.lblTelefonoFijoMostrar.Text = Convert.ToString(this.tablaCliente.CurrentRow.Cells["TELEFONOFIJOCLIENTE"].Value);
                 this.lblCelularMostrar.Text = Convert.ToString(this.tablaCliente.CurrentRow.Cells["TELEFONOMOVILCLIENTE"].Value);
-
-                this.contarRegistros();
+                
                 radioEfectivo.Visible = true;
                 radioTarjeta.Visible = true;
                 radioCheque.Visible = true;
@@ -221,37 +260,25 @@ namespace SFMEE_OMICROM
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
+                try
             {
                 string respuesta = "";
-                string tipoPago = "";
-                if (this.lblClienteMostrar.Text == string.Empty || this.pickerFechaNuevaFactura.Text == string.Empty || this.comboCajero.Text == string.Empty || 
+                string tipoPago = "EFECTIVO";
+                if (this.lblClienteMostrar.Text == string.Empty || this.pickerFechaNuevaFactura.Text == string.Empty || this.comboCajero.Text == string.Empty ||
                     this.lblSubTotalValor.Text == string.Empty || this.lblDescuento.Text == string.Empty || this.lblIVAValor.Text == string.Empty ||
-                    this.lblTotalValor.Text == string.Empty || this.comboEstadoFactura.Text == string.Empty && 
-                    (radioCheque.Checked==true || radioEfectivo.Checked==true) || radioTarjeta.Checked==true)
+                    this.lblTotalValor.Text == string.Empty || this.comboEstadoFactura.Text == string.Empty &&
+                    (radioCheque.Checked == true || radioEfectivo.Checked == true) || radioTarjeta.Checked == true)
                 {
                     MensajeError("Falta ingresar algunos datos");
                 }
                 else
                 {
-                    if(radioCheque.Checked == true)
-                    {
-                        tipoPago = "CHEQUE";
-                    }
-                    else if (radioEfectivo.Checked == true)
-                    {
-                        tipoPago = "EFECTIVO";
-                    }
+                    respuesta = NegocioFactura.insertarFactura(Convert.ToInt32(this.lblClienteMostrar.Text), this.pickerFechaNuevaFactura.Text, this.comboCajero.Text,
+                        tipoPago, float.Parse(this.lblSubTotalValor.Text), float.Parse(this.lblDescuentoValor.Text),
+                        float.Parse(this.lblIVAValor.Text), float.Parse(this.lblTotalValor.Text), this.comboEstadoFactura.Text);
+                    this.insertarDetalles();
 
-                    else if (radioTarjeta.Checked == true)
-                    {
-                        tipoPago = "TARJETA";
-                    }
-                    respuesta = NegocioFactura.insertarFactura(Int32.Parse(this.lblClienteMostrar.Text), this.pickerFechaNuevaFactura.Text, this.comboCajero.Text, 
-                        tipoPago.ToUpper(), float.Parse(this.lblSubTotalValor.Text), float.Parse(this.lblDescuentoValor.Text), 
-                        float.Parse(this.lblIVAValor.Text), float.Parse(this.lblTotalValor.Text), this.comboEstadoFactura.Text, tablaDetalle);
                     this.MensajeOK("Registro ingresado exitosamente");
-
                     btnImprimir.Visible = true;
                 }
             }
@@ -259,7 +286,6 @@ namespace SFMEE_OMICROM
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
-
         }
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -310,6 +336,9 @@ namespace SFMEE_OMICROM
             this.tablaCliente.Visible = false;
             this.tabla_aux.Visible = false;
             this.crearTabla();
+            this.tablaFactura.Columns[0].Visible = false;
+            this.tablaFactura.Columns[1].Visible = false;
+            this.tablaFactura.Columns[2].Visible = false;
         }
 
         private void btnBorrarProducto_Click(object sender, EventArgs e)
@@ -325,6 +354,10 @@ namespace SFMEE_OMICROM
                 MessageBox.Show("No ha seleccionado una fila", "Eliminar Fila", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
         }
     }
 }

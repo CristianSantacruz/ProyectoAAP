@@ -2530,9 +2530,10 @@ EntityComment 0 Arial,8,N</a:FontList>
 <a:Code>CODIGO</a:Code>
 <a:CreationDate>1517030642</a:CreationDate>
 <a:Creator>Cristian</a:Creator>
-<a:ModificationDate>1517030642</a:ModificationDate>
+<a:ModificationDate>1518670595</a:ModificationDate>
 <a:Modifier>Cristian</a:Modifier>
-<a:DataType>I</a:DataType>
+<a:DataType>VA5</a:DataType>
+<a:Length>5</a:Length>
 </o:DataItem>
 <o:DataItem Id="o113">
 <a:ObjectID>B4E8D823-96BD-4287-844E-1D7918BA7631</a:ObjectID>

@@ -198,6 +198,7 @@
             this.btnImprimir.Size = new System.Drawing.Size(40, 40);
             this.btnImprimir.TabIndex = 38;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // radioTarjeta
             // 
@@ -459,6 +460,8 @@
             // comboCajero
             // 
             this.comboCajero.FormattingEnabled = true;
+            this.comboCajero.Items.AddRange(new object[] {
+            "ERIKA"});
             this.comboCajero.Location = new System.Drawing.Point(412, 109);
             this.comboCajero.Name = "comboCajero";
             this.comboCajero.Size = new System.Drawing.Size(176, 21);
@@ -658,9 +661,9 @@
             this.lblNumeroFacturaVenta.BackColor = System.Drawing.SystemColors.Window;
             this.lblNumeroFacturaVenta.Location = new System.Drawing.Point(206, 85);
             this.lblNumeroFacturaVenta.Name = "lblNumeroFacturaVenta";
-            this.lblNumeroFacturaVenta.Size = new System.Drawing.Size(126, 13);
+            this.lblNumeroFacturaVenta.Size = new System.Drawing.Size(13, 13);
             this.lblNumeroFacturaVenta.TabIndex = 0;
-            this.lblNumeroFacturaVenta.Text = "NUMERO DE FACTURA";
+            this.lblNumeroFacturaVenta.Text = "0";
             // 
             // menuStrip1
             // 
@@ -784,7 +787,6 @@
         private System.Windows.Forms.ToolStripMenuItem soporteTécnicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeSGFMOMICROMToolStripMenuItem;
         private System.Windows.Forms.GroupBox grupoCliente;
-        private System.Windows.Forms.Label lblNumeroFacturaVenta;
         private System.Windows.Forms.ComboBox comboCajero;
         private System.Windows.Forms.DateTimePicker pickerFechaNuevaFactura;
         private System.Windows.Forms.Label lblCI;
@@ -829,5 +831,6 @@
         private System.Windows.Forms.ComboBox comboEstadoFactura;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView tablaFactura;
+        public System.Windows.Forms.Label lblNumeroFacturaVenta;
     }
 }

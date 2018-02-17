@@ -1,5 +1,5 @@
 -- STORE PROCEDURE PARA INSERTAR DATOS TABLA PARAMETRO
-create proc insertarDatosParametro (
+alter proc insertarDatosParametro (
 	@NOMBREPARAMETRO		varchar(15),
 	@VALOR					int
 )

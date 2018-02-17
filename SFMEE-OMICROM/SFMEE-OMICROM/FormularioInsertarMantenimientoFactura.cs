@@ -148,13 +148,17 @@ namespace SFMEE_OMICROM
             }
             else
             {
+                FormularioNueva_FacturaVenta factura = new FormularioNueva_FacturaVenta();
                 DataRow row = FormularioNueva_FacturaVenta.tablaDetalle.NewRow();
+                row["IDFACTURA"] = Convert.ToInt32(factura.lblNumeroFacturaVenta.Text);
+                row["IDPRODUCTO"]=1;
+                row["IDMANTENIMIENTO"] = Convert.ToInt32(this.txtCodigoMantenimiento.Text);
                 row["CÓDIGO"] = this.txtCodigoMantenimiento.Text;
                 row["CANTIDAD"] = 1;
                 row["DETALLE"] = this.lblObservacionMantenimientoMostrar.Text;
-                row["VALOR UNITARIO"] = Convert.ToDecimal(this.lblPrecioMantenimientoMostrar.Text);
-                row["VALOR TOTAL"] = Convert.ToDecimal(this.lblPrecioMantenimientoMostrar.Text) * Convert.ToDecimal(row["CANTIDAD"]);
+                row["VALOR UNITARIO"] = float.Parse(this.lblPrecioMantenimientoMostrar.Text);
                 row["DESCUENTO"] = 0;
+                row["VALOR TOTAL"] = float.Parse(this.lblPrecioMantenimientoMostrar.Text) * float.Parse(row["CANTIDAD"].ToString());
                 FormularioNueva_FacturaVenta.tablaDetalle.Rows.Add(row);
 
                 this.Hide();

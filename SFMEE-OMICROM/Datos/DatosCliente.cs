@@ -119,7 +119,7 @@ namespace Datos
                 SqlCon.Open();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "mostrarClientes";
+                SqlCmd.CommandText = "mostrarCliente";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);

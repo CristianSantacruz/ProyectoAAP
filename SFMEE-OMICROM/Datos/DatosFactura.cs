@@ -29,16 +29,16 @@ namespace Datos
         public DatosFactura(int idFactura, int idCliente, string fechaFactura, string vendedor, string tipoPago, 
                             float subtotal, float descuento, float iva, float total, string estadoFactura)
         {
-            this._idFactura = idFactura;
-            this._idCliente = idCliente;
-            this._fechaFactura = fechaFactura;
-            this._vendedor = vendedor;
-            this._tipoPago = tipoPago;
-            this._subTotal = subtotal;
-            this._descuento = descuento;
-            this._iva = iva;
-            this._total = total;
-            this._estadoFactura = estadoFactura;
+            this.IdFactura = idFactura;
+            this.IdCliente = idCliente;
+            this.FechaFactura = fechaFactura;
+            this.Vendedor = vendedor;
+            this.TipoPago = tipoPago;
+            this.SubTotal = subtotal;
+            this.Descuento = descuento;
+            this.Iva = iva;
+            this.Total = total;
+            this.EstadoFactura = estadoFactura;
         }
 
         public int IdFactura { get => _idFactura; set => _idFactura = value; }
@@ -82,25 +82,27 @@ namespace Datos
             return tablaResultado;
         }
 
-        public string disminuirStock(int idDetalleFactura, int cantidad)
+        public string disminuirStock(int idProducto, int cantidad)
         {
-            string respuesta = "";
+            string rpta = "";
             SqlConnection SqlCon = new SqlConnection();
             try
             {
+                //Código
                 SqlCon.ConnectionString = Conexion.cn;
                 SqlCon.Open();
+                //Establecer el Comando
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "disminuirStock";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-                //Crear parámetro @IDDETALLEFACTURA
-                SqlParameter parametroIdDetalleFactura = new SqlParameter();
-                parametroIdDetalleFactura.ParameterName = "@IDDETALLEFACTURA";
-                parametroIdDetalleFactura.SqlDbType = SqlDbType.Int;
-                parametroIdDetalleFactura.Value = idDetalleFactura;
-                SqlCmd.Parameters.Add(parametroIdDetalleFactura);
+                //Crear parámetro @IDPRODUCTO
+                SqlParameter parametroIdProducto = new SqlParameter();
+                parametroIdProducto.ParameterName = "@IDPRODUCTO";
+                parametroIdProducto.SqlDbType = SqlDbType.Int;
+                parametroIdProducto.Value = idProducto;
+                SqlCmd.Parameters.Add(parametroIdProducto);
 
                 //Crear parámetro @CANTIDAD
                 SqlParameter parametroCantidad = new SqlParameter();
@@ -108,27 +110,26 @@ namespace Datos
                 parametroCantidad.SqlDbType = SqlDbType.Int;
                 parametroCantidad.Value = cantidad;
                 SqlCmd.Parameters.Add(parametroCantidad);
+                
+                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizó el Stock";
 
-                respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "Registro actualizado exitosamente" : "No se actualizó el Stock";
             }
-
             catch (Exception ex)
             {
-                respuesta = ex.Message;
+                rpta = ex.Message;
             }
             finally
             {
-                if (SqlCon.State == ConnectionState.Open)
-                    SqlCon.Close();
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
             }
-
-            return respuesta;
+            return rpta;
         }
 
-        public string insertarDatosFactura(DatosFactura Factura, List<DatosDetalleFactura>Detalle)
+        public string insertarDatosFactura(DatosFactura Factura)
         {
             string respuesta = "";
             SqlConnection SqlCon = new SqlConnection();
+
             try
             {
                 SqlCon.ConnectionString = Conexion.cn;
@@ -136,6 +137,7 @@ namespace Datos
                 SqlTransaction SqlTra = SqlCon.BeginTransaction();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
+                SqlCmd.Transaction = SqlTra;
                 SqlCmd.CommandText = "insertarDatosFactura";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
@@ -150,23 +152,23 @@ namespace Datos
                 SqlParameter parametroIdCliente = new SqlParameter();
                 parametroIdCliente.ParameterName = "@IDCLIENTE";
                 parametroIdCliente.SqlDbType = SqlDbType.Int;
-                parametroIdCliente.Value = Factura._idCliente;
+                parametroIdCliente.Value = Factura.IdCliente;
                 SqlCmd.Parameters.Add(parametroIdCliente);
-                
+
                 //Crear parámetro @FECHAFACTURA
                 SqlParameter parametroFechaFactura = new SqlParameter();
                 parametroFechaFactura.ParameterName = "@FECHAFACTURA";
                 parametroFechaFactura.SqlDbType = SqlDbType.VarChar;
                 parametroFechaFactura.Size = 10;
-                parametroFechaFactura.Value = Factura._fechaFactura;
+                parametroFechaFactura.Value = Factura.FechaFactura;
                 SqlCmd.Parameters.Add(parametroFechaFactura);
 
                 //Crear parámetro @VENDEDOR
                 SqlParameter parametroVendedor = new SqlParameter();
-                parametroVendedor.ParameterName = "@FVENDEDOR";
+                parametroVendedor.ParameterName = "@VENDEDOR";
                 parametroVendedor.SqlDbType = SqlDbType.VarChar;
                 parametroVendedor.Size = 50;
-                parametroVendedor.Value = Factura._vendedor;
+                parametroVendedor.Value = Factura.Vendedor;
                 SqlCmd.Parameters.Add(parametroVendedor);
 
                 //Crear parámetro @TIPOPAGO
@@ -174,7 +176,7 @@ namespace Datos
                 parametroTipoPAgo.ParameterName = "@TIPOPAGO";
                 parametroTipoPAgo.SqlDbType = SqlDbType.VarChar;
                 parametroTipoPAgo.Size = 10;
-                parametroTipoPAgo.Value = Factura._tipoPago;
+                parametroTipoPAgo.Value = Factura.TipoPago;
                 SqlCmd.Parameters.Add(parametroTipoPAgo);
 
                 //Crear parámetro @SUBTOTAL
@@ -182,7 +184,7 @@ namespace Datos
                 parametroSubTotal.ParameterName = "@SUBTOTAL";
                 parametroSubTotal.SqlDbType = SqlDbType.Float;
                 parametroSubTotal.Size = 10;
-                parametroSubTotal.Value = Factura._subTotal;
+                parametroSubTotal.Value = Factura.SubTotal;
                 SqlCmd.Parameters.Add(parametroSubTotal);
 
                 //Crear parámetro @DESCUENTO
@@ -190,7 +192,7 @@ namespace Datos
                 parametroDescuento.ParameterName = "@DESCUENTO";
                 parametroDescuento.SqlDbType = SqlDbType.Float;
                 parametroDescuento.Size = 10;
-                parametroDescuento.Value = Factura._descuento;
+                parametroDescuento.Value = Factura.Descuento;
                 SqlCmd.Parameters.Add(parametroDescuento);
 
                 //Crear parámetro @IVA
@@ -198,7 +200,7 @@ namespace Datos
                 parametroIva.ParameterName = "@IVA";
                 parametroIva.SqlDbType = SqlDbType.Float;
                 parametroIva.Size = 10;
-                parametroIva.Value = Factura._iva;
+                parametroIva.Value = Factura.Iva;
                 SqlCmd.Parameters.Add(parametroIva);
 
                 //Crear parámetro @TOTAL
@@ -206,7 +208,7 @@ namespace Datos
                 parametroTotal.ParameterName = "@TOTAL";
                 parametroTotal.SqlDbType = SqlDbType.Float;
                 parametroTotal.Size = 10;
-                parametroTotal.Value = Factura._total;
+                parametroTotal.Value = Factura.Total;
                 SqlCmd.Parameters.Add(parametroTotal);
 
                 //Crear parámetro @ESTADOFACTURA
@@ -214,33 +216,33 @@ namespace Datos
                 parametroEstadofactura.ParameterName = "@ESTADOFACTURA";
                 parametroEstadofactura.SqlDbType = SqlDbType.VarChar;
                 parametroEstadofactura.Size = 15;
-                parametroEstadofactura.Value = Factura._estadoFactura;
+                parametroEstadofactura.Value = Factura.EstadoFactura;
                 SqlCmd.Parameters.Add(parametroEstadofactura);
+                
+                respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se ingresó el registro";
 
-                respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "Registro ingresado exitosamente" : "No se ingresó el registro";
-
-                if (respuesta.Equals("Registro ingresado exitosamente"))
-                {
-                    this.IdFactura = Convert.ToInt32(SqlCmd.Parameters["@IDFACTURA"].Value);
-                    foreach (DatosDetalleFactura det in Detalle)
-                    {
-                        det.IdFactura = this.IdFactura;
-                        respuesta = det.insertarDetalleFactura(det, ref SqlCon, ref SqlTra);
-                        if (!respuesta.Equals("Registro ingresado exitosamente"))
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            respuesta = disminuirStock(det.IdDetalleFactura, det.Cantidad);
-                            if (!respuesta.Equals("Registro ingresado exitosamente"))
-                            {
-                                break;
-                            }
-                        }
-                    }
-                }
-                if (respuesta.Equals("Registro ingresado exitosamente"))
+                //if (respuesta.Equals("OK"))
+                //{
+                //    this.IdFactura = Convert.ToInt32(SqlCmd.Parameters["@IDFACTURA"].Value);
+                //    foreach (DatosDetalleFactura det in Detalles)
+                //    {
+                //        det.IdFactura = this.IdFactura;
+                //        respuesta = det.insertarDetalleFactura(det, ref SqlCon, ref SqlTra);
+                //        if (!respuesta.Equals("OK"))
+                //        {
+                //            break;
+                //        }
+                //        else
+                //        {
+                //            respuesta = disminuirStock(det.IdProducto, det.Cantidad);
+                //            if (!respuesta.Equals("OK"))
+                //            {
+                //                break;
+                //            }
+                //        }
+                //    }
+                //}
+                if (respuesta.Equals("OK"))
                 {
                     SqlTra.Commit();
                 }
@@ -259,7 +261,6 @@ namespace Datos
                 if (SqlCon.State == ConnectionState.Open)
                     SqlCon.Close();
             }
-
             return respuesta;
         }
 
@@ -401,5 +402,42 @@ namespace Datos
 
             return tablaResultado;
         }
+        
+
+        //public string anularFactura (DatosFactura Factura)
+        //{
+        //    string rpta = "";
+        //    SqlConnection SqlCon = new SqlConnection();
+        //    try
+        //    {
+        //        //Código
+        //        SqlCon.ConnectionString = Conexion.cn;
+        //        SqlCon.Open();
+        //        //Establecer el Comando
+        //        SqlCommand SqlCmd = new SqlCommand();
+        //        SqlCmd.Connection = SqlCon;
+        //        SqlCmd.CommandText = "speliminar_venta";
+        //        SqlCmd.CommandType = CommandType.StoredProcedure;
+
+        //        SqlParameter ParIdventa = new SqlParameter();
+        //        ParIdventa.ParameterName = "@idventa";
+        //        ParIdventa.SqlDbType = SqlDbType.Int;
+        //        ParIdventa.Value = Venta.Idventa;
+        //        SqlCmd.Parameters.Add(ParIdventa);
+        //        //Ejecutamos nuestro comando
+
+        //        rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "OK";
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        rpta = ex.Message;
+        //    }
+        //    finally
+        //    {
+        //        if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+        //    }
+        //    return rpta;
+        //}
     }
 }

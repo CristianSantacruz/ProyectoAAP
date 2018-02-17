@@ -30,16 +30,16 @@ namespace Datos
         public DatosDetalleFactura(int idDetalleFactura, int idFactura, int idMantenimiento, int idProducto, string codigo, int cantidad, 
                                    string detalle, float valorUnitario, float descuentoDetalle,float valorTotal)
         {
-            this._idDetalleFactura = idDetalleFactura;
-            this._idFactura = idFactura;
-            this._idMantenimiento = idMantenimiento;
-            this._idProducto = idProducto;
-            this._codigo = codigo;
-            this._cantidad = cantidad;
-            this._detalle = detalle;
-            this._valorUnitario = valorUnitario;
-            this._descuentoDetalle = descuentoDetalle;
-            this._valorTotal= valorTotal;
+            this.IdDetalleFactura = idDetalleFactura;
+            this.IdFactura = idFactura;
+            this.IdMantenimiento = idMantenimiento;
+            this.IdProducto = idProducto;
+            this.Codigo = codigo;
+            this.Cantidad = cantidad;
+            this.Detalle = detalle;
+            this.ValorUnitario = valorUnitario;
+            this.DescuentoDetalle = descuentoDetalle;
+            this.ValorTotal= valorTotal;
         }
 
         public int IdDetalleFactura { get => _idDetalleFactura; set => _idDetalleFactura = value; }
@@ -55,36 +55,40 @@ namespace Datos
 
         public string insertarDetalleFactura(DatosDetalleFactura DetalleFactura, ref SqlConnection SqlCon, ref SqlTransaction SqlTra)
         {
-            string respuesta = "";
+            string rpta = "";
             try
             {
-                SqlCon.ConnectionString = Conexion.cn;
-                SqlCon.Open();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "insertarDatosDetalleFactura";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
-
+                //Crear parámetro @IDFACTURA
+                SqlParameter parametroIdDetalleVenta = new SqlParameter();
+                parametroIdDetalleVenta.ParameterName = "@IDDETALLEFACTURA";
+                parametroIdDetalleVenta.SqlDbType = SqlDbType.Int;
+                parametroIdDetalleVenta.Direction = ParameterDirection.Output;
+                SqlCmd.Parameters.Add(parametroIdDetalleVenta);
+                
                 //Crear parámetro @IDFACTURA
                 SqlParameter parametroIdfactura = new SqlParameter();
                 parametroIdfactura.ParameterName = "@IDFACTURA";
                 parametroIdfactura.SqlDbType = SqlDbType.Int;
-                parametroIdfactura.Value = DetalleFactura._idFactura;
+                parametroIdfactura.Value = DetalleFactura.IdFactura;
                 SqlCmd.Parameters.Add(parametroIdfactura);
 
                 //Crear parámetro @IDMANTENIMIENTO
                 SqlParameter parametroIdMantenimiento = new SqlParameter();
                 parametroIdMantenimiento.ParameterName = "@IDMANTENIMIENTO";
                 parametroIdMantenimiento.SqlDbType = SqlDbType.Int;
-                parametroIdMantenimiento.Value = DetalleFactura._idMantenimiento;
+                parametroIdMantenimiento.Value = DetalleFactura.IdMantenimiento;
                 SqlCmd.Parameters.Add(parametroIdMantenimiento);
 
                 //Crear parámetro @IDPRODUCTO
                 SqlParameter parametroIdProducto = new SqlParameter();
                 parametroIdProducto.ParameterName = "@IDPRODUCTO";
                 parametroIdProducto.SqlDbType = SqlDbType.Int;
-                parametroIdProducto.Value = DetalleFactura._idProducto;
+                parametroIdProducto.Value = DetalleFactura.IdProducto;
                 SqlCmd.Parameters.Add(parametroIdProducto);
 
                 //Crear parámetro @CODIGO
@@ -92,14 +96,14 @@ namespace Datos
                 parametroCodigo.ParameterName = "@CODIGO";
                 parametroCodigo.SqlDbType = SqlDbType.VarChar;
                 parametroCodigo.Size = 5;
-                parametroCodigo.Value = DetalleFactura._codigo;
+                parametroCodigo.Value = DetalleFactura.Codigo;
                 SqlCmd.Parameters.Add(parametroCodigo);
 
                 //Crear parámetro @CANTIDAD
                 SqlParameter parametroCantidad = new SqlParameter();
                 parametroCantidad.ParameterName = "@CANTIDAD";
                 parametroCantidad.SqlDbType = SqlDbType.Int;
-                parametroCantidad.Value = DetalleFactura._cantidad;
+                parametroCantidad.Value = DetalleFactura.Cantidad;
                 SqlCmd.Parameters.Add(parametroCantidad);
 
                 //Crear parámetro @DETALLE
@@ -107,7 +111,7 @@ namespace Datos
                 parametroDetalle.ParameterName = "@DETALLE";
                 parametroDetalle.SqlDbType = SqlDbType.VarChar;
                 parametroDetalle.Size = 50;
-                parametroDetalle.Value = DetalleFactura._detalle;
+                parametroDetalle.Value = DetalleFactura.Detalle;
                 SqlCmd.Parameters.Add(parametroDetalle);
 
                 //Crear parámetro @VALORUNITARIO
@@ -115,7 +119,7 @@ namespace Datos
                 parametroValorUnitario.ParameterName = "@VALORUNITARIO";
                 parametroValorUnitario.SqlDbType = SqlDbType.Float;
                 parametroValorUnitario.Size = 10;
-                parametroValorUnitario.Value = DetalleFactura._valorUnitario;
+                parametroValorUnitario.Value = DetalleFactura.ValorUnitario;
                 SqlCmd.Parameters.Add(parametroValorUnitario);
 
                 //Crear parámetro @DESCUENTODETALLE
@@ -123,7 +127,7 @@ namespace Datos
                 parametroDescuentoDetalle.ParameterName = "@DESCUENTODETALLE";
                 parametroDescuentoDetalle.SqlDbType = SqlDbType.Float;
                 parametroDescuentoDetalle.Size = 10;
-                parametroDescuentoDetalle.Value = DetalleFactura._descuentoDetalle;
+                parametroDescuentoDetalle.Value = DetalleFactura.DescuentoDetalle;
                 SqlCmd.Parameters.Add(parametroDescuentoDetalle);
 
                 //Crear parámetro @VALORTOTAL
@@ -131,24 +135,16 @@ namespace Datos
                 parametroValorTotal.ParameterName = "@VALORTOTAL";
                 parametroValorTotal.SqlDbType = SqlDbType.Float;
                 parametroValorTotal.Size = 10;
-                parametroValorTotal.Value = DetalleFactura._valorTotal;
+                parametroValorTotal.Value = DetalleFactura.ValorTotal;
                 SqlCmd.Parameters.Add(parametroValorTotal);
 
-                respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "Registro ingresado exitosamente" : "No se ingresó el registro";
+                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se ingresó el registro";
             }
-
             catch (Exception ex)
             {
-                respuesta = ex.Message;
+                rpta = ex.Message;
             }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open)
-                    SqlCon.Close();
-            }
-
-            return respuesta;
+            return rpta;
         }
-        
     }
 }

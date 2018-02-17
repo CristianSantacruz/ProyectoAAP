@@ -15,8 +15,8 @@ namespace Negocio
             return new DatosFactura().contarRegistros();
         }
 
-        public static string insertarFactura(int idCliente, string fechaFactura, string vendedor, string tipoPago,
-                          float subtotal, float descuento, float iva, float total, string estadoFactura, DataTable tablaDetalle)
+        public static string insertarFactura(int idCliente, string fechaFactura, string vendedor, string tipoPago, float subtotal, float descuento, float iva,
+                                             float total, string estadoFactura)
         {
             DatosFactura factura = new DatosFactura();
             factura.IdCliente = idCliente;
@@ -28,24 +28,10 @@ namespace Negocio
             factura.Iva = iva;
             factura.Total = total;
             factura.EstadoFactura = estadoFactura;
-            List<DatosDetalleFactura> detalles = new List<DatosDetalleFactura>();
-            foreach (DataRow row in tablaDetalle.Rows)
-            {
-                DatosDetalleFactura detalle = new DatosDetalleFactura();
-                detalle.IdFactura = Convert.ToInt32(row["IDFACTURA"].ToString());
-                detalle.IdProducto = Convert.ToInt32(row["IDPRODUCTO"].ToString());
-                detalle.IdMantenimiento = Convert.ToInt32(row["IDMANTENIMIENTO"].ToString());
-                detalle.Codigo = (row["CODIGO"].ToString());
-                detalle.Cantidad = Convert.ToInt32(row["CANTIDAD"].ToString());
-                detalle.Detalle = (row["DETALLE"].ToString());
-                detalle.ValorUnitario = float.Parse(row["VALORUNITARIO"].ToString());
-                detalle.DescuentoDetalle = float.Parse(row["DESCUENTODETALLE"].ToString());
-                detalle.ValorTotal = float.Parse(row["VALORTOTAL"].ToString());
-                detalles.Add(detalle);
-            }
-            return factura.insertarDatosFactura(factura, detalles);
+            
+            return factura.insertarDatosFactura(factura);
         }
-
+        
         public static string anularFactura(int idfactura)
         {
             DatosFactura factura = new DatosFactura();

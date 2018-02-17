@@ -1,6 +1,6 @@
 -- STORE PROCEDURE PARA INSERTAR DATOS TABLA FACTURA
 alter proc insertarDatosFactura (
-	@IDFACTURA					int=null output,
+	@IDFACTURA					int =null output,
 	@IDCLIENTE					int,
 	@FECHAFACTURA				varchar(10),
 	@VENDEDOR					varchar(50),
@@ -13,14 +13,24 @@ alter proc insertarDatosFactura (
 )
 as insert into FACTURA(IDCLIENTE, FECHAFACTURA, VENDEDOR, TIPOPAGO, SUBTOTAL, DESCUENTO, IVA, TOTAL, ESTADOFACTURA)
 	values (@IDCLIENTE, @FECHAFACTURA, @VENDEDOR, @TIPOPAGO, @SUBTOTAL, @DESCUENTO, @IVA, @TOTAL, @ESTADOFACTURA)
-
-exec insertarDatosFactura 1,'12/02/2018','10:30:35','PENDIENTE','OK',25.45
+SET @IDFACTURA = @@IDENTITY
+go
+exec insertarDatosFactura 4,1,'12/02/2018','Pedro','EFECTIVOPOIUYTREDX', 25.45, 12.34, 1.12,34.67,'Cancelado'
 select *from FACTURA
 GO
 
 
+
+--STORE PROCEDURE PARA CONTAR NÚMERO DE REGISTROS
+create proc contarRegistrosFactura
+as select count (*) from FACTURA
+
+exec contarRegistrosFactura
+
+
+-- *****************************************************************************+++
 --STORE PROCEDURA PARA BUSCAR FACTURA
-alter proc buscarFactura
+create proc buscarFactura
 	@IDFACTURA			int
 
 as select CLIENTE.IDCLIENTE, CICLIENTE, NOMBRECLIENTE, DIRECCIONCLIENTE, TELEFONOFIJOCLIENTE, TELEFONOMOVILCLIENTE,
@@ -29,8 +39,8 @@ as select CLIENTE.IDCLIENTE, CICLIENTE, NOMBRECLIENTE, DIRECCIONCLIENTE, TELEFON
 		from CLIENTE INNER JOIN FACTURA 
 		ON CLIENTE.IDCLIENTE = FACTURA.IDCLIENTE INNER JOIN DETALLE_FACTURA ON FACTURA.IDFACTURA = DETALLE_FACTURA.IDFACTURA
 		WHERE FACTURA.IDFACTURA = @IDFACTURA
-
-exec buscarFactura 1
+go
+exec buscarFactura 10
 GO
 
 
@@ -57,8 +67,27 @@ as select top 10 CLIENTE.IDCLIENTE, CICLIENTE, NOMBRECLIENTE, DIRECCIONCLIENTE, 
 
 exec mostrarFacturas
 
---STORE PROCEDURE PARA CONTAR NÚMERO DE REGISTROS
-create proc contarRegistrosFactura
-as select count (*) from FACTURA
 
-exec contarRegistros
+
+create proc insertarFactura (
+	@IDCLIENTE					int,
+	@FECHAFACTURA				varchar(10),
+	@VENDEDOR					varchar(50),
+	@TIPOPAGO					varchar(10),
+	@SUBTOTAL					float(10),
+	@DESCUENTO					float(10),
+	@IVA						float(10),
+	@TOTAL						float(10),
+	@ESTADOFACTURA				varchar(15)
+)
+as insert into FACTURA(IDCLIENTE, FECHAFACTURA, VENDEDOR, TIPOPAGO, SUBTOTAL, DESCUENTO, IVA, TOTAL, ESTADOFACTURA)
+	values (@IDCLIENTE, @FECHAFACTURA, @VENDEDOR, @TIPOPAGO, @SUBTOTAL, @DESCUENTO, @IVA, @TOTAL, @ESTADOFACTURA)
+
+go
+exec insertarFactura 225,'16/02/2018','Pedro','EFECTIVO', 25.45, 12.34, 1.12,34.67,'Cancelado'
+	select *from FACTURA
+	order by IDFACTURA desc
+
+	select *from DETALLE_FACTURA
+	go
+	select *from CLIENTE
