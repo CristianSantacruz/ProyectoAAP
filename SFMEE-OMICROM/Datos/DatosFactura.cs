@@ -294,6 +294,79 @@ namespace Datos
             return respuesta;
         }
 
+        public string buscarFactura(DatosFactura Factura)
+        {
+            string respuesta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.cn;
+                SqlCon.Open();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "buscarFactura";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Crear parámetro @IDFACTURA
+                SqlParameter parametroIdFactura = new SqlParameter();
+                parametroIdFactura.ParameterName = "@IDFACTURA";
+                parametroIdFactura.SqlDbType = SqlDbType.Int;
+                parametroIdFactura.Value = Factura.IdFactura;
+                SqlCmd.Parameters.Add(parametroIdFactura);
+
+                respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "" : "No se encontró el registro";
+            }
+
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return respuesta;
+        }
+
+        public DataTable buscarFacturaTabla(DatosFactura Factura)
+        {
+            DataTable tablaResultado = new DataTable("FACTURA");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.cn;
+                SqlCon.Open();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "buscarFactura";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Crear parámetro @IDFACTURA
+                SqlParameter parametroIdFactura = new SqlParameter();
+                parametroIdFactura.ParameterName = "@IDFACTURA";
+                parametroIdFactura.SqlDbType = SqlDbType.Int;
+                parametroIdFactura.Value = Factura.IdFactura;
+                SqlCmd.Parameters.Add(parametroIdFactura);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(tablaResultado);
+            }
+
+            catch (Exception ex)
+            {
+                tablaResultado = null;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return tablaResultado;
+        }
+
         public string eliminarFactura(DatosFactura Factura)
         {
             string respuesta = "";
@@ -359,10 +432,10 @@ namespace Datos
 
             return tablaResultado;
         }
-
-        public string buscarFactura(DatosFactura Factura)
+        
+        public DataTable mostrarDetalle(DatosFactura Detalle)
         {
-            string respuesta = "";
+            DataTable tablaResultado = new DataTable("DETALLE_FACTURA");
             SqlConnection SqlCon = new SqlConnection();
             try
             {
@@ -370,50 +443,14 @@ namespace Datos
                 SqlCon.Open();
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "buscarFactura";
+                SqlCmd.CommandText = "mostarDetalleFactura";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 //Crear parámetro @IDFACTURA
                 SqlParameter parametroIdFactura = new SqlParameter();
                 parametroIdFactura.ParameterName = "@IDFACTURA";
                 parametroIdFactura.SqlDbType = SqlDbType.Int;
-                parametroIdFactura.Value = Factura.IdFactura;
-                SqlCmd.Parameters.Add(parametroIdFactura);
-
-                respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "" : "No se encontró el registro";
-            }
-
-            catch (Exception ex)
-            {
-                respuesta = ex.Message;
-            }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open)
-                    SqlCon.Close();
-            }
-
-            return respuesta;
-        }
-
-        public DataTable mostrarDetalle(int idFactura)
-        {
-            DataTable tablaResultado = new DataTable("DETALLE_VENTA");
-            SqlConnection SqlCon = new SqlConnection();
-            try
-            {
-                SqlCon.ConnectionString = Conexion.cn;
-                SqlCon.Open();
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "mostrarDetalleFactura";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                //Crear parámetro @IDFACTURA
-                SqlParameter parametroIdFactura = new SqlParameter();
-                parametroIdFactura.ParameterName = "@IDFACTURA";
-                parametroIdFactura.SqlDbType = SqlDbType.Int;
-                parametroIdFactura.Value = idFactura;
+                parametroIdFactura.Value = Detalle.IdFactura;
                 SqlCmd.Parameters.Add(parametroIdFactura);
 
                 SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
@@ -432,42 +469,41 @@ namespace Datos
 
             return tablaResultado;
         }
-        
 
-        //public string anularFactura (DatosFactura Factura)
-        //{
-        //    string rpta = "";
-        //    SqlConnection SqlCon = new SqlConnection();
-        //    try
-        //    {
-        //        //Código
-        //        SqlCon.ConnectionString = Conexion.cn;
-        //        SqlCon.Open();
-        //        //Establecer el Comando
-        //        SqlCommand SqlCmd = new SqlCommand();
-        //        SqlCmd.Connection = SqlCon;
-        //        SqlCmd.CommandText = "speliminar_venta";
-        //        SqlCmd.CommandType = CommandType.StoredProcedure;
+        public string anularFactura(DatosFactura Factura)
+        {
+            string respuesta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.cn;
+                SqlCon.Open();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "anularFactura";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
 
-        //        SqlParameter ParIdventa = new SqlParameter();
-        //        ParIdventa.ParameterName = "@idventa";
-        //        ParIdventa.SqlDbType = SqlDbType.Int;
-        //        ParIdventa.Value = Venta.Idventa;
-        //        SqlCmd.Parameters.Add(ParIdventa);
-        //        //Ejecutamos nuestro comando
+                //Crear parámetro @IDFACTURA
+                SqlParameter parametroIdFactura = new SqlParameter();
+                parametroIdFactura.ParameterName = "@IDFACTURA";
+                parametroIdFactura.SqlDbType = SqlDbType.Int;
+                parametroIdFactura.Value = Factura.IdFactura;
+                SqlCmd.Parameters.Add(parametroIdFactura);
 
-        //        rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "OK";
+                respuesta = SqlCmd.ExecuteNonQuery() == 1 ? "Factura anulada exitosamente" : "No se anulo la factura";
+            }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        rpta = ex.Message;
-        //    }
-        //    finally
-        //    {
-        //        if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
-        //    }
-        //    return rpta;
-        //}
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return respuesta;
+        }
     }
 }

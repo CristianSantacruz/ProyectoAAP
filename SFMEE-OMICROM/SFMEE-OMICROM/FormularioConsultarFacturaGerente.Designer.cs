@@ -42,6 +42,7 @@
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelNuevaFactura = new System.Windows.Forms.Panel();
+            this.tablaFactura = new System.Windows.Forms.DataGridView();
             this.lblHora = new System.Windows.Forms.Label();
             this.lblTipoPagoMostrar = new System.Windows.Forms.Label();
             this.txtNumeroFactura = new System.Windows.Forms.TextBox();
@@ -60,7 +61,7 @@
             this.lblDescuento = new System.Windows.Forms.Label();
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tablaDetalle = new System.Windows.Forms.DataGridView();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.grupoCliente = new System.Windows.Forms.GroupBox();
@@ -79,9 +80,10 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.panelNuevaFactura.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaFactura)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaDetalle)).BeginInit();
             this.grupoCliente.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,6 +175,7 @@
             // panelNuevaFactura
             // 
             this.panelNuevaFactura.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelNuevaFactura.BackgroundImage")));
+            this.panelNuevaFactura.Controls.Add(this.tablaFactura);
             this.panelNuevaFactura.Controls.Add(this.lblHora);
             this.panelNuevaFactura.Controls.Add(this.lblTipoPagoMostrar);
             this.panelNuevaFactura.Controls.Add(this.txtNumeroFactura);
@@ -190,6 +193,14 @@
             this.panelNuevaFactura.Name = "panelNuevaFactura";
             this.panelNuevaFactura.Size = new System.Drawing.Size(1234, 636);
             this.panelNuevaFactura.TabIndex = 10;
+            // 
+            // tablaFactura
+            // 
+            this.tablaFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaFactura.Location = new System.Drawing.Point(45, 594);
+            this.tablaFactura.Name = "tablaFactura";
+            this.tablaFactura.Size = new System.Drawing.Size(93, 30);
+            this.tablaFactura.TabIndex = 1;
             // 
             // lblHora
             // 
@@ -217,9 +228,12 @@
             // 
             this.txtNumeroFactura.BackColor = System.Drawing.SystemColors.Control;
             this.txtNumeroFactura.Location = new System.Drawing.Point(210, 81);
+            this.txtNumeroFactura.MaxLength = 6;
             this.txtNumeroFactura.Name = "txtNumeroFactura";
             this.txtNumeroFactura.Size = new System.Drawing.Size(137, 20);
             this.txtNumeroFactura.TabIndex = 42;
+            this.txtNumeroFactura.TextChanged += new System.EventHandler(this.txtNumeroFactura_TextChanged);
+            this.txtNumeroFactura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroFactura_KeyPress);
             // 
             // lblCajero
             // 
@@ -393,19 +407,19 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.tablaDetalle);
             this.panel1.Location = new System.Drawing.Point(42, 291);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1149, 177);
             this.panel1.TabIndex = 13;
             // 
-            // dataGridView1
+            // tablaDetalle
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1143, 170);
-            this.dataGridView1.TabIndex = 0;
+            this.tablaDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaDetalle.Location = new System.Drawing.Point(3, 3);
+            this.tablaDetalle.Name = "tablaDetalle";
+            this.tablaDetalle.Size = new System.Drawing.Size(1143, 170);
+            this.tablaDetalle.TabIndex = 0;
             // 
             // btnRegresar
             // 
@@ -613,14 +627,16 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormularioConsultarFacturaGerente";
             this.Text = "SFMEE-OMICROM";
+            this.Load += new System.EventHandler(this.FormularioConsultarFacturaGerente_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelNuevaFactura.ResumeLayout(false);
             this.panelNuevaFactura.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaFactura)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaDetalle)).EndInit();
             this.grupoCliente.ResumeLayout(false);
             this.grupoCliente.PerformLayout();
             this.ResumeLayout(false);
@@ -657,7 +673,7 @@
         private System.Windows.Forms.Label lblDescuento;
         private System.Windows.Forms.Label lblSubTotal;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView tablaDetalle;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox grupoCliente;
@@ -677,5 +693,6 @@
         private System.Windows.Forms.ToolStripMenuItem anularToolStripMenuItem;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView tablaFactura;
     }
 }

@@ -36,13 +36,29 @@ namespace Negocio
             
             return factura.insertarDatosFactura(factura);
         }
-        
-        public static string anularFactura(int idfactura)
+
+        public static DataTable consultarFacturaTabla(int idFactura)
         {
             DatosFactura factura = new DatosFactura();
-            factura.IdFactura = idfactura;
-            
-            return factura.eliminarFactura(factura);
+            factura.IdFactura = idFactura;
+
+            return factura.buscarFacturaTabla(factura);
+        }
+
+        public static string buscarFactura(int numeroFactura)
+        {
+            DatosFactura factura = new DatosFactura();
+            factura.IdFactura = numeroFactura;
+
+            return factura.buscarFactura(factura);
+        }
+
+        public static string anularFactura(int numeroFactura)
+        {
+            DatosFactura factura = new DatosFactura();
+            factura.IdFactura = numeroFactura;
+
+            return factura.anularFactura(factura);
         }
 
         public static DataTable mostrarFacturas()
@@ -52,7 +68,9 @@ namespace Negocio
 
         public static DataTable mostrarDetalle(int idFactura)
         {
-            return new DatosFactura().mostrarDetalle(idFactura);
+            DatosFactura factura = new DatosFactura();
+            factura.IdFactura = idFactura;
+            return factura.mostrarDetalle(factura);
         }
     }
     
