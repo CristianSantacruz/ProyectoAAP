@@ -15,7 +15,7 @@ as insert into FACTURA(IDCLIENTE, FECHAFACTURA, VENDEDOR, TIPOPAGO, SUBTOTAL, DE
 	values (@IDCLIENTE, @FECHAFACTURA, @VENDEDOR, @TIPOPAGO, @SUBTOTAL, @DESCUENTO, @IVA, @TOTAL, @ESTADOFACTURA)
 SET @IDFACTURA = @@IDENTITY
 go
-exec insertarDatosFactura 4,1,'12/02/2018','Pedro','EFECTIVOPOIUYTREDX', 25.45, 12.34, 1.12,34.67,'Cancelado'
+exec insertarDatosFactura 1,1,'','OMICROM','', 0, 0, 0,0,''
 select *from FACTURA
 GO
 
@@ -46,13 +46,16 @@ GO
 
 --STORE PROCEDURE PARA ANULAR UNA FACTURA
 alter proc anularFactura (
-	@IDFACTURA			int
+	@IDFACTURA		int
 )
 as delete from FACTURA
 	where IDFACTURA=@IDFACTURA
+go
 
-exec anularFactura 1
+exec anularFactura 2
 select *from FACTURA
+select * from DETALLE_FACTURA
+select * from PRODUCTO
 GO
 
 
@@ -69,25 +72,16 @@ exec mostrarFacturas
 
 
 
-create proc insertarFactura (
-	@IDCLIENTE					int,
-	@FECHAFACTURA				varchar(10),
-	@VENDEDOR					varchar(50),
-	@TIPOPAGO					varchar(10),
-	@SUBTOTAL					float(10),
-	@DESCUENTO					float(10),
-	@IVA						float(10),
-	@TOTAL						float(10),
-	@ESTADOFACTURA				varchar(15)
-)
-as insert into FACTURA(IDCLIENTE, FECHAFACTURA, VENDEDOR, TIPOPAGO, SUBTOTAL, DESCUENTO, IVA, TOTAL, ESTADOFACTURA)
-	values (@IDCLIENTE, @FECHAFACTURA, @VENDEDOR, @TIPOPAGO, @SUBTOTAL, @DESCUENTO, @IVA, @TOTAL, @ESTADOFACTURA)
-
-go
-exec insertarFactura 225,'16/02/2018','Pedro','EFECTIVO', 25.45, 12.34, 1.12,34.67,'Cancelado'
 	select *from FACTURA
 	order by IDFACTURA desc
 
 	select *from DETALLE_FACTURA
 	go
-	select *from CLIENTE
+
+	select *from PRODUCTO
+
+
+	
+	SELECT @@identity from FACTURA
+
+	

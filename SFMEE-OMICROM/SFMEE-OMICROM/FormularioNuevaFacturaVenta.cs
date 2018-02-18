@@ -25,6 +25,8 @@ namespace SFMEE_OMICROM
 
         public static DataTable tablaDetalle;
 
+        private string tipoPago;
+
         public FormularioNueva_FacturaVenta()
         {
             InitializeComponent();
@@ -32,14 +34,11 @@ namespace SFMEE_OMICROM
             timer1.Enabled = true;
             bloquearBotones();
             this.contarRegistros();
-            this.lblIVAValor.Text = "0";
         }
 
         public void insertarDetalles()
         {
-            string respuesta = "";
             this.abrirConexion();
-            
 
             foreach (DataRow row in tablaDetalle.Rows)
             {
@@ -57,6 +56,116 @@ namespace SFMEE_OMICROM
                 SqlCmd.ExecuteNonQuery();
             }
             conexion.Close();
+        }
+
+        public void disminuirStock()
+        {
+            this.abrirConexion();
+            
+            foreach (DataRow row in tablaDetalle.Rows)
+            {
+                SqlCommand SqlCmd = new SqlCommand("disminuirStock", conexion);
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlCmd.Parameters.Add(new SqlParameter("@CODIGO", row["CÓDIGO"].ToString()));
+                SqlCmd.Parameters.Add(new SqlParameter("@CANTIDAD", Convert.ToInt32(row["CANTIDAD"].ToString())));
+                SqlCmd.ExecuteNonQuery();
+            }
+            conexion.Close();
+        }
+
+        private void crearTabla()
+        {
+            tablaDetalle = new DataTable("Detalle");
+            tablaDetalle.Columns.Add("IDFACTURA", System.Type.GetType("System.Int32"));
+            tablaDetalle.Columns.Add("IDMANTENIMIENTO", System.Type.GetType("System.Int32"));
+            tablaDetalle.Columns.Add("IDPRODUCTO", System.Type.GetType("System.Int32"));
+
+            tablaDetalle.Columns.Add("CÓDIGO", System.Type.GetType("System.String"));
+            tablaDetalle.Columns.Add("CANTIDAD", System.Type.GetType("System.Int32"));
+            tablaDetalle.Columns.Add("DETALLE", System.Type.GetType("System.String"));
+            tablaDetalle.Columns.Add("VALOR UNITARIO", System.Type.GetType("System.Single"));
+            tablaDetalle.Columns.Add("DESCUENTO", System.Type.GetType("System.Single"));
+            tablaDetalle.Columns.Add("VALOR TOTAL", System.Type.GetType("System.Single"));
+
+
+            this.tablaFactura.DataSource = tablaDetalle;
+        }
+
+        private void subtotal()
+        {
+            decimal subtotal = 0;
+            foreach (DataGridViewRow row in this.tablaFactura.Rows)
+            {
+                subtotal += Convert.ToDecimal(row.Cells["VALOR TOTAL"].Value);
+            }
+            subtotal = Math.Round(subtotal, 2);
+            this.lblSubTotalValor.Text = Convert.ToString(subtotal);
+        }
+
+        private void descuento()
+        {
+            decimal descuento = 0;
+            foreach (DataGridViewRow row in this.tablaFactura.Rows)
+            {
+                descuento += Convert.ToDecimal(row.Cells["DESCUENTO"].Value);
+            }
+            descuento = Math.Round(descuento, 2);
+            this.lblDescuentoValor.Text = Convert.ToString(descuento);
+        }
+
+        private void capturarIVA()
+        {
+            decimal iva = 0;
+            NegocioParametro.buscarParametro(this.lblIVA.Text);
+            if (this.tablaIva.Rows.Count != 0)
+            {
+                iva = (Convert.ToDecimal(this.lblSubTotalValor.Text)) * ((Convert.ToDecimal(tablaIva.CurrentRow.Cells["VALOR"].Value)) / 100);
+                iva = Math.Round(iva, 2);
+                this.lblIVAValor.Text = Convert.ToString(iva);
+            }
+        }
+
+        private void mostrarIVA()
+        {
+            this.tablaIva.DataSource = NegocioParametro.consultarParametroTabla("IVA");
+        }
+
+        private void mostrarCajeros()
+        {
+            this.comboCajero.ValueMember = "IDUSUARIO";
+            this.comboCajero.DisplayMember = "NOMBREUSUARIO";
+            this.comboCajero.DataSource = NegocioUsuario.cargarCajeros();
+        }
+
+        private void total()
+        {
+            decimal total = 0;
+            total += (Convert.ToDecimal(this.lblSubTotalValor.Text) + Convert.ToDecimal(this.lblIVAValor.Text));
+            total = Math.Round(total, 2);
+            this.lblTotalValor.Text = Convert.ToString(total);
+        }
+
+        private string TipoPago()
+        {
+            if (radioEfectivo.Checked == true)
+            {
+                return this.tipoPago = "EFECTIVO";
+            }
+
+            else if (radioCheque.Checked == true)
+            {
+                return this.tipoPago = "CHEQUE";
+            }
+
+            else if (radioTarjeta.Checked == true)
+            {
+                return this.tipoPago = "TARJETA";
+            }
+
+            else
+            {
+                return this.tipoPago = "";
+            }
         }
 
         private void MensajeOK(string mensaje)
@@ -94,54 +203,6 @@ namespace SFMEE_OMICROM
             bloquearBotones();
         }
         
-        private void crearTabla()
-        {
-            tablaDetalle = new DataTable("Detalle");
-            tablaDetalle.Columns.Add("IDFACTURA", System.Type.GetType("System.Int32"));
-            tablaDetalle.Columns.Add("IDMANTENIMIENTO", System.Type.GetType("System.Int32"));
-            tablaDetalle.Columns.Add("IDPRODUCTO", System.Type.GetType("System.Int32"));
-
-            tablaDetalle.Columns.Add("CÓDIGO", System.Type.GetType("System.String"));
-            tablaDetalle.Columns.Add("CANTIDAD", System.Type.GetType("System.Int32"));
-            tablaDetalle.Columns.Add("DETALLE", System.Type.GetType("System.String"));
-            tablaDetalle.Columns.Add("VALOR UNITARIO", System.Type.GetType("System.Single"));
-            tablaDetalle.Columns.Add("DESCUENTO", System.Type.GetType("System.Single"));
-            tablaDetalle.Columns.Add("VALOR TOTAL", System.Type.GetType("System.Single"));
-            
-
-            this.tablaFactura.DataSource = tablaDetalle;
-        }
-
-        private void subtotal()
-        {
-            decimal subtotal = 0;
-            foreach (DataGridViewRow row in this.tablaFactura.Rows)
-            {
-                subtotal += Convert.ToDecimal(row.Cells["VALOR TOTAL"].Value);
-            }
-            subtotal = Math.Round(subtotal, 2);
-            this.lblSubTotalValor.Text = Convert.ToString(subtotal);
-        }
-
-        private void descuento()
-        {
-            decimal descuento = 0;
-            foreach (DataGridViewRow row in this.tablaFactura.Rows)
-            {
-                descuento += Convert.ToDecimal(row.Cells["DESCUENTO"].Value);
-            }
-            descuento = Math.Round(descuento, 2);
-            this.lblDescuentoValor.Text = Convert.ToString(descuento);
-        }
-
-        private void total()
-        {
-            decimal total = 0;
-            total += (Convert.ToDecimal(this.lblSubTotalValor.Text) - Convert.ToDecimal(this.lblDescuentoValor.Text));
-            total = Math.Round(total,2);
-            this.lblTotalValor.Text = Convert.ToString(total);
-        }
-
         public void bloquearBotones()
         {
             btnIngresarProducto.Visible = false;
@@ -153,12 +214,12 @@ namespace SFMEE_OMICROM
             radioTarjeta.Visible = false;
             radioCheque.Visible = false;
             comboEstadoFactura.Visible = false;
+            txtCi.ReadOnly = true;
+            comboCajero.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public void limpiarCampos()
         {
-            lblNumeroFacturaVenta.ResetText();
-
             txtCi.Clear();
             lblClienteMostrar.ResetText();
             lblNombreMostrar.ResetText();
@@ -166,11 +227,11 @@ namespace SFMEE_OMICROM
             lblTelefonoFijoMostrar.ResetText();
             lblCelularMostrar.ResetText();
 
-            lblSubTotalValor.ResetText();
-            lblDescuentoValor.ResetText();
-            lblIVAValor.ResetText();
-            lblSubTotalValor.ResetText();
+            lblSubTotalValor.Text = "0";
+            lblDescuentoValor.Text = "0";
+            lblIVAValor.Text = "0";
             comboEstadoFactura.ResetText();
+            comboCajero.ResetText();
 
             this.crearTabla();
         }
@@ -197,7 +258,7 @@ namespace SFMEE_OMICROM
 
         private void contarRegistros()
         {
-            this.tabla_aux.DataSource = NegocioFactura.contarRegistros();
+            this.tabla_aux.DataSource = NegocioFactura.numeroFactura();
 
             if (this.tabla_aux.Rows.Count != 0)
             {
@@ -208,7 +269,6 @@ namespace SFMEE_OMICROM
             else
             {
                 this.limpiarCampos();
-                MessageBox.Show("Cliente no registrado", "Registrar Manteniminento", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -222,7 +282,7 @@ namespace SFMEE_OMICROM
         {
             this.tablaCliente.DataSource = NegocioCliente.consultarClienteTabla(this.txtCi.Text);
         }
-
+        
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             NegocioCliente.consultarClienteTabla(this.txtCi.Text);
@@ -239,6 +299,7 @@ namespace SFMEE_OMICROM
                 radioTarjeta.Visible = true;
                 radioCheque.Visible = true;
                 comboEstadoFactura.Visible = true;
+                comboEstadoFactura.DropDownStyle = ComboBoxStyle.DropDownList;
                 btnIngresarProducto.Visible = true;
                 btnIngresarMantenimiento.Visible = true;
             }
@@ -246,6 +307,7 @@ namespace SFMEE_OMICROM
             else
             {
                 this.limpiarCampos();
+                this.bloquearBotones();
                 MessageBox.Show("Cliente no registrado", "Registrar Factura", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
@@ -263,23 +325,23 @@ namespace SFMEE_OMICROM
                 try
             {
                 string respuesta = "";
-                string tipoPago = "EFECTIVO";
-                if (this.lblClienteMostrar.Text == string.Empty || this.pickerFechaNuevaFactura.Text == string.Empty || this.comboCajero.Text == string.Empty ||
-                    this.lblSubTotalValor.Text == string.Empty || this.lblDescuento.Text == string.Empty || this.lblIVAValor.Text == string.Empty ||
-                    this.lblTotalValor.Text == string.Empty || this.comboEstadoFactura.Text == string.Empty &&
+                if (this.lblClienteMostrar.Text != string.Empty && this.pickerFechaNuevaFactura.Text != string.Empty && this.comboCajero.Text != string.Empty &&
+                    this.lblSubTotalValor.Text != string.Empty && this.lblDescuento.Text != string.Empty && this.lblIVAValor.Text != string.Empty &&
+                    this.lblTotalValor.Text != string.Empty && this.comboEstadoFactura.Text != string.Empty &&
                     (radioCheque.Checked == true || radioEfectivo.Checked == true) || radioTarjeta.Checked == true)
                 {
-                    MensajeError("Falta ingresar algunos datos");
-                }
-                else
-                {
                     respuesta = NegocioFactura.insertarFactura(Convert.ToInt32(this.lblClienteMostrar.Text), this.pickerFechaNuevaFactura.Text, this.comboCajero.Text,
-                        tipoPago, float.Parse(this.lblSubTotalValor.Text), float.Parse(this.lblDescuentoValor.Text),
+                        this.TipoPago().ToString(), float.Parse(this.lblSubTotalValor.Text), float.Parse(this.lblDescuentoValor.Text),
                         float.Parse(this.lblIVAValor.Text), float.Parse(this.lblTotalValor.Text), this.comboEstadoFactura.Text);
                     this.insertarDetalles();
+                    this.disminuirStock();
 
                     this.MensajeOK("Registro ingresado exitosamente");
                     btnImprimir.Visible = true;
+                }
+                else
+                {
+                    MensajeError("Falta ingresar algunos datos");
                 }
             }
             catch (Exception ex)
@@ -300,6 +362,7 @@ namespace SFMEE_OMICROM
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
             this.subtotal();
             this.descuento();
+            this.capturarIVA();
             this.total();
         }
 
@@ -331,10 +394,14 @@ namespace SFMEE_OMICROM
 
         private void FormularioNueva_FacturaVenta_Load(object sender, EventArgs e)
         {
+            this.txtCi.ReadOnly = true;
             this.btnBuscarCliente.Visible = false;
+            this.mostrarCajeros();
             this.mostrarClientes();
+            this.mostrarIVA();
             this.tablaCliente.Visible = false;
             this.tabla_aux.Visible = false;
+            this.tablaIva.Visible = false;
             this.crearTabla();
             this.tablaFactura.Columns[0].Visible = false;
             this.tablaFactura.Columns[1].Visible = false;
@@ -358,6 +425,14 @@ namespace SFMEE_OMICROM
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+        }
+
+        private void comboCajero_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboCajero.Text != string.Empty)
+            {
+                this.txtCi.ReadOnly = false;
+            }
         }
     }
 }

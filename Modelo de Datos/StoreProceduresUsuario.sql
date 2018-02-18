@@ -7,8 +7,8 @@ create proc insertarDatosUsuario (
 )
 as insert into USUARIO(NOMBREUSUARIO, LOGINUSUARIO, PASSWORDUSUARIO, CARGOUSUARIO)
 	values (@NOMBREUSUARIO, @LOGINUSUARIO, @PASSWORDUSUARIO, @CARGOUSUARIO)
-
-exec insertarDatosUsuario 'cristian santacruz','cristian','123456','Administrador'
+GO
+exec insertarDatosUsuario 'ERIKA ANATOA','erika','123456','CAJERO'
 select *from USUARIO
 GO
 
@@ -58,3 +58,11 @@ as select top 50 *from USUARIO
 	order by NOMBREUSUARIO asc
 
 exec mostrarUsuarios
+
+create proc cargarCajeros
+as select NOMBREUSUARIO from USUARIO
+where CARGOUSUARIO = 'CAJERO'
+order by IDUSUARIO asc
+GO
+
+exec cargarCajeros

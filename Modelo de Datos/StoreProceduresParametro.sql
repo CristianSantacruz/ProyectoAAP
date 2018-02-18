@@ -12,12 +12,12 @@ GO
 
 
 --STORE PROCEDURA PARA BUSCAR PARAMETRO
-create proc buscarParametro
+alter proc buscarParametro
 	@NOMBREPARAMETRO			varchar(15)
 
 as select NOMBREPARAMETRO, VALOR
 						from PARAMETRO
-	where NOMBREPARAMETRO like @NOMBREPARAMETRO + '%'
+	where NOMBREPARAMETRO = @NOMBREPARAMETRO
 
 exec buscarParametro'IVA'
 GO

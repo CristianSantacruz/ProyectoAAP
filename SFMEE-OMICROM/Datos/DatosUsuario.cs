@@ -128,6 +128,36 @@ namespace Datos
             return tablaResultado;
         }
 
+        public DataTable cargarCajeros()
+        {
+            DataTable tablaResultado = new DataTable("USUARIO");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.cn;
+                SqlCon.Open();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "cargarCajeros";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(tablaResultado);
+            }
+
+            catch (Exception ex)
+            {
+                tablaResultado = null;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return tablaResultado;
+        }
+
         public DataTable consultarUsuarioTabla(DatosUsuario Usuario)
         {
             DataTable tablaResultado = new DataTable("USUARIO");

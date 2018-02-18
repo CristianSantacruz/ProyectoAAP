@@ -19,35 +19,16 @@ select *from DETALLE_FACTURA
 GO
 
 --DISMINUIR STOCK
-create proc disminuirStock(
-	@IDPRODUCTO		int,
-	@CANTIDAD		int
+alter proc disminuirStock(
+	@CODIGO		varchar(5),
+	@CANTIDAD	int
 )
 as update PRODUCTO set CANTIDADPRODUCTO=CANTIDADPRODUCTO-@CANTIDAD
-where IDPRODUCTO=@IDPRODUCTO
+where CODIGOPRODUCTO=@CODIGO
 go
 
 exec disminuirStock 1,2
 go
-
-select * from PRODUCTO
-
-
-
-
---****************************************************************************
---REESTABLECER STOCK AL ANULAR UNA FACTURA
-alter trigger reestablecerStock
-on [DETALLE_FACTURA]
-for delete
-as 
-
-Update di set di.CANTIDADPRODUCTO=di.CANTIDADPRODUCTO+dv.CANTIDAD
-from PRODUCTO as di inner join
-deleted as dv on di.IDPRODUCTO=dv.IDPRODUCTO
-go
-
-
 
 
 --MOSTRAR DETALLE FACTURA
@@ -69,12 +50,29 @@ create proc anularFactura (
 as
 	begin
 	update FACTURA set
+	VENDEDOR='', TIPOPAGO='', SUBTOTAL=0, DESCUENTO=0, IVA=0, TOTAL=0,
 	ESTADOFACTURA=@ESTADOFACTURA
 	where IDFACTURA=@IDFACTURA
 	end
+	GO
 
-exec anularFactura 1,'PENDIENTE'
-select *from FACTURA
-GO
+--STORE PROCEDURE PARA ONTENER LA ÚLTIMA FACTURA
+alter proc numeroFactura
+as SELECT MAX(IDFACTURA) AS ID_FACTURA FROM FACTURA
+go
 
+exec numeroFactura
+go
 
+--REESTABLECER STOCK AL ANULAR UNA FACTURA
+create trigger reestablecerStock
+on [DETALLE_FACTURA]
+for delete
+as 
+
+Update di set di.CANTIDADPRODUCTO=di.CANTIDADPRODUCTO+dv.CANTIDAD
+from PRODUCTO as di inner join
+deleted as dv on di.IDPRODUCTO=dv.IDPRODUCTO
+go
+
+--****************************************************************************

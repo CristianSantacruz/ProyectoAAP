@@ -15,6 +15,11 @@ namespace Negocio
             return new DatosFactura().contarRegistros();
         }
 
+        public static DataTable numeroFactura()
+        {
+            return new DatosFactura().numeroFactura();
+        }
+
         public static string insertarFactura(int idCliente, string fechaFactura, string vendedor, string tipoPago, float subtotal, float descuento, float iva,
                                              float total, string estadoFactura)
         {

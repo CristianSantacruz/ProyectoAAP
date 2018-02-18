@@ -26,6 +26,11 @@ namespace Negocio
             return new DatosUsuario().mostrarUsuarios();
         }
 
+        public static DataTable cargarCajeros()
+        {
+            return new DatosUsuario().cargarCajeros();
+        }
+
         public static DataTable consultarUsuarioTabla(string nombreusuario)
         {
             DatosUsuario usuario = new DatosUsuario();

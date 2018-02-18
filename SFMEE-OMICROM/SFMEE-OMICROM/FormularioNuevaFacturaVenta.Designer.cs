@@ -86,6 +86,7 @@
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tablaIva = new System.Windows.Forms.DataGridView();
             this.panelNuevaFactura.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabla_aux)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablaCliente)).BeginInit();
@@ -94,11 +95,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.tablaFactura)).BeginInit();
             this.grupoCliente.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaIva)).BeginInit();
             this.SuspendLayout();
             // 
             // panelNuevaFactura
             // 
             this.panelNuevaFactura.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelNuevaFactura.BackgroundImage")));
+            this.panelNuevaFactura.Controls.Add(this.tablaIva);
             this.panelNuevaFactura.Controls.Add(this.comboEstadoFactura);
             this.panelNuevaFactura.Controls.Add(this.label1);
             this.panelNuevaFactura.Controls.Add(this.tabla_aux);
@@ -127,9 +130,8 @@
             // 
             this.comboEstadoFactura.FormattingEnabled = true;
             this.comboEstadoFactura.Items.AddRange(new object[] {
-            "",
             "CANCELADO",
-            "ANULADO"});
+            "CRÉDITO"});
             this.comboEstadoFactura.Location = new System.Drawing.Point(209, 528);
             this.comboEstadoFactura.Name = "comboEstadoFactura";
             this.comboEstadoFactura.Size = new System.Drawing.Size(176, 21);
@@ -273,7 +275,7 @@
             this.lblTotalValor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTotalValor.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalValor.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblTotalValor.Location = new System.Drawing.Point(155, 74);
+            this.lblTotalValor.Location = new System.Drawing.Point(146, 74);
             this.lblTotalValor.Name = "lblTotalValor";
             this.lblTotalValor.Size = new System.Drawing.Size(51, 18);
             this.lblTotalValor.TabIndex = 33;
@@ -285,7 +287,7 @@
             this.lblIVAValor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblIVAValor.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIVAValor.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblIVAValor.Location = new System.Drawing.Point(155, 53);
+            this.lblIVAValor.Location = new System.Drawing.Point(146, 53);
             this.lblIVAValor.Name = "lblIVAValor";
             this.lblIVAValor.Size = new System.Drawing.Size(51, 18);
             this.lblIVAValor.TabIndex = 32;
@@ -297,7 +299,7 @@
             this.lblDescuentoValor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblDescuentoValor.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescuentoValor.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblDescuentoValor.Location = new System.Drawing.Point(155, 32);
+            this.lblDescuentoValor.Location = new System.Drawing.Point(146, 32);
             this.lblDescuentoValor.Name = "lblDescuentoValor";
             this.lblDescuentoValor.Size = new System.Drawing.Size(51, 18);
             this.lblDescuentoValor.TabIndex = 31;
@@ -309,7 +311,7 @@
             this.lblSubTotalValor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblSubTotalValor.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotalValor.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblSubTotalValor.Location = new System.Drawing.Point(155, 10);
+            this.lblSubTotalValor.Location = new System.Drawing.Point(146, 10);
             this.lblSubTotalValor.Name = "lblSubTotalValor";
             this.lblSubTotalValor.Size = new System.Drawing.Size(51, 18);
             this.lblSubTotalValor.TabIndex = 30;
@@ -321,7 +323,7 @@
             this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblTotal.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblTotal.Location = new System.Drawing.Point(68, 74);
+            this.lblTotal.Location = new System.Drawing.Point(59, 74);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(59, 18);
             this.lblTotal.TabIndex = 29;
@@ -333,7 +335,7 @@
             this.lblIVA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblIVA.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIVA.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblIVA.Location = new System.Drawing.Point(91, 53);
+            this.lblIVA.Location = new System.Drawing.Point(82, 53);
             this.lblIVA.Name = "lblIVA";
             this.lblIVA.Size = new System.Drawing.Size(36, 18);
             this.lblIVA.TabIndex = 28;
@@ -345,7 +347,7 @@
             this.lblDescuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblDescuento.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescuento.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblDescuento.Location = new System.Drawing.Point(28, 32);
+            this.lblDescuento.Location = new System.Drawing.Point(19, 32);
             this.lblDescuento.Name = "lblDescuento";
             this.lblDescuento.Size = new System.Drawing.Size(99, 18);
             this.lblDescuento.TabIndex = 27;
@@ -357,7 +359,7 @@
             this.lblSubTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblSubTotal.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblSubTotal.Location = new System.Drawing.Point(34, 10);
+            this.lblSubTotal.Location = new System.Drawing.Point(25, 10);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(93, 18);
             this.lblSubTotal.TabIndex = 26;
@@ -466,6 +468,7 @@
             this.comboCajero.Name = "comboCajero";
             this.comboCajero.Size = new System.Drawing.Size(176, 21);
             this.comboCajero.TabIndex = 3;
+            this.comboCajero.SelectedIndexChanged += new System.EventHandler(this.comboCajero_SelectedIndexChanged);
             // 
             // pickerFechaNuevaFactura
             // 
@@ -746,6 +749,20 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tablaIva
+            // 
+            this.tablaIva.AllowUserToAddRows = false;
+            this.tablaIva.AllowUserToDeleteRows = false;
+            this.tablaIva.AllowUserToOrderColumns = true;
+            this.tablaIva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tablaIva.Location = new System.Drawing.Point(864, 594);
+            this.tablaIva.MultiSelect = false;
+            this.tablaIva.Name = "tablaIva";
+            this.tablaIva.ReadOnly = true;
+            this.tablaIva.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tablaIva.Size = new System.Drawing.Size(101, 33);
+            this.tablaIva.TabIndex = 43;
+            // 
             // FormularioNueva_FacturaVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -769,6 +786,7 @@
             this.grupoCliente.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tablaIva)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -832,5 +850,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView tablaFactura;
         public System.Windows.Forms.Label lblNumeroFacturaVenta;
+        private System.Windows.Forms.DataGridView tablaIva;
     }
 }

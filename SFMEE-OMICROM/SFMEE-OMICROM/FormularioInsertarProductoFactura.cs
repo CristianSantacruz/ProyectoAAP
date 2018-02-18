@@ -173,8 +173,10 @@ namespace SFMEE_OMICROM
                         row["CANTIDAD"] = Convert.ToInt32(this.txtCantidadVender.Text);
                         row["DETALLE"] = this.lblDescripcion.Text;
                         row["VALOR UNITARIO"] = Convert.ToSingle(this.lblPrecioVenta.Text);
-                        row["VALOR TOTAL"] = float.Parse(this.lblPrecioVenta.Text) * float.Parse(row["CANTIDAD"].ToString());
-                        row["DESCUENTO"] = float.Parse(row["VALOR TOTAL"].ToString()) * (float.Parse(this.txtDescuento.Text) / 100);
+                        row["DESCUENTO"] = Convert.ToSingle(this.lblPrecioVenta.Text) * Convert.ToInt32(this.txtCantidadVender.Text) * (float.Parse(this.txtDescuento.Text) / 100);
+                        row["VALOR TOTAL"] = (Convert.ToSingle(row["VALOR UNITARIO"].ToString()) * (Convert.ToSingle(row["CANTIDAD"].ToString())) - (Convert.ToSingle(row["DESCUENTO"].ToString())));
+
+
                         FormularioNueva_FacturaVenta.tablaDetalle.Rows.Add(row);
 
                         this.Hide();

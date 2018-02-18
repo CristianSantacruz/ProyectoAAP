@@ -82,7 +82,36 @@ namespace Datos
             return tablaResultado;
         }
 
-        public string disminuirStock(int idProducto, int cantidad)
+        public DataTable numeroFactura()
+        {
+            DataTable tablaResultado = new DataTable("FACTURA");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.cn;
+                SqlCon.Open();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "numeroFactura";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(tablaResultado);
+            }
+
+            catch (Exception ex)
+            {
+                tablaResultado = null;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+            return tablaResultado;
+        }
+
+        public string disminuirStock(string codigoProducto, int cantidad)
         {
             string rpta = "";
             SqlConnection SqlCon = new SqlConnection();
@@ -98,11 +127,12 @@ namespace Datos
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 //Crear parámetro @IDPRODUCTO
-                SqlParameter parametroIdProducto = new SqlParameter();
-                parametroIdProducto.ParameterName = "@IDPRODUCTO";
-                parametroIdProducto.SqlDbType = SqlDbType.Int;
-                parametroIdProducto.Value = idProducto;
-                SqlCmd.Parameters.Add(parametroIdProducto);
+                SqlParameter parametroCodigoProducto = new SqlParameter();
+                parametroCodigoProducto.ParameterName = "@CODIGO";
+                parametroCodigoProducto.SqlDbType = SqlDbType.VarChar;
+                parametroCodigoProducto.Size = 5;
+                parametroCodigoProducto.Value = codigoProducto;
+                SqlCmd.Parameters.Add(parametroCodigoProducto);
 
                 //Crear parámetro @CANTIDAD
                 SqlParameter parametroCantidad = new SqlParameter();
