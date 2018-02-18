@@ -21,6 +21,16 @@ namespace SFMEE_OMICROM
             btnImprimir.Visible = false;
         }
 
+        private void MensajeOK(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Anular Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Anular Factura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void mostrarFactura()
         {
             this.tablaFactura.DataSource = NegocioFactura.mostrarFacturas();
@@ -185,6 +195,8 @@ namespace SFMEE_OMICROM
             {
                 this.btnBuscar.Visible = true;
             }
+            consultarFacturaTabla();
+            consultarDetalleTabla();
         }
 
         private void txtNumeroFactura_KeyPress(object sender, KeyPressEventArgs e)

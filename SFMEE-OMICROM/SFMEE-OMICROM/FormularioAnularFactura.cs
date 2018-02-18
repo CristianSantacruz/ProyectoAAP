@@ -188,6 +188,8 @@ namespace SFMEE_OMICROM
             {
                 this.btnBuscar.Visible = true;
             }
+            consultarFacturaTabla();
+            consultarDetalleTabla();
         }
 
         private void FormularioAnularFactura_Load(object sender, EventArgs e)

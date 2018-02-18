@@ -187,9 +187,15 @@
             // 
             // tablaFactura
             // 
+            this.tablaFactura.AllowUserToAddRows = false;
+            this.tablaFactura.AllowUserToDeleteRows = false;
+            this.tablaFactura.AllowUserToOrderColumns = true;
             this.tablaFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaFactura.Location = new System.Drawing.Point(50, 593);
+            this.tablaFactura.MultiSelect = false;
             this.tablaFactura.Name = "tablaFactura";
+            this.tablaFactura.ReadOnly = true;
+            this.tablaFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaFactura.Size = new System.Drawing.Size(110, 29);
             this.tablaFactura.TabIndex = 1;
             // 
@@ -406,9 +412,15 @@
             // 
             // tablaDetalle
             // 
+            this.tablaDetalle.AllowUserToAddRows = false;
+            this.tablaDetalle.AllowUserToDeleteRows = false;
+            this.tablaDetalle.AllowUserToOrderColumns = true;
             this.tablaDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tablaDetalle.Location = new System.Drawing.Point(3, 3);
+            this.tablaDetalle.MultiSelect = false;
             this.tablaDetalle.Name = "tablaDetalle";
+            this.tablaDetalle.ReadOnly = true;
+            this.tablaDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tablaDetalle.Size = new System.Drawing.Size(1143, 170);
             this.tablaDetalle.TabIndex = 0;
             // 

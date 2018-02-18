@@ -21,6 +21,16 @@ namespace SFMEE_OMICROM
             btnImprimir.Visible = false;
         }
 
+        private void MensajeOK(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Anular Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Anular Factura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         private void mostrarFactura()
         {
             this.tablaFactura.DataSource = NegocioFactura.mostrarFacturas();
@@ -37,7 +47,7 @@ namespace SFMEE_OMICROM
                 this.lblDireccionMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["DIRECCIONCLIENTE"].Value);
                 this.lblTelefonoFijoMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["TELEFONOFIJOCLIENTE"].Value);
                 this.lblCelularMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["TELEFONOMOVILCLIENTE"].Value);
-                
+
                 this.lblFecha.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["FECHAFACTURA"].Value);
                 this.lblCajero.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["VENDEDOR"].Value);
                 this.lblSubTotalValor.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["SUBTOTAL"].Value);
@@ -185,11 +195,14 @@ namespace SFMEE_OMICROM
             {
                 this.btnBuscar.Visible = true;
             }
+            consultarFacturaTabla();
+            consultarDetalleTabla();
         }
 
         private void txtNumeroFactura_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.soloNumeros(e);
         }
+        
     }
 }
