@@ -176,7 +176,7 @@
             "",
             "GERENTE",
             "CAJERO",
-            "TÉCNICO"});
+            "TECNICO"});
             this.comboCargo.Location = new System.Drawing.Point(203, 239);
             this.comboCargo.Name = "comboCargo";
             this.comboCargo.Size = new System.Drawing.Size(150, 21);

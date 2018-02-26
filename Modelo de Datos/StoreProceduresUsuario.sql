@@ -8,7 +8,7 @@ create proc insertarDatosUsuario (
 as insert into USUARIO(NOMBREUSUARIO, LOGINUSUARIO, PASSWORDUSUARIO, CARGOUSUARIO)
 	values (@NOMBREUSUARIO, @LOGINUSUARIO, @PASSWORDUSUARIO, @CARGOUSUARIO)
 GO
-exec insertarDatosUsuario 'ERIKA ANATOA','erika','123456','CAJERO'
+exec insertarDatosUsuario 'CRISTIAN SANTACRUZ','cristian','123456','GERENTE'
 select *from USUARIO
 GO
 
@@ -49,7 +49,7 @@ create proc eliminarUsuario (
 as delete USUARIO
 	where NOMBREUSUARIO=@NOMBREUSUARIO
 
-exec eliminarUsuario 'cristin'
+exec eliminarUsuario 'ERIKA ANATOA'
 select *from USUARIO
 
 --STORE PROCEDURE PARA MOSTRAR TABLA USUARIOS
@@ -66,3 +66,13 @@ order by IDUSUARIO asc
 GO
 
 exec cargarCajeros
+
+create proc login(
+	@LOGINUSUARIO				varchar(20),
+	@PASSWORDUSUARIO			varchar(10),
+	@CARGOUSUARIO				varchar(15)
+)
+as select count(*) from USUARIO
+where LOGINUSUARIO = @LOGINUSUARIO and PASSWORDUSUARIO = @PASSWORDUSUARIO and CARGOUSUARIO = @CARGOUSUARIO
+go
+exec login 'cristian','123456','gerente'

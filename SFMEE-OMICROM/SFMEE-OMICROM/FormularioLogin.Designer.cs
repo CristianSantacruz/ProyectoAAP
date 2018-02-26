@@ -40,6 +40,8 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tabla_aux = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.tabla_aux)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsuario
@@ -146,12 +148,27 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // tabla_aux
+            // 
+            this.tabla_aux.AllowUserToAddRows = false;
+            this.tabla_aux.AllowUserToDeleteRows = false;
+            this.tabla_aux.AllowUserToOrderColumns = true;
+            this.tabla_aux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabla_aux.Location = new System.Drawing.Point(314, 238);
+            this.tabla_aux.MultiSelect = false;
+            this.tabla_aux.Name = "tabla_aux";
+            this.tabla_aux.ReadOnly = true;
+            this.tabla_aux.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tabla_aux.Size = new System.Drawing.Size(124, 33);
+            this.tabla_aux.TabIndex = 27;
+            // 
             // FormularioLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(500, 280);
+            this.Controls.Add(this.tabla_aux);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblHora);
@@ -165,6 +182,7 @@
             this.Name = "FormularioLogin";
             this.Text = "FormularioLogin";
             this.Load += new System.EventHandler(this.FormularioLogin_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tabla_aux)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +200,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.DataGridView tabla_aux;
     }
 }

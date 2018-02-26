@@ -314,5 +314,59 @@ namespace Datos
 
             return respuesta;
         }
+
+        public DataTable login(DatosUsuario Usuario)
+        {
+            DataTable tablaResultado = new DataTable("USUARIO");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.cn;
+                SqlCon.Open();
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "login";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Crear parámetro @LOGINUSUARIO
+                SqlParameter parametroLoginUsuario = new SqlParameter();
+                parametroLoginUsuario.ParameterName = "@LOGINUSUARIO";
+                parametroLoginUsuario.SqlDbType = SqlDbType.VarChar;
+                parametroLoginUsuario.Size = 20;
+                parametroLoginUsuario.Value = Usuario._loginUsuario;
+                SqlCmd.Parameters.Add(parametroLoginUsuario);
+
+                //Crear parámetro @PASSWORDUSUARIO
+                SqlParameter parametroPasswordUsuario = new SqlParameter();
+                parametroPasswordUsuario.ParameterName = "@PASSWORDUSUARIO";
+                parametroPasswordUsuario.SqlDbType = SqlDbType.VarChar;
+                parametroPasswordUsuario.Size = 10;
+                parametroPasswordUsuario.Value = Usuario._passwordUsuario;
+                SqlCmd.Parameters.Add(parametroPasswordUsuario);
+
+                //Crear parámetro @CARGOUSUARIO
+                SqlParameter parametroCargoUsuario = new SqlParameter();
+                parametroCargoUsuario.ParameterName = "@CARGOUSUARIO";
+                parametroCargoUsuario.SqlDbType = SqlDbType.VarChar;
+                parametroCargoUsuario.Size = 15;
+                parametroCargoUsuario.Value = Usuario._cargoUsuario;
+                SqlCmd.Parameters.Add(parametroCargoUsuario);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(tablaResultado);
+            }
+
+            catch (Exception ex)
+            {
+                tablaResultado = null;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                    SqlCon.Close();
+            }
+
+            return tablaResultado;
+        }
     }
 }

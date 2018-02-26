@@ -57,5 +57,12 @@ namespace SFMEE_OMICROM
             consulta.Show();
             this.Hide();
         }
+
+        private void acercaDeSGFMOMICROMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioAcercaDeCajero cajero = new FormularioAcercaDeCajero();
+            cajero.Show();
+            this.Hide();
+        }
     }
 }

@@ -272,7 +272,7 @@ namespace SFMEE_OMICROM
             else
             {
                 this.limpiarCampos();
-                MessageBox.Show("Cliente no registrado", "Registrar Manteniminento", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Mantenimiento no registrado", "Registrar Manteniminento", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

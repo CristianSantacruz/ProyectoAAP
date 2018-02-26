@@ -43,5 +43,12 @@ namespace SFMEE_OMICROM
         {
             Application.Exit();
         }
+
+        private void acercaDeSGFMOMICROMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioAcercaDeTecnico tecnico = new FormularioAcercaDeTecnico();
+            tecnico.Show();
+            this.Hide();
+        }
     }
 }

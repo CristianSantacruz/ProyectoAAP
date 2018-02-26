@@ -63,5 +63,14 @@ namespace Negocio
 
             return usuario.eliminarUsuario(usuario);
         }
+
+        public static DataTable loginUsuario(string login, string contraseña, string cargo)
+        {
+            DatosUsuario usuario = new DatosUsuario();
+            usuario.LoginUsuario = login;
+            usuario.PasswordUsuario = contraseña;
+            usuario.CargoUsuario = cargo;
+            return new DatosUsuario().login(usuario);
+        }
     }
 }

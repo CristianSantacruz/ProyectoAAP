@@ -58,7 +58,6 @@
             this.actualizarParámetroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarParámetroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aYUDAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelPrincipalGerente = new System.Windows.Forms.Panel();
             this.btnSalirGerente = new System.Windows.Forms.Button();
@@ -297,23 +296,17 @@
             // aYUDAToolStripMenuItem
             // 
             this.aYUDAToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.soporteTécnicoToolStripMenuItem,
             this.acercaDeSGFMOMICROMToolStripMenuItem});
             this.aYUDAToolStripMenuItem.Name = "aYUDAToolStripMenuItem";
             this.aYUDAToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.aYUDAToolStripMenuItem.Text = "AYUDA";
             // 
-            // soporteTécnicoToolStripMenuItem
-            // 
-            this.soporteTécnicoToolStripMenuItem.Name = "soporteTécnicoToolStripMenuItem";
-            this.soporteTécnicoToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.soporteTécnicoToolStripMenuItem.Text = "Soporte Técnico";
-            // 
             // acercaDeSGFMOMICROMToolStripMenuItem
             // 
             this.acercaDeSGFMOMICROMToolStripMenuItem.Name = "acercaDeSGFMOMICROMToolStripMenuItem";
-            this.acercaDeSGFMOMICROMToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.acercaDeSGFMOMICROMToolStripMenuItem.Text = "Acerca de SGFM OMICROM";
+            this.acercaDeSGFMOMICROMToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.acercaDeSGFMOMICROMToolStripMenuItem.Text = "Acerca de SFMEE";
+            this.acercaDeSGFMOMICROMToolStripMenuItem.Click += new System.EventHandler(this.acercaDeSGFMOMICROMToolStripMenuItem_Click);
             // 
             // panelPrincipalGerente
             // 
@@ -378,7 +371,6 @@
         private System.Windows.Forms.ToolStripMenuItem consultarMantenimientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarFacturaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem anularFacturaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem soporteTécnicoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeSGFMOMICROMToolStripMenuItem;
         private System.Windows.Forms.Panel panelPrincipalGerente;
         private System.Windows.Forms.Button btnSalirGerente;

@@ -179,5 +179,12 @@ namespace SFMEE_OMICROM
             eliminar.Show();
             this.Hide();
         }
+
+        private void acercaDeSGFMOMICROMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioAcercaDe ayuda = new FormularioAcercaDe();
+            ayuda.Show();
+            this.Hide();
+        }
     }
 }

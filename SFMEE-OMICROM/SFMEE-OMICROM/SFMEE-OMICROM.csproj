@@ -45,6 +45,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormularioAcercaDe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioAcercaDe.Designer.cs">
+      <DependentUpon>FormularioAcercaDe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioAcercaDeCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioAcercaDeCajero.Designer.cs">
+      <DependentUpon>FormularioAcercaDeCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioAcercaDeTecnico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioAcercaDeTecnico.Designer.cs">
+      <DependentUpon>FormularioAcercaDeTecnico.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormularioActualizarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,6 +275,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormularioAcercaDe.resx">
+      <DependentUpon>FormularioAcercaDe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioAcercaDeCajero.resx">
+      <DependentUpon>FormularioAcercaDeCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioAcercaDeTecnico.resx">
+      <DependentUpon>FormularioAcercaDeTecnico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormularioActualizarCliente.resx">
       <DependentUpon>FormularioActualizarCliente.cs</DependentUpon>
     </EmbeddedResource>

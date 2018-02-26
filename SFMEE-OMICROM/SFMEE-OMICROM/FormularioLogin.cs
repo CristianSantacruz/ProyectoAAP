@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Negocio;
 
 namespace SFMEE_OMICROM
 {
@@ -22,37 +23,67 @@ namespace SFMEE_OMICROM
             principal.Show();
         }
 
+        private void login()
+        {
+            string cargo;
+            if (checkGerente.Checked == true)
+            {
+                cargo = "GERENTE";
+                this.tabla_aux.DataSource = NegocioUsuario.loginUsuario(this.txtUsuario.Text, this.txtPassword.Text, cargo);
+                int var = Convert.ToInt32(this.tabla_aux.Rows[0].Cells[0].Value);
+                if (var != 0)
+                {
+                    InterfazPrincipalGerente gerente = new InterfazPrincipalGerente();
+                    gerente.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Credenciales incorrectas", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (checkCajero.Checked == true)
+            {
+                cargo = "CAJERO";
+                this.tabla_aux.DataSource = NegocioUsuario.loginUsuario(this.txtUsuario.Text, this.txtPassword.Text, cargo);
+                int var = Convert.ToInt32(this.tabla_aux.Rows[0].Cells[0].Value);
+                if (var != 0)
+                {
+                    InterfazPrincipalCajero cajero = new InterfazPrincipalCajero();
+                    cajero.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Credenciales incorrectas", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (checkTecnico.Checked == true)
+            {
+                cargo = "TECNICO";
+                this.tabla_aux.DataSource = NegocioUsuario.loginUsuario(this.txtUsuario.Text, this.txtPassword.Text, cargo);
+                int var = Convert.ToInt32(this.tabla_aux.Rows[0].Cells[0].Value);
+                if (var != 0)
+                {
+                    InterfazPrincipalTecnico tecnico = new InterfazPrincipalTecnico();
+                    tecnico.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Credenciales incorrectas", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void FormularioLogin_Load(object sender, EventArgs e)
         {
-
+            this.tabla_aux.Visible = false;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "cristian" && txtPassword.Text == "123456" && checkGerente.Checked==true)
-            {
-                InterfazPrincipalGerente gerente = new InterfazPrincipalGerente();
-                gerente.Show();
-                this.Hide();
-            }
-
-            else if (txtUsuario.Text == "erika" && txtPassword.Text == "123456" && checkCajero.Checked == true)
-            {
-                InterfazPrincipalCajero cajero = new InterfazPrincipalCajero();
-                cajero.Show();
-                this.Hide();
-            }
-
-            else if (txtUsuario.Text == "david" && txtPassword.Text == "123456")
-            {
-                InterfazPrincipalTecnico tecnico = new InterfazPrincipalTecnico();
-                tecnico.Show();
-                this.Hide();
-            }
-
-            else {
-                MessageBox.Show("Credenciales incorrectas","LOGIN",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+            this.login();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
