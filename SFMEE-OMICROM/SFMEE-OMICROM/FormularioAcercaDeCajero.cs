@@ -15,6 +15,7 @@ namespace SFMEE_OMICROM
         public FormularioAcercaDeCajero()
         {
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)

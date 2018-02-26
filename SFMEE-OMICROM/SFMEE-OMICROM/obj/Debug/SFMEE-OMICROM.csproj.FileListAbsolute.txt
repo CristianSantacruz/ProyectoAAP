@@ -84,3 +84,6 @@ C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFME
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioRegistrarParametro.resources
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioInsertarMantenimientoFactura.resources
 C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioInsertarProductoFactura.resources
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioAcercaDe.resources
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioAcercaDeCajero.resources
+C:\Users\Cristian\Desktop\ProyectoAAP\SFMEE-OMICROM\SFMEE-OMICROM\obj\Debug\SFMEE_OMICROM.FormularioAcercaDeTecnico.resources
