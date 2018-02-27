@@ -21,6 +21,14 @@ namespace SFMEE_OMICROM
             bloquearCampos();
         }
 
+        private int actualizarStock()
+        {
+            int nuevoStock;
+            nuevoStock=  Int32.Parse(this.txtCantidad.Text) + Int32.Parse(this.txtNuevaCantidad.Text);
+
+            return nuevoStock;
+        }
+
         private void MensajeOK(string mensaje)
         {
             MessageBox.Show(mensaje, "Actualizar Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -80,6 +88,7 @@ namespace SFMEE_OMICROM
             txtCantidad.Clear();
             txtPrecioCompra.Clear();
             txtPrecioVenta.Clear();
+            txtNuevaCantidad.Clear();
         }
 
         public void bloquearCampos()
@@ -88,6 +97,7 @@ namespace SFMEE_OMICROM
             txtDescripcion.ReadOnly = true;
             txtCategoria.ReadOnly = true;
             txtCantidad.ReadOnly = true;
+            txtNuevaCantidad.ReadOnly = true;
             txtPrecioCompra.ReadOnly = true;
             txtPrecioVenta.ReadOnly = true;
             btnGuardar.Visible = false;
@@ -97,9 +107,7 @@ namespace SFMEE_OMICROM
 
         public void desbloquearCampos()
         {
-            txtCantidad.ReadOnly = false;
-            txtPrecioCompra.ReadOnly = false;
-            txtPrecioVenta.ReadOnly = false;
+            txtNuevaCantidad.ReadOnly = false;
             btnGuardar.Visible = true;
             pickerFechaRegistroCompra.Visible = true;
             pickerFechaRegistroVenta.Visible = true;
@@ -159,7 +167,10 @@ namespace SFMEE_OMICROM
                 }
                 else
                 {
-                    respuesta = NegocioProducto.actualizarProducto(this.txtCodigo.Text.ToUpper(), Int32.Parse(this.txtCantidad.Text), float.Parse(this.txtPrecioCompra.Text),
+                    int nuevoStock;
+                    nuevoStock = this.actualizarStock();
+
+                    respuesta = NegocioProducto.actualizarProducto(this.txtCodigo.Text.ToUpper(), nuevoStock, float.Parse(this.txtPrecioCompra.Text),
                                                                     float.Parse(this.txtPrecioVenta.Text), this.pickerFechaRegistroCompra.Text, this.pickerFechaRegistroVenta.Text);
                     this.MensajeOK("Registro actualizado exitosamente");
                     this.limpiarCampos();
@@ -308,6 +319,11 @@ namespace SFMEE_OMICROM
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.codigo(e);
+        }
+
+        private void txtNuevaCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.cantidad(e);
         }
     }
 }

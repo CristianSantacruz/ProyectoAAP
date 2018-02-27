@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioInsertarProductoFactura));
             this.panelConsultarProducto = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDescuento = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCantidadVender = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.lblFechaRegistroPrecioVenta = new System.Windows.Forms.Label();
             this.lblFechaRegistroPrecioCompra = new System.Windows.Forms.Label();
@@ -47,11 +52,6 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.tablaProducto = new System.Windows.Forms.DataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCantidadVender = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDescuento = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panelConsultarProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProducto)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +82,58 @@
             this.panelConsultarProducto.Name = "panelConsultarProducto";
             this.panelConsultarProducto.Size = new System.Drawing.Size(585, 435);
             this.panelConsultarProducto.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.Window;
+            this.label3.Font = new System.Drawing.Font("Berlin Sans FB Demi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(478, 227);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(21, 18);
+            this.label3.TabIndex = 40;
+            this.label3.Text = "%";
+            // 
+            // txtDescuento
+            // 
+            this.txtDescuento.Location = new System.Drawing.Point(408, 226);
+            this.txtDescuento.MaxLength = 3;
+            this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.Size = new System.Drawing.Size(53, 20);
+            this.txtDescuento.TabIndex = 39;
+            this.txtDescuento.Text = "0";
+            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Window;
+            this.label2.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(315, 226);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 16);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "DESCUENTO:";
+            // 
+            // txtCantidadVender
+            // 
+            this.txtCantidadVender.Location = new System.Drawing.Point(408, 266);
+            this.txtCantidadVender.MaxLength = 3;
+            this.txtCantidadVender.Name = "txtCantidadVender";
+            this.txtCantidadVender.Size = new System.Drawing.Size(100, 20);
+            this.txtCantidadVender.TabIndex = 37;
+            this.txtCantidadVender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadVender_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Window;
+            this.label1.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(259, 269);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 16);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "CANTIDAD A VENDER:";
             // 
             // btnInsertar
             // 
@@ -249,58 +301,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Window;
-            this.label1.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(259, 269);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 16);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "CANTIDAD A VENDER:";
-            // 
-            // txtCantidadVender
-            // 
-            this.txtCantidadVender.Location = new System.Drawing.Point(408, 266);
-            this.txtCantidadVender.MaxLength = 3;
-            this.txtCantidadVender.Name = "txtCantidadVender";
-            this.txtCantidadVender.Size = new System.Drawing.Size(100, 20);
-            this.txtCantidadVender.TabIndex = 37;
-            this.txtCantidadVender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadVender_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.Window;
-            this.label2.Font = new System.Drawing.Font("Berlin Sans FB Demi", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(315, 226);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 16);
-            this.label2.TabIndex = 38;
-            this.label2.Text = "DESCUENTO:";
-            // 
-            // txtDescuento
-            // 
-            this.txtDescuento.Location = new System.Drawing.Point(408, 226);
-            this.txtDescuento.MaxLength = 3;
-            this.txtDescuento.Name = "txtDescuento";
-            this.txtDescuento.Size = new System.Drawing.Size(53, 20);
-            this.txtDescuento.TabIndex = 39;
-            this.txtDescuento.Text = "0";
-            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.Window;
-            this.label3.Font = new System.Drawing.Font("Berlin Sans FB Demi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(478, 227);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(21, 18);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "%";
             // 
             // FormularioInsertarProductoFactura
             // 

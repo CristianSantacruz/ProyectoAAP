@@ -61,6 +61,7 @@
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelPrincipalGerente = new System.Windows.Forms.Panel();
             this.btnSalirGerente = new System.Windows.Forms.Button();
+            this.actualizarStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panelPrincipalGerente.SuspendLayout();
             this.SuspendLayout();
@@ -125,6 +126,7 @@
             this.nuevoProductoToolStripMenuItem,
             this.consultarProductoToolStripMenuItem,
             this.actualizarProductoToolStripMenuItem,
+            this.actualizarStockToolStripMenuItem,
             this.eliminarProductoToolStripMenuItem});
             this.iNVENTARIOToolStripMenuItem.Name = "iNVENTARIOToolStripMenuItem";
             this.iNVENTARIOToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
@@ -330,6 +332,13 @@
             this.btnSalirGerente.UseVisualStyleBackColor = true;
             this.btnSalirGerente.Click += new System.EventHandler(this.btnSalirGerente_Click);
             // 
+            // actualizarStockToolStripMenuItem
+            // 
+            this.actualizarStockToolStripMenuItem.Name = "actualizarStockToolStripMenuItem";
+            this.actualizarStockToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.actualizarStockToolStripMenuItem.Text = "Actualizar Stock";
+            this.actualizarStockToolStripMenuItem.Click += new System.EventHandler(this.actualizarStockToolStripMenuItem_Click);
+            // 
             // InterfazPrincipalGerente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,5 +393,6 @@
         private System.Windows.Forms.ToolStripMenuItem actualizarParámetroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarParámetroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem actualizarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem actualizarStockToolStripMenuItem;
     }
 }

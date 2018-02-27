@@ -74,7 +74,7 @@ namespace SFMEE_OMICROM
 
         private void actualizarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormularioActualizarProducto actualizar = new FormularioActualizarProducto();
+            FormularioActualizarPrecioProducto actualizar = new FormularioActualizarPrecioProducto();
             actualizar.Show();
             this.Hide();
         }
@@ -184,6 +184,13 @@ namespace SFMEE_OMICROM
         {
             FormularioAcercaDe ayuda = new FormularioAcercaDe();
             ayuda.Show();
+            this.Hide();
+        }
+
+        private void actualizarStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormularioActualizarProducto actualizar = new FormularioActualizarProducto();
+            actualizar.Show();
             this.Hide();
         }
     }

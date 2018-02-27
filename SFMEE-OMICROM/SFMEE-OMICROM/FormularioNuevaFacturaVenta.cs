@@ -425,6 +425,12 @@ namespace SFMEE_OMICROM
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            Form2 frm = new Form2();
+
+            //frm.idfactura = Convert.ToInt32(this.tablaFactura.CurrentRow.Cells["IDFACTURA"].Value);
+            frm.IDFACTURA = Convert.ToInt32(this.lblNumeroFacturaVenta.Text);
+            //this.tablaFactura.CurrentRow.Cells["TODO"].Value);
+            frm.ShowDialog();
         }
 
         private void comboCajero_SelectedIndexChanged(object sender, EventArgs e)

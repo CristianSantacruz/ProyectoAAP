@@ -41,8 +41,9 @@ namespace SFMEE_OMICROM
             NegocioFactura.consultarFacturaTabla(int.Parse(this.txtNumeroFactura.Text));
             if (this.tablaFactura.Rows.Count != 0)
             {
-                this.lblClienteMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["CICLIENTE"].Value);
+                
                 this.lblClienteMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["IDCLIENTE"].Value);
+                this.lblCIMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["CICLIENTE"].Value);
                 this.lblNombreMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["NOMBRECLIENTE"].Value);
                 this.lblDireccionMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["DIRECCIONCLIENTE"].Value);
                 this.lblTelefonoFijoMostrar.Text = Convert.ToString(this.tablaFactura.CurrentRow.Cells["TELEFONOFIJOCLIENTE"].Value);
@@ -203,6 +204,15 @@ namespace SFMEE_OMICROM
         {
             this.soloNumeros(e);
         }
-        
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Form2 frm = new Form2();
+
+            //frm.idfactura = Convert.ToInt32(this.tablaFactura.CurrentRow.Cells["IDFACTURA"].Value);
+            frm.IDFACTURA = Convert.ToInt32(this.txtNumeroFactura.Text);
+            //this.tablaFactura.CurrentRow.Cells["TODO"].Value);
+            frm.ShowDialog();
+        }
     }
 }

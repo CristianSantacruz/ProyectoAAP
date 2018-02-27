@@ -43,6 +43,7 @@
             this.soporteTécnicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeSGFMOMICROMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelActualizarProducto = new System.Windows.Forms.Panel();
+            this.txtNuevaCantidad = new System.Windows.Forms.TextBox();
             this.pickerFechaRegistroVenta = new System.Windows.Forms.DateTimePicker();
             this.pickerFechaRegistroCompra = new System.Windows.Forms.DateTimePicker();
             this.txtPrecioVenta = new System.Windows.Forms.TextBox();
@@ -162,6 +163,7 @@
             // panelActualizarProducto
             // 
             this.panelActualizarProducto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelActualizarProducto.BackgroundImage")));
+            this.panelActualizarProducto.Controls.Add(this.txtNuevaCantidad);
             this.panelActualizarProducto.Controls.Add(this.pickerFechaRegistroVenta);
             this.panelActualizarProducto.Controls.Add(this.pickerFechaRegistroCompra);
             this.panelActualizarProducto.Controls.Add(this.txtPrecioVenta);
@@ -181,10 +183,19 @@
             this.panelActualizarProducto.Size = new System.Drawing.Size(585, 435);
             this.panelActualizarProducto.TabIndex = 4;
             // 
+            // txtNuevaCantidad
+            // 
+            this.txtNuevaCantidad.Location = new System.Drawing.Point(416, 338);
+            this.txtNuevaCantidad.MaxLength = 5;
+            this.txtNuevaCantidad.Name = "txtNuevaCantidad";
+            this.txtNuevaCantidad.Size = new System.Drawing.Size(40, 20);
+            this.txtNuevaCantidad.TabIndex = 27;
+            this.txtNuevaCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNuevaCantidad_KeyPress);
+            // 
             // pickerFechaRegistroVenta
             // 
             this.pickerFechaRegistroVenta.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.pickerFechaRegistroVenta.Location = new System.Drawing.Point(410, 346);
+            this.pickerFechaRegistroVenta.Location = new System.Drawing.Point(410, 296);
             this.pickerFechaRegistroVenta.Name = "pickerFechaRegistroVenta";
             this.pickerFechaRegistroVenta.Size = new System.Drawing.Size(93, 20);
             this.pickerFechaRegistroVenta.TabIndex = 26;
@@ -192,14 +203,14 @@
             // pickerFechaRegistroCompra
             // 
             this.pickerFechaRegistroCompra.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.pickerFechaRegistroCompra.Location = new System.Drawing.Point(410, 298);
+            this.pickerFechaRegistroCompra.Location = new System.Drawing.Point(410, 253);
             this.pickerFechaRegistroCompra.Name = "pickerFechaRegistroCompra";
             this.pickerFechaRegistroCompra.Size = new System.Drawing.Size(93, 20);
             this.pickerFechaRegistroCompra.TabIndex = 25;
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(175, 343);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(174, 296);
             this.txtPrecioVenta.MaxLength = 10;
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(69, 20);
@@ -212,7 +223,7 @@
             this.lblHora.BackColor = System.Drawing.SystemColors.WindowText;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHora.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblHora.Location = new System.Drawing.Point(484, 19);
+            this.lblHora.Location = new System.Drawing.Point(503, 21);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(56, 20);
             this.lblHora.TabIndex = 23;
@@ -248,7 +259,7 @@
             // 
             // txtPrecioCompra
             // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(175, 301);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(175, 253);
             this.txtPrecioCompra.MaxLength = 10;
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(69, 20);
@@ -257,10 +268,10 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(175, 255);
+            this.txtCantidad.Location = new System.Drawing.Point(175, 339);
             this.txtCantidad.MaxLength = 5;
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(293, 20);
+            this.txtCantidad.Size = new System.Drawing.Size(68, 20);
             this.txtCantidad.TabIndex = 18;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
@@ -388,5 +399,6 @@
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.DataGridView tablaProducto;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.TextBox txtNuevaCantidad;
     }
 }
